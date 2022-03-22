@@ -1,0 +1,18 @@
+.Podium {
+  grid-area: Podium;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-gap: 2rem 0;
+  grid-template-areas:
+    'Top3'
+    'Cta';
+}
+
+.Top3 {
+  grid-area: Top3;
+  position: relative;
+}
+
+.Cta {
+  grid-area: Cta;
+}

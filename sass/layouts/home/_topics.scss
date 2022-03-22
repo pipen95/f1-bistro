@@ -1,0 +1,20 @@
+.Topics {
+  @include section;
+  grid-area: Topics;
+  display: grid;
+  gap: 2vh 0;
+  grid-template-rows: min-content auto;
+  grid-template-areas:
+    'Title-Topics'
+    'Items-Topics';
+}
+
+.Title-Topics {
+  grid-area: Title-Topics;
+}
+.Items-Topics {
+  grid-area: Items-Topics;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

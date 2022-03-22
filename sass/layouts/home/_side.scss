@@ -1,0 +1,21 @@
+.Side {
+  grid-area: Side;
+  display: grid;
+  gap: 2vh 0;
+  grid-template-rows: min-content auto;
+  grid-template-areas:
+    'Message'
+    'News';
+}
+
+.Message {
+  @include section;
+  grid-area: Message;
+  padding: 1.5vh 1.5vw 2vh 1.5vw;
+}
+
+.News {
+  grid-area: News;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}

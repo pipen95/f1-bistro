@@ -1,0 +1,77 @@
+/* Standard Table Styles */
+.table-container {
+  height: 50vh !important;
+  overflow: auto !important;
+}
+
+table {
+  border: 0.1em solid #d6d6d6;
+  border-radius: $border-radius;
+  border-spacing: 0;
+  background-color: $color-primary-dark;
+}
+
+.country-flag {
+  width: 30px;
+}
+
+.team-box {
+  display: flex;
+  align-items: center;
+}
+
+.loserDriverImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #ebebe6;
+}
+
+.rivalTeam {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  margin-right: 20px;
+}
+
+th,
+td {
+  font-size: $small-font-size;
+  padding: 0.25em 0.5em 0.25em 1em;
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+thead > tr {
+  background-color: $color-primary-dark !important;
+  color: #fff;
+  border-radius: 6px;
+}
+thead > tr > th {
+  border-radius: 6px;
+}
+
+/* Responsive Table */
+
+[role='region'][aria-labelledby][tabindex] {
+  overflow: auto;
+  border: 0.1em solid #d6d6d6;
+}
+
+[role='region'][aria-labelledby][tabindex]:focus {
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+  outline: 0.1em solid rgba(0, 0, 0, 0.1);
+}
+
+[role='region'][aria-labelledby][tabindex] table {
+  margin: 0;
+  border: none;
+}

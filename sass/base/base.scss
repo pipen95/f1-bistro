@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'typography';
+@import 'dump';
+
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  // This is what 1rem is
+  font-size: 62.5%; /* 1rem=10px*/
+  overflow-x: hidden;
+  box-sizing: border-box;
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(255, 255, 255),
+    rgb(244, 246, 247)
+  );
+  background-repeat: no-repeat;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: white;
+}

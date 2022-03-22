@@ -1,0 +1,17 @@
+@import 'main';
+@import 'side';
+@import 'gp';
+@import 'topics';
+@import 'galerie';
+@import 'podium';
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  gap: 2vh 1vw;
+  grid-template-areas:
+    'Main Side'
+    'Topics Side'
+    'Galerie Galerie';
+}

@@ -1,0 +1,143 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s ease;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+    font-size: $default-font-size;
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    display: inline-block;
+    background-color: $color-white;
+    color: $color-grey-dark;
+    line-height: 1.7rem;
+
+    &::after {
+      background-color: $color-white;
+    }
+
+    .expo {
+      text-transform: lowercase;
+    }
+  }
+
+  &--blue {
+    background-image: linear-gradient(
+      to right,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    color: $color-white;
+    padding: 1.5rem 4rem;
+    &::after {
+      background-image: linear-gradient(
+        to left,
+        $color-primary-light,
+        $color-primary-dark
+      );
+      transition: all 0.2s ease;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.2s ease;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 5px 7px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background-image: linear-gradient(
+      to right,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    transform: translateY(0);
+  }
+
+  //Card Buttons
+
+  &__card {
+    font-size: 1.4rem !important;
+
+    &:link,
+    &:visited {
+      color: $color-white;
+      border-bottom: 1px solid $color-white;
+    }
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    &--1 {
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+    &--2 {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &--3 {
+      &:hover {
+        color: $color-tertiary-dark;
+      }
+    }
+  }
+}

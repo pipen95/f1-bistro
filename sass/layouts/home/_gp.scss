@@ -1,0 +1,24 @@
+.GP {
+  @include section;
+  grid-area: GP;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content auto;
+  grid-template-areas:
+    'Title'
+    'Standings';
+}
+
+.Title-GP {
+  grid-area: Title;
+}
+.Standings {
+  grid-area: Standings;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'Podium Table';
+}
+.Table {
+  grid-area: Table;
+}
