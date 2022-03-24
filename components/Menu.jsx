@@ -1,6 +1,4 @@
-import { useRouter } from 'next/router';
 const Menu = () => {
-  const router = useRouter();
   return (
     <div className="Menu">
       <nav className="nav">

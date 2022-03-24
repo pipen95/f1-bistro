@@ -4,7 +4,7 @@ function Side() {
     <div className="Side">
       <div className="Message u-center-text">
         <span>
-          <p className="petit">Up Next</p>
+          <p className="petit">Next round</p>
         </span>
         <div
           style={{

@@ -2,6 +2,7 @@
 .table-container {
   height: 50vh !important;
   overflow: auto !important;
+  // margin: 0 auto;
 }
 
 table {
@@ -9,6 +10,7 @@ table {
   border-radius: $border-radius;
   border-spacing: 0;
   background-color: $color-primary-dark;
+  width: 100% !important;
 }
 
 .country-flag {
