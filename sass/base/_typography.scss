@@ -43,7 +43,10 @@ h3 {
   margin-bottom: 1rem;
 }
 
-p,
+p {
+  font-size: $default-font-size;
+}
+
 ul {
   font-size: $default-font-size;
 

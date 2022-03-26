@@ -12,6 +12,7 @@ $color-tertiary-dark: #ff7730;
 $color-tertiary-darker: #fc5f2f;
 
 $color-f1: #e10600;
+$color-f1-light: #f75a55;
 
 $color-tertiary-brown: #9a7645;
 
@@ -20,6 +21,7 @@ $color-grey-light-2: #eee;
 $color-grey-dark: #595959;
 $color-grey-dark-2: #999;
 $color-grey-dark-3: #333;
+$color-grey-dark-light: #cac8c8;
 
 $color-white: #fff;
 $color-black: #000;
@@ -40,5 +42,5 @@ $gutter-horizontal: 6rem;
 //SHADOWS
 $box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
   rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-// $box-shadow-medium:
-// $box-shadow-big:
+
+$box-shadow-small: 0 1.5rem 4rem rgba($color-black, 0.3);

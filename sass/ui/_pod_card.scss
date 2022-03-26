@@ -1,0 +1,163 @@
+// FONCTIONNALITY
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  z-index: 8000;
+  height: 10rem;
+  width: 10rem;
+
+  &__side {
+    font-size: 2rem;
+    height: 10rem;
+    width: 100%;
+    transition: all 1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: $border-radius;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: $box-shadow-small;
+
+    &--front {
+      // background-color: $color-white;
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-f1, 0.95),
+        rgba($color-f1-light, 0.95)
+      );
+    }
+
+    &--front-bis {
+      // background-color: $color-white;
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-grey-dark, 0.95),
+        rgba($color-grey-dark-2, 0.95)
+      );
+    }
+
+    &--back {
+      background-color: $color-white;
+      transform: rotateY(180deg);
+      color: $color-white;
+      @include center_flex_h;
+      text-align: center;
+      padding: 0.5rem;
+
+      & p {
+        font-size: 1.2rem !important;
+      }
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-f1, 0.95),
+          rgba($color-f1-light, 0.95)
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-f1, 0.95),
+          rgba($color-f1-light, 0.95)
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-grey-dark, 0.95),
+          rgba($color-grey-dark-2, 0.95)
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &__side--front-bis {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  // FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 12rem;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
+      height: 15rem;
+    }
+    &--2 {
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
+    }
+    &--3 {
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col/image.png);
+    }
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    z-index: 10000;
+    top: 5rem;
+    right: 0;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-f1, 0.95),
+        rgba($color-f1-light, 0.95)
+      );
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-f1, 0.95),
+        rgba($color-f1-light, 0.95)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-grey-dark, 0.95),
+        rgba($color-grey-dark-2, 0.95)
+      );
+    }
+  }
+}
+
+#winner {
+  width: 12rem !important;
+  height: 12rem !important;
+}
+
+#side-winner {
+  height: 12rem !important;
+}
+
+#heading-winner {
+  top: 7rem;
+}

@@ -1,7 +1,7 @@
-import Table from './Table';
+import Standings from './standings/Standings';
 import { useState, useEffect } from 'react';
 
-function Standings() {
+function GP() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
@@ -15,22 +15,26 @@ function Standings() {
       });
   }, []);
 
-  if (isLoading)
+  if (isLoading) {
     return (
-      <div className="Standings">
+      <div className="GP">
         <div className="loader-container">
           <div className="loader"></div>
         </div>
       </div>
     );
+  }
 
   if (!data) return <p>No profile data</p>;
 
   return (
-    <div className="Standings">
-      <Table data={data} />
+    <div className="GP">
+      <div className="Title-GP u-center-text">
+        <h2>{data.MRData.RaceTable.Races[0].raceName} results</h2>
+      </div>
+      <Standings data={data} />
     </div>
   );
 }
 
-export default Standings;
+export default GP;

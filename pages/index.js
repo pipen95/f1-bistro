@@ -1,7 +1,6 @@
-import Main from './../components/home/Main';
-import Side from './../components/home/Side';
+import Main from './../components/home/main/Main';
+import Side from './../components/home/side/Side';
 import Topics from './../components/home/Topics';
-import Galerie from './../components/home/Galerie';
 
 const Home = () => {
   return (
@@ -11,7 +10,6 @@ const Home = () => {
         <Side />
         <Topics />
       </div>
-      <Galerie />
     </>
   );
 };

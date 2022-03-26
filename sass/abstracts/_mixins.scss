@@ -6,6 +6,13 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin center_flex_h {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 //CLEARFIX
 @mixin clearfix {
   &::after {
