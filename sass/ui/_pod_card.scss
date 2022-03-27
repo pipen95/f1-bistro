@@ -90,7 +90,7 @@
   // FRONT SIDE STYLING
   &__picture {
     background-size: cover;
-    height: 12rem;
+    height: 10rem;
     background-position: right bottom;
     background-repeat: no-repeat;
     background-blend-mode: soft-light;
@@ -99,7 +99,7 @@
 
     &--1 {
       background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
-      height: 15rem;
+      height: 12rem;
     }
     &--2 {
       background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
@@ -116,8 +116,10 @@
     color: $color-white;
     position: absolute;
     z-index: 10000;
-    top: 5rem;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
   }
 
   &__heading-span {
@@ -126,24 +128,24 @@
     &--1 {
       background-image: linear-gradient(
         to right bottom,
-        rgba($color-f1, 0.95),
-        rgba($color-f1-light, 0.95)
+        rgba($color-f1, 0.96),
+        rgba($color-f1-light, 0.96)
       );
     }
 
     &--2 {
       background-image: linear-gradient(
         to right bottom,
-        rgba($color-f1, 0.95),
-        rgba($color-f1-light, 0.95)
+        rgba($color-f1, 0.96),
+        rgba($color-f1-light, 0.96)
       );
     }
 
     &--3 {
       background-image: linear-gradient(
         to right bottom,
-        rgba($color-grey-dark, 0.95),
-        rgba($color-grey-dark-2, 0.95)
+        rgba($color-grey-dark, 0.96),
+        rgba($color-grey-dark-2, 0.96)
       );
     }
   }

@@ -12,11 +12,8 @@
 }
 
 .nav {
-  max-width: 100%;
-  margin: 0 1.5rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0 1.5rem;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   &__logo {
@@ -32,6 +29,13 @@
       border: 3px solid $color-primary-dark;
       border-radius: 50%;
     }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
   }
 
   &__list {

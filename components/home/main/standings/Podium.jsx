@@ -41,7 +41,7 @@ function Podium({ data }) {
                 <div class="card__picture card__picture--2"></div>
                 <h4 class="card__heading card__heading--2">
                   <span class="card__heading-span card__heading-span--2">
-                    {data[1].points} pts
+                    {data[1].points}&nbsp;pts
                   </span>
                 </h4>
               </div>
@@ -59,7 +59,7 @@ function Podium({ data }) {
                 <div class="card__picture card__picture--1"></div>
                 <h4 class="card__heading card__heading--1" id="heading-winner">
                   <span class="card__heading-span card__heading-span--1">
-                    {data[0].points} pts
+                    {data[0].points}&nbsp;pts
                   </span>
                 </h4>
               </div>
@@ -77,7 +77,7 @@ function Podium({ data }) {
                 <div class="card__picture card__picture--3"></div>
                 <h4 class="card__heading card__heading--3">
                   <span class="card__heading-span card__heading-span--3">
-                    {data[2].points} pts
+                    {data[2].points}&nbsp;pts
                   </span>
                 </h4>
               </div>

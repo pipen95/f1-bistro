@@ -14,29 +14,36 @@ const Menu = () => {
             <h1 className="nowrap">F1 Bistro</h1>
           </a>
         </div>
-        <div classeName="nav_container">
-          <ul className="nav__list">
-            <li className="nav__item">
-              <a href="/standings" className="nav__link">
-                Standings
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="/game" className="nav__link">
-                Game
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="/chat" className="nav__link">
-                Chat
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="/login" className="nav__link">
-                Login
-              </a>
-            </li>
-          </ul>
+        <div className="nav__container">
+          <div style={{ marginLeft: '1vw' }}>
+            <ul className="nav__list">
+              <li className="nav__item">
+                <a href="/standings" className="nav__link">
+                  Standings
+                </a>
+              </li>
+              <li className="nav__item">
+                <a href="/game" className="nav__link">
+                  Game
+                </a>
+              </li>
+              <li className="nav__item">
+                <a href="/chat" className="nav__link">
+                  Chat
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul className="nav__list">
+              <li className="nav__item">
+                <a href="/login" className="nav__link">
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>
