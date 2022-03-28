@@ -50,14 +50,7 @@
     );
     color: $color-white;
     padding: 1.5rem 4rem;
-    &::after {
-      background-image: linear-gradient(
-        to left,
-        $color-primary-light,
-        $color-primary-dark
-      );
-      transition: all 0.2s ease;
-    }
+    transition: all 0.2s ease;
   }
 
   &::after {
