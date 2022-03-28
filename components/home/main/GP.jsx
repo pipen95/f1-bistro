@@ -29,7 +29,7 @@ function GP() {
 
   return (
     <div className="GP">
-      <div className="Title-GP u-center-text">
+      <div className="Title-GP text-center">
         <h2>{data.MRData.RaceTable.Races[0].raceName} results</h2>
       </div>
       <Standings data={data} />

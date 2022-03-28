@@ -28,7 +28,7 @@ const Message = () => {
   }
 
   return (
-    <div className="Message u-center-text">
+    <div className="Message text-center">
       <span>
         <p className="petit">Next round</p>
       </span>

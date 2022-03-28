@@ -3,7 +3,7 @@ import TopicsItems from './TopicsItems';
 function Topics() {
   return (
     <div className="Topics">
-      <div className="Title-Topics u-center-text">
+      <div className="Title-Topics text-center">
         <span className="flame">🔥</span>
         <h2>Hot Topics</h2>
         <span className="flame">🔥</span>

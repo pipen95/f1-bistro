@@ -1,8 +1,10 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import AuthService from './../services/auth.service';
+import { useRouter } from 'next/router';
 
 export const Login = () => {
+  const router = useRouter();
   const email = useRef();
   const password = useRef();
 
@@ -66,7 +68,7 @@ export const Login = () => {
       password: '',
     });
     setErrors({});
-    closeModal();
+    router.push(`/`);
   };
 
   // TOGGLE SHOW PASSWORD
@@ -86,8 +88,7 @@ export const Login = () => {
       postData(formData).then((value) => {
         // Promesse tenue
         if (value === true) {
-          window.location.reload(false);
-          window.setTimeout(timerid, 1000);
+          window.setTimeout(timerid, 1500);
         } else {
           setSubmitting(false);
         }
@@ -137,17 +138,17 @@ export const Login = () => {
     <div className="login-form">
       {access ? (
         <>
-          <h2 className="center mt-3">WELCOME BACK!</h2>
+          <h2 className="center">WELCOME BACK!</h2>
         </>
       ) : (
         <form onSubmit={handleSubmit} className="form">
-          <h2 className="center mt-3">LOG INTO YOUR ACCOUNT</h2>
+          <h2 className="center">LOG INTO YOUR ACCOUNT</h2>
           <div className="error d-flex justify-content-center mb-3">
-            {errors['server']}
+            <p className="text-center">{errors['server']}</p>
           </div>
 
           <div className="form__group" disabled={submitting}>
-            <label for="email" class="form__label">
+            <label htmlFor="email" className="form__label">
               Email
             </label>
             <input
@@ -162,10 +163,12 @@ export const Login = () => {
               required
             />
 
-            <div className="error">{errors['email']}</div>
+            <div className="error">
+              <p>{errors['email']}</p>
+            </div>
           </div>
           <div className="form__group" disabled={submitting}>
-            <label for="password" class="form__label">
+            <label htmlFor="password" className="form__label">
               Password
             </label>
             <input
@@ -187,7 +190,9 @@ export const Login = () => {
                 } eyepassword`}
               ></i>
             </span>
-            <div className="error">{errors['password']}</div>
+            <div className="error">
+              <p>{errors['password']}</p>
+            </div>
           </div>
 
           <div className="form__group form__group--btn-send u-margin-bottom-medium center">
