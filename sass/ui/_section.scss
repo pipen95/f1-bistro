@@ -1,0 +1,12 @@
+@mixin section {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 7vh 2vw 7vh 2vw;
+  background-color: white;
+}
+@mixin section_side {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 2.5vh 1vw 2.5vh 1vw;
+  background-color: white;
+}

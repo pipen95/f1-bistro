@@ -37,6 +37,11 @@
     align-items: center;
     flex: 1;
   }
+  &__login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__list {
     display: flex;

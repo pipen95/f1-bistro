@@ -13,6 +13,12 @@
   align-items: center;
 }
 
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 //CLEARFIX
 @mixin clearfix {
   &::after {
@@ -20,22 +26,6 @@
     display: table;
     clear: both;
   }
-}
-
-@mixin section {
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 1.5vh 1.5vw 2vh 1.5vw;
-  background-color: white;
-  &--form {
-    padding: 5rem 7rem !important;
-  }
-}
-@mixin section_form {
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 5rem 7rem;
-  background-color: white;
 }
 
 @mixin background {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-const Menu = () => {
+const Menu = ({ currentUser, logOut }) => {
   return (
     <div className="Menu">
       <nav className="nav">
@@ -21,34 +21,93 @@ const Menu = () => {
           </Link>
         </div>
         <div className="nav__container">
-          <div style={{ marginLeft: '1vw' }}>
-            <ul className="nav__list">
-              <li className="nav__item">
-                <Link href="/standings">
-                  <a className="nav__link">Standings</a>
-                </Link>
-              </li>
-              <li className="nav__item">
-                <Link href="/game">
-                  <a className="nav__link">Game</a>
-                </Link>
-              </li>
-              <li className="nav__item">
-                <Link href="/chat">
-                  <a className="nav__link">Chat</a>
-                </Link>
-              </li>
-            </ul>
+          <div className="nav__pages">
+            {currentUser ? (
+              <div style={{ marginLeft: '1vw' }}>
+                <ul className="nav__list">
+                  <li className="nav__item">
+                    <Link href="/standings">
+                      <a className="nav__link">Standings</a>
+                    </Link>
+                  </li>
+                  <li className="nav__item">
+                    <Link href="/game">
+                      <a className="nav__link">Game</a>
+                    </Link>
+                  </li>
+                  <li className="nav__item">
+                    <Link href="/chat">
+                      <a className="nav__link">Chat</a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : null}
           </div>
+          {/* <div className="nav__login">
+            {currentUser ? (
+              <div>
+                <ul className="nav__list">
+                  <li className="nav__item">
+                    <a href="/" className="nav__link" onClick={logOut}>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <ul className="nav__list">
+                    <li className="nav__item">
+                      <Link href="/login">
+                        <a className="nav__link">Login</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="nav__list">
+                    <li className="nav__item">
+                      <Link href="/signup">
+                        <a className="nav__link">Signup</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
+          </div> */}
 
-          <div>
-            <ul className="nav__list">
-              <li className="nav__item">
-                <Link href="/login">
-                  <a className="nav__link">Login</a>
-                </Link>
-              </li>
-            </ul>
+          <div className="nav__login">
+            <div>
+              <ul className="nav__list">
+                <li className="nav__item">
+                  <a href="" className="nav__link" onClick={logOut}>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul className="nav__list">
+                <li className="nav__item">
+                  <Link href="/login">
+                    <a className="nav__link">Login</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul className="nav__list">
+                <li className="nav__item">
+                  <Link href="/signup">
+                    <a className="nav__link">Signup</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

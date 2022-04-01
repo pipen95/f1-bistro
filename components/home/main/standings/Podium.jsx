@@ -36,35 +36,38 @@ function Podium({ data }) {
             </div>
           </div>
           <div className="topscorerboxwrapper">
-            <div class="card">
-              <div class="card__side  card__side--front  card__side--front-2">
-                <div class="card__picture card__picture--2"></div>
-                <h4 class="card__heading card__heading--2">
-                  <span class="card__heading-span card__heading-span--2">
+            <div className="card">
+              <div className="card__side  card__side--front  card__side--front-2">
+                <div className="card__picture card__picture--2"></div>
+                <h4 className="card__heading card__heading--2">
+                  <span className="card__heading-span card__heading-span--2">
                     {data[1].points}&nbsp;pts
                   </span>
                 </h4>
               </div>
-              <div class="card__side  card__side--back  card__side--back-2">
+              <div className="card__side  card__side--back  card__side--back-2">
                 <p>{`${data[1].Driver.givenName}\u00a0${data[1].Driver.familyName}`}</p>
                 <p>Quali Pos: {data[1].grid}</p>
                 <p>Fastest Lap: {data[1].FastestLap.Time.time}</p>
               </div>
             </div>
-            <div class="card" id="winner">
+            <div className="card" id="winner">
               <div
-                class="card__side  card__side--front  card__side--front-1"
+                className="card__side  card__side--front  card__side--front-1"
                 id="side-winner"
               >
-                <div class="card__picture card__picture--1"></div>
-                <h4 class="card__heading card__heading--1" id="heading-winner">
-                  <span class="card__heading-span card__heading-span--1">
+                <div className="card__picture card__picture--1"></div>
+                <h4
+                  className="card__heading card__heading--1"
+                  id="heading-winner"
+                >
+                  <span className="card__heading-span card__heading-span--1">
                     {data[0].points}&nbsp;pts
                   </span>
                 </h4>
               </div>
               <div
-                class="card__side  card__side--back  card__side--back-1"
+                className="card__side  card__side--back  card__side--back-1"
                 id="side-winner"
               >
                 <p>{`${data[0].Driver.givenName}\u00a0${data[0].Driver.familyName}`}</p>
@@ -72,16 +75,16 @@ function Podium({ data }) {
                 <p>Fastest Lap: {data[0].FastestLap.Time.time}</p>
               </div>
             </div>
-            <div class="card">
-              <div class="card__side  card__side--front-bis  card__side--front-3">
-                <div class="card__picture card__picture--3"></div>
-                <h4 class="card__heading card__heading--3">
-                  <span class="card__heading-span card__heading-span--3">
+            <div className="card">
+              <div className="card__side  card__side--front-bis  card__side--front-3">
+                <div className="card__picture card__picture--3"></div>
+                <h4 className="card__heading card__heading--3">
+                  <span className="card__heading-span card__heading-span--3">
                     {data[2].points}&nbsp;pts
                   </span>
                 </h4>
               </div>
-              <div class="card__side  card__side--back  card__side--back-3">
+              <div className="card__side  card__side--back  card__side--back-3">
                 <p>{`${data[2].Driver.givenName}\u00a0${data[2].Driver.familyName}`}</p>
                 <p>Quali Pos: {data[2].grid}</p>
                 <p>Fastest Lap: {data[2].FastestLap.Time.time}</p>

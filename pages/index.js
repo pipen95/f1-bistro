@@ -4,13 +4,11 @@ import Topics from './../components/home/Topics';
 
 const Home = () => {
   return (
-    <>
-      <div className="home">
-        <Main />
-        <Side />
-        <Topics />
-      </div>
-    </>
+    <div className="home">
+      <Main />
+      <Side />
+      <Topics />
+    </div>
   );
 };
 export default Home;

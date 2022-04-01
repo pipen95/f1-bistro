@@ -1,3 +1,7 @@
-.mt-3 {
-  margin-top: 3rem !important;
+.login-form {
+  @include section;
+  margin: 10vh auto;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  max-width: 55rem;
 }

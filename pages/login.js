@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import AuthService from './../services/auth.service';
 import { useRouter } from 'next/router';
+axios.defaults.withCredentials = true;
 
 export const Login = () => {
   const router = useRouter();
@@ -110,12 +110,12 @@ export const Login = () => {
     try {
       const res = await axios.post(
         'http://localhost:3001/api/users/login',
-        payload
+        payload,
+        { withCredentials: true }
       );
 
       if (res) {
         setAccess(true);
-        AuthService.setCookie(res.data);
         serverAccess = true;
       }
     } catch (error) {
@@ -135,14 +135,14 @@ export const Login = () => {
 
   // JSX FORM
   return (
-    <div className="login-form">
+    <div className="login-form center">
       {access ? (
         <>
-          <h2 className="center">WELCOME BACK!</h2>
+          <h2 className="m-0 center">WELCOME BACK!</h2>
         </>
       ) : (
         <form onSubmit={handleSubmit} className="form">
-          <h2 className="center">LOG INTO YOUR ACCOUNT</h2>
+          <h2 className="text-center">LOG INTO YOUR ACCOUNT</h2>
           <div className="error d-flex justify-content-center mb-3">
             <p className="text-center">{errors['server']}</p>
           </div>
@@ -160,7 +160,6 @@ export const Login = () => {
               onChange={handleChange}
               value={formData.email}
               placeholder="f1bistro@menu.com"
-              required
             />
 
             <div className="error">
@@ -179,7 +178,6 @@ export const Login = () => {
               name="password"
               onChange={handleChange}
               value={formData.password}
-              required
               placeholder="••••••••"
             />
 
@@ -195,7 +193,7 @@ export const Login = () => {
             </div>
           </div>
 
-          <div className="form__group form__group--btn-send u-margin-bottom-medium center">
+          <div className="center">
             <button
               className="btn btn--blue"
               type="submit"

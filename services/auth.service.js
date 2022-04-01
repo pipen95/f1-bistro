@@ -1,25 +1,27 @@
 import Cookies from 'universal-cookie';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const cookies = new Cookies();
 
-const setCookie = (data) => {
-  cookies.set('user', data, { path: '/' });
-};
-
-const logout = async () => {
-  cookies.set('user', null, {
-    path: '/',
-    expires: new Date(Date.now() - 10 * 1000),
-  });
-  window.location.reload(false);
+export const logout = async () => {
+  axios
+    .get('http://localhost:3001/api/users/logout', { withCredentials: true })
+    .then((res) => {
+      if (res) {
+        window.location.reload();
+      }
+    })
+    .catch((err) => console.log(err.message));
 };
 
 const getCurrentUser = () => {
-  return cookies.get('user');
+  const user = cookies.get('jwt');
+  console.log(user);
+  return user;
 };
 
 export default {
-  setCookie,
   logout,
   getCurrentUser,
 };
