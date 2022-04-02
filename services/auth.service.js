@@ -9,7 +9,7 @@ export const logout = async () => {
     .get('http://localhost:3001/api/users/logout', { withCredentials: true })
     .then((res) => {
       if (res) {
-        window.location.reload();
+        // window.location.reload();
       }
     })
     .catch((err) => console.log(err.message));

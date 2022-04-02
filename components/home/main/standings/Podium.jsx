@@ -37,7 +37,7 @@ function Podium({ data }) {
           </div>
           <div className="topscorerboxwrapper">
             <div className="card">
-              <div className="card__side  card__side--front  card__side--front-2">
+              <div className="card__side  card__side--front-bis  card__side--front-2">
                 <div className="card__picture card__picture--2"></div>
                 <h4 className="card__heading card__heading--2">
                   <span className="card__heading-span card__heading-span--2">
@@ -84,7 +84,7 @@ function Podium({ data }) {
                   </span>
                 </h4>
               </div>
-              <div className="card__side  card__side--back  card__side--back-3">
+              <div className="card__side  card__side--back  card__side--back-2">
                 <p>{`${data[2].Driver.givenName}\u00a0${data[2].Driver.familyName}`}</p>
                 <p>Quali Pos: {data[2].grid}</p>
                 <p>Fastest Lap: {data[2].FastestLap.Time.time}</p>
