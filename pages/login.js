@@ -2,8 +2,11 @@ import { useState, useRef } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 axios.defaults.withCredentials = true;
+import { useContext } from 'react';
+import Context from '../components/Context';
 
-export const Login = () => {
+const Login = () => {
+  const { logIn } = useContext(Context);
   const router = useRouter();
   const email = useRef();
   const password = useRef();
@@ -69,6 +72,7 @@ export const Login = () => {
     });
     setErrors({});
     router.push(`/`);
+    logIn();
   };
 
   // TOGGLE SHOW PASSWORD

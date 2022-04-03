@@ -1,0 +1,110 @@
+.nav {
+  display: flex;
+  margin: 0 1.5rem;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    // justify-content:space-between
+
+    &--img {
+      height: 5rem;
+      width: 5rem;
+      margin-right: 1rem;
+      border: 3px solid $color-primary-dark;
+      border-radius: 50%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+  }
+  &__login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem 0 1rem 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      font-size: 1.5rem;
+      display: inline-block;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-position: 0%;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      background-size: 230%;
+      transition: all 0.4s;
+    }
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+  }
+  &__profile {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+    &--drop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &-text {
+        font-size: $small-font-size;
+        margin-right: 0.5rem;
+      }
+
+      &-svg {
+        font-size: $small-font-size;
+      }
+    }
+
+    &:hover {
+      text-shadow: 0 0.7rem 1rem black;
+      // box-shadow: 0 1rem 2rem rgba($color-grey-dark, 0.2);
+      transform: translateY(-2px);
+    }
+
+    // &:active {
+    //   box-shadow: 0 0.5rem 1rem rgba($color-grey-dark, 0.2);
+    //   transform: translateY(0);
+    // }
+  }
+}
