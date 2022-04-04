@@ -186,42 +186,48 @@ const Signup = () => {
             <p className="text-center">{errors['server']}</p>
           </div>
 
-          <div className="form__group" disabled={submitting}>
-            <label htmlFor="firstname" className="form__label">
-              First name
-            </label>
-            <input
-              ref={firstname}
-              type="text"
-              id="firstname"
-              className="form__input"
-              name="firstname"
-              onChange={handleChange}
-              value={formData.firstname}
-              placeholder="Alain"
-            />
+          <div className="flex">
+            <div
+              className="form__group"
+              disabled={submitting}
+              style={{ marginRight: '2rem' }}
+            >
+              <label htmlFor="firstname" className="form__label">
+                First name
+              </label>
+              <input
+                ref={firstname}
+                type="text"
+                id="firstname"
+                className="form__input"
+                name="firstname"
+                onChange={handleChange}
+                value={formData.firstname}
+                placeholder="Alain"
+              />
 
-            <div className="error">
-              <p>{errors['firstname']}</p>
+              <div className="error">
+                <p>{errors['firstname']}</p>
+              </div>
             </div>
-          </div>
-          <div className="form__group" disabled={submitting}>
-            <label htmlFor="lastname" className="form__label">
-              Last name
-            </label>
-            <input
-              ref={lastname}
-              type="text"
-              id="lastname"
-              className="form__input"
-              name="lastname"
-              onChange={handleChange}
-              value={formData.lastname}
-              placeholder="Prost"
-            />
+            <div className="form__group" disabled={submitting}>
+              <label htmlFor="lastname" className="form__label">
+                Last name
+              </label>
+              <input
+                ref={lastname}
+                type="text"
+                id="lastname"
+                className="form__input"
+                name="lastname"
+                onChange={handleChange}
+                value={formData.lastname}
+                placeholder="Prost"
+              />
 
-            <div className="error">
-              <p>{errors['lastname']}</p>
+              <div className="error">
+                <p>{errors['lastname']}</p>
+              </div>
             </div>
           </div>
           <div className="form__group" disabled={submitting}>

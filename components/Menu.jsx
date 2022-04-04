@@ -20,7 +20,7 @@ const Menu = () => {
 
           <Link href="/">
             <a>
-              <h1 className="nowrap">F1 Bistro</h1>
+              <h1 className="nowrap nav__logo--title">F1 Bistro</h1>
             </a>
           </Link>
         </div>
