@@ -48,7 +48,7 @@ const Menu = () => {
           </div>
           <div className="nav__login">
             {user.current ? (
-              <div className="nav__profile">
+              <div className="nav__profile" onClick={logOut}>
                 <img
                   src="/img/pierre-penel.jpg"
                   alt="Profile pic"
@@ -56,9 +56,7 @@ const Menu = () => {
                 />
                 <div className="nav__profile--drop">
                   <span className="nav__profile--drop-text">Pierre</span>
-                  <span onClick={logOut} className="nav__profile--drop-svg">
-                    X
-                  </span>
+                  <span className="nav__profile--drop-svg">X</span>
 
                   {/* <svg
                         className="global-nav__icon global-nav__icon--small"
@@ -78,9 +76,9 @@ const Menu = () => {
                     <a className="nav__link">Login</a>
                   </Link>
                 </li>
-                <li className="nav__item">
+                <li className="nav__item" style={{ marginRight: '1rem' }}>
                   <Link href="/signup">
-                    <a className="nav__link">Signup</a>
+                    <a className="btn btn--white">Signup</a>
                   </Link>
                 </li>
               </ul>

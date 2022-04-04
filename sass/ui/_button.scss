@@ -17,7 +17,8 @@
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+    // text-shadow: 0 0.7rem 1rem black;
   }
 
   &:active,
@@ -30,7 +31,7 @@
   &--white {
     display: inline-block;
     background-color: $color-white;
-    color: $color-grey-dark;
+    color: $color-primary;
     line-height: 1.7rem;
 
     &::after {
@@ -92,7 +93,7 @@
       $color-primary-dark
     );
     color: $color-white;
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
     transform: translateY(-2px);
   }
 
