@@ -46,17 +46,18 @@ const Menu = () => {
               </ul>
             ) : null}
           </div>
-          <div className="nav__login">
-            {user.current ? (
-              <div className="nav__profile" onClick={logOut}>
-                <div className="nav__profile--name">Pierre</div>
-                <img
-                  src="/img/pierre-penel.jpg"
-                  alt="Profile pic"
-                  className="nav__profile--img"
-                />
-              </div>
-            ) : (
+
+          {user.current ? (
+            <div className="nav__profile" onClick={logOut}>
+              <div className="nav__profile--name">Pierre</div>
+              <img
+                src="/img/pierre-penel.jpg"
+                alt="Profile pic"
+                className="nav__profile--img"
+              />
+            </div>
+          ) : (
+            <div className="nav__login">
               <ul className="nav__list">
                 <li className="nav__item">
                   <Link href="/login">
@@ -69,8 +70,8 @@ const Menu = () => {
                   </Link>
                 </li>
               </ul>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </nav>
     </div>
