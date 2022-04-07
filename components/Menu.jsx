@@ -49,25 +49,12 @@ const Menu = () => {
           <div className="nav__login">
             {user.current ? (
               <div className="nav__profile" onClick={logOut}>
+                <div className="nav__profile--name">Pierre</div>
                 <img
                   src="/img/pierre-penel.jpg"
                   alt="Profile pic"
                   className="nav__profile--img"
                 />
-                <div className="nav__profile--drop">
-                  <span className="nav__profile--drop-text">Pierre</span>
-                  <span className="nav__profile--drop-svg">X</span>
-
-                  {/* <svg
-                        className="global-nav__icon global-nav__icon--small"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <use
-                          href="#global-nav-icon--classic__down-arrow"
-                          class="global-nav__icon-path"
-                        ></use>
-                      </svg> */}
-                </div>
               </div>
             ) : (
               <ul className="nav__list">

@@ -140,9 +140,9 @@ const Signup = () => {
     let err = {};
     let serverAccess = false;
     const payload = {
-      firstname: data.firstname,
-      lastname: data.lastname,
-      email: data.email,
+      firstname: data.firstname.trim(),
+      lastname: data.lastname.trim(),
+      email: data.email.trim(),
       password: data.password,
       passwordConfirm: data.passwordConfirm,
     };

@@ -4,8 +4,6 @@ import Context from './../../../components/Context';
 
 function GP() {
   const { raceResults } = useContext(Context);
-  console.log(raceResults);
-
   if (!raceResults) return <p>No profile data</p>;
 
   return (
