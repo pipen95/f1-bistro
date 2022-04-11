@@ -5,21 +5,20 @@ axios.defaults.withCredentials = true;
 import { useContext } from 'react';
 import Context from '../components/Context';
 
-const Login = () => {
+const Signup = () => {
   const { logIn } = useContext(Context);
   const router = useRouter();
-  const email = useRef();
   const password = useRef();
+  const passwordConfirm = useRef();
 
   const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
   const [showPass, setShowPass] = useState('text');
   const [formData, setFormData] = useState({
-    email: '',
     password: '',
+    passwordConfirm: '',
   });
-
   //HANDLER FONCTIONS
   //ON CHANGE
   const handleChange = (event) => {
@@ -39,18 +38,26 @@ const Login = () => {
     if (!fields['password']) {
       formIsValid = false;
       err['password'] = 'Cannot be empty';
+    } else if (typeof fields['password'] !== 'undefined') {
+      if (!fields['password'].match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
+        formIsValid = false;
+        err['password'] =
+          'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
+      }
     }
-
-    //Email
-    if (!fields['email']) {
+    //Password Confirm
+    if (!fields['passwordConfirm']) {
       formIsValid = false;
-      err['email'] = 'Cannot be empty';
-    } else if (typeof fields['email'] !== 'undefined') {
+      err['passwordConfirm'] = 'Cannot be empty';
+    } else if (typeof fields['passwordConfirm'] !== 'undefined') {
       if (
-        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(fields['email'])
+        !fields['passwordConfirm'].match(
+          /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        )
       ) {
         formIsValid = false;
-        err['email'] = 'Email is not valid. Example: f1bistrot@example.com';
+        err['passwordConfirm'] =
+          'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
       }
     }
 
@@ -61,8 +68,8 @@ const Login = () => {
   // CLOSE MODAL
   const timerid = () => {
     setFormData({
-      email: '',
       password: '',
+      passwordConfirm: '',
     });
     setErrors({});
     router.push(`/`);
@@ -100,14 +107,20 @@ const Login = () => {
   const postData = async (data) => {
     let err = {};
     let serverAccess = false;
+
     const payload = {
-      email: data.email,
       password: data.password,
+      passwordConfirm: data.passwordConfirm,
     };
 
+    const url_string = window.location.href;
+    const url = new URL(url_string);
+    const token = url.searchParams.get('token');
+    console.log(token);
+
     try {
-      const res = await axios.post(
-        'http://localhost:3001/api/users/login',
+      const res = await axios.patch(
+        `http://localhost:3001/api/users/resetPassword/${token}`,
         payload,
         { withCredentials: true }
       );
@@ -136,34 +149,17 @@ const Login = () => {
     <div className="login-form center">
       {access ? (
         <>
-          <h2 className="m-0 center">WELCOME BACK!</h2>
+          <h2 className="m-0 text-center">
+            Your password has successfully been reset!
+          </h2>
         </>
       ) : (
         <form onSubmit={handleSubmit} className="form">
-          <h2 className="text-center">LOG INTO YOUR ACCOUNT</h2>
+          <h2 className="text-center">Reset your password</h2>
           <div className="error d-flex justify-content-center mb-3">
             <p className="text-center">{errors['server']}</p>
           </div>
 
-          <div className="form__group" disabled={submitting}>
-            <label htmlFor="email" className="form__label">
-              Email
-            </label>
-            <input
-              ref={email}
-              type="email"
-              id="email"
-              className="form__input"
-              name="email"
-              onChange={handleChange}
-              value={formData.email}
-              placeholder="f1bistro@menu.com"
-            />
-
-            <div className="error">
-              <p>{errors['email']}</p>
-            </div>
-          </div>
           <div className="form__group" disabled={submitting}>
             <label htmlFor="password" className="form__label">
               Password
@@ -190,6 +186,32 @@ const Login = () => {
               <p>{errors['password']}</p>
             </div>
           </div>
+          <div className="form__group" disabled={submitting}>
+            <label htmlFor="passwordConfirm" className="form__label">
+              Password Confirm
+            </label>
+            <input
+              ref={passwordConfirm}
+              type={showPass}
+              id="passwordConfirm"
+              className="form__input"
+              name="passwordConfirm"
+              onChange={handleChange}
+              value={formData.passwordConfirm}
+              placeholder="••••••••"
+            />
+
+            <span className="p-viewer" onClick={toggleShowPass}>
+              <i
+                className={`far ${
+                  showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
+                } eyepassword`}
+              ></i>
+            </span>
+            <div className="error">
+              <p>{errors['passwordConfirm']}</p>
+            </div>
+          </div>
 
           <div className="center">
             <button
@@ -197,7 +219,7 @@ const Login = () => {
               type="submit"
               disabled={submitting}
             >
-              Login
+              Reset
             </button>
           </div>
         </form>
@@ -206,4 +228,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

@@ -41,14 +41,16 @@ function Podium({ data }) {
                 <div className="card__picture card__picture--2"></div>
                 <h4 className="card__heading card__heading--2">
                   <span className="card__heading-span card__heading-span--2">
-                    {data[1].points}&nbsp;pts
+                    2<small>nd</small>
                   </span>
                 </h4>
               </div>
               <div className="card__side  card__side--back  card__side--back-2">
                 <p>{`${data[1].Driver.givenName}\u00a0${data[1].Driver.familyName}`}</p>
+                <p className="card__side--back-points">
+                  {data[1].points}&nbsp;pts
+                </p>
                 <p>Quali Pos: {data[1].grid}</p>
-                <p>Fastest Lap: {data[1].FastestLap.Time.time}</p>
               </div>
             </div>
             <div className="card" id="winner">
@@ -62,7 +64,7 @@ function Podium({ data }) {
                   id="heading-winner"
                 >
                   <span className="card__heading-span card__heading-span--1">
-                    {data[0].points}&nbsp;pts
+                    1<small>st</small>
                   </span>
                 </h4>
               </div>
@@ -71,23 +73,27 @@ function Podium({ data }) {
                 id="side-winner"
               >
                 <p>{`${data[0].Driver.givenName}\u00a0${data[0].Driver.familyName}`}</p>
+                <p className="card__side--back-points">
+                  {data[0].points}&nbsp;pts
+                </p>
                 <p>Quali Pos: {data[0].grid}</p>
-                <p>Fastest Lap: {data[0].FastestLap.Time.time}</p>
               </div>
             </div>
             <div className="card">
-              <div className="card__side  card__side--front-bis  card__side--front-3">
+              <div className="card__side  card__side--front  card__side--front-bis-2">
                 <div className="card__picture card__picture--3"></div>
                 <h4 className="card__heading card__heading--3">
                   <span className="card__heading-span card__heading-span--3">
-                    {data[2].points}&nbsp;pts
+                    3<small>rd</small>
                   </span>
                 </h4>
               </div>
-              <div className="card__side  card__side--back  card__side--back-2">
+              <div className="card__side  card__side--back  card__side--back-3">
                 <p>{`${data[2].Driver.givenName}\u00a0${data[2].Driver.familyName}`}</p>
+                <p className="card__side--back-points">
+                  {data[2].points}&nbsp;pts
+                </p>
                 <p>Quali Pos: {data[2].grid}</p>
-                <p>Fastest Lap: {data[2].FastestLap.Time.time}</p>
               </div>
             </div>
           </div>

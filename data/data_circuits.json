@@ -75,7 +75,8 @@
       "long": "11.7167",
       "locality": "Imola",
       "country": "Italy"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/italy.png"
   },
   {
     "id": "interlagos",
@@ -142,7 +143,8 @@
       "long": "9.28111",
       "locality": "Monza",
       "country": "Italy"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/italy.png"
   },
   {
     "id": "red_bull_ring",

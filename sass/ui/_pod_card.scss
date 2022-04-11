@@ -60,7 +60,11 @@
       padding: 0.5rem;
 
       & p {
-        font-size: 1.2rem !important;
+        font-size: 1.2rem;
+      }
+
+      &-points {
+        font-size: $default-font-size !important;
       }
 
       &-1 {
@@ -110,19 +114,19 @@
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
     &--1 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/red-bull-racing-logo.png.transform/2col/image.png);
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
       height: 12rem;
     }
     &--2 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/red-bull-racing-logo.png.transform/2col/image.png);
     }
     &--3 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
+      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col/image.png);
     }
   }
 
   &__heading {
-    font-size: 1.5rem;
+    font-size: $default-font-size;
     font-weight: 300;
     text-align: right;
     color: $color-white;
@@ -156,20 +160,20 @@
     &--3 {
       background-image: linear-gradient(
         to right bottom,
-        rgba($color-f1, 0.95),
-        rgba($color-f1-light, 0.95)
+        rgba(#36466e, 0.95),
+        rgba(#617090, 0.95)
       );
     }
   }
 }
 
 #winner {
-  width: 12rem !important;
-  height: 12rem !important;
+  width: 12rem;
+  height: 12rem;
 }
 
 #side-winner {
-  height: 12rem !important;
+  height: 12rem;
 }
 
 #heading-winner {
