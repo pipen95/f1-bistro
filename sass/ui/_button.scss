@@ -7,7 +7,7 @@
     display: inline-block;
     border-radius: 10rem;
     transition: all 0.2s ease;
-    position: relative;
+    // position: relative;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     padding: 1rem 2rem;
     font-size: $default-font-size;
@@ -33,10 +33,9 @@
     background-color: $color-white;
     color: $color-primary;
     line-height: 1.7rem;
-
-    &::after {
-      background-color: $color-white;
-    }
+    // &::after {
+    //   background-color: $color-white;
+    // }
 
     .expo {
       text-transform: lowercase;

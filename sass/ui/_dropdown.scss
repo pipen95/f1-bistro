@@ -1,0 +1,50 @@
+.dropdown {
+  position: absolute;
+  z-index: 10000;
+  top: 70px;
+  width: 15vw;
+  color: $color-primary;
+  transform: translateX(-45%);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-small;
+  border: 1px solid #e7e5e5;
+  padding: 1rem;
+  background-color: white;
+  overflow: hidden;
+
+  &__item {
+    cursor: pointer;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+    transition: background 0.2s;
+    padding: 1rem;
+
+    &:hover {
+      background-color: #e7e5e5;
+    }
+  }
+
+  &__icon {
+    margin-right: 1rem;
+    display: inline-block;
+    stroke-width: 0;
+    stroke: $color-primary;
+    fill: $color-primary;
+  }
+  &__img {
+    margin-right: 1rem;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+.hr {
+  border: 0.5px solid #e7e5e5;
+  background-color: #e7e5e5;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+}

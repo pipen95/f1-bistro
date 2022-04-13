@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Context from './Context';
+import DropdownMenu from './DropdownMenu';
 
 const Menu = () => {
-  const { user, logOut } = useContext(Context);
+  const { user } = useContext(Context);
+  const [open, setOpen] = useState(false);
   return (
     <div className="Menu">
       <nav className="nav">
@@ -48,13 +50,13 @@ const Menu = () => {
           </div>
 
           {user.current ? (
-            <div className="nav__profile" onClick={logOut}>
-              <div className="nav__profile--name">Pierre</div>
+            <div className="nav__profile" onClick={() => setOpen(!open)}>
               <img
                 src="/img/pierre-penel.jpg"
                 alt="Profile pic"
                 className="nav__profile--img"
               />
+              {open && <DropdownMenu />}
             </div>
           ) : (
             <div className="nav__login">

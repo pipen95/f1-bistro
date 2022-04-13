@@ -42,6 +42,12 @@ p {
   font-size: $default-font-size;
 }
 
+a {
+  text-decoration: none;
+  font-size: $default-font-size;
+  color: currentColor;
+}
+
 ul {
   font-size: $default-font-size;
 
