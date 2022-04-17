@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { useContext, useState } from 'react';
-import Context from './Context';
+import { useState } from 'react';
 import DropdownMenu from './DropdownMenu';
+import { useSelector } from 'react-redux';
 
 const Menu = () => {
-  const { user } = useContext(Context);
+  const { user } = useSelector((state) => state.auth);
+
   const [open, setOpen] = useState(false);
   return (
     <div className="Menu">
@@ -28,7 +29,7 @@ const Menu = () => {
         </div>
         <div className="nav__container">
           <div className="nav__pages">
-            {user.current ? (
+            {user ? (
               <ul className="nav__list" style={{ marginLeft: '1vw' }}>
                 <li className="nav__item">
                   <Link href="/standings">
@@ -49,7 +50,7 @@ const Menu = () => {
             ) : null}
           </div>
 
-          {user.current ? (
+          {user ? (
             <div className="nav__profile" onClick={() => setOpen(!open)}>
               <img
                 src="/img/pierre-penel.jpg"

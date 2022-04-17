@@ -58,21 +58,18 @@
       filter: opacity(0.9);
       transform: scale(0.95);
       image-rendering: -webkit-optimize-contrast;
-    }
-
-    &--name {
-      font-size: $default-font-size;
-      margin-right: 1rem;
-    }
-
-    &:hover {
-      img {
+      &:hover {
         filter: opacity(1);
         backface-visibility: hidden;
         transform: scale(1);
         -webkit-backface-visibility: hidden;
         -webkit-transform: scale(1);
       }
+    }
+
+    &--name {
+      font-size: $default-font-size;
+      margin-right: 1rem;
     }
   }
 

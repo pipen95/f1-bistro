@@ -1,33 +1,42 @@
 import Link from 'next/link';
-import { useContext } from 'react';
-import Context from './Context';
 import Logout from './Icons';
+import { useDispatch } from 'react-redux';
+import { logout, reset } from '../auth/authSlice';
+import { useRouter } from 'next/router';
 
-function DropdownMenu() {
-  const { logOut } = useContext(Context);
-  function DropdownProfile(props) {
+const DropdownMenu = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const logOut = () => {
+    console.log('ok');
+    dispatch(logout());
+    dispatch(reset());
+    router.push(`/`);
+  };
+
+  const DropdownProfile = ({ children }) => {
     return (
       <Link href="/profile">
         <a>
           <div className="dropdown__item">
             <img className="dropdown__img" src="/img/pierre-penel.jpg" />
-            {props.children}
+            {children}
           </div>
         </a>
       </Link>
     );
-  }
+  };
 
-  function DropdownItem(props) {
+  const DropdownItem = ({ icon, children }) => {
     return (
       <a onClick={logOut}>
         <div className="dropdown__item">
-          <span className="dropdown__icon">{props.icon}</span>
-          {props.children}
+          <span className="dropdown__icon">{icon}</span>
+          {children}
         </div>
       </a>
     );
-  }
+  };
 
   return (
     <div className="dropdown">
@@ -36,6 +45,6 @@ function DropdownMenu() {
       <DropdownItem icon={<Logout />}>Logout</DropdownItem>
     </div>
   );
-}
+};
 
 export default DropdownMenu;

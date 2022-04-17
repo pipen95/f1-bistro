@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { signup, reset } from '../auth/authSlice';
 axios.defaults.withCredentials = true;
-import { useContext } from 'react';
-import Context from '../components/Context';
 
 const Signup = () => {
-  const { logIn } = useContext(Context);
   const router = useRouter();
   const firstname = useRef();
   const lastname = useRef();
@@ -14,7 +14,6 @@ const Signup = () => {
   const password = useRef();
   const passwordConfirm = useRef();
 
-  const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
   const [showPass, setShowPass] = useState('text');
@@ -25,6 +24,26 @@ const Signup = () => {
     password: '',
     passwordConfirm: '',
   });
+
+  // REDUX SETUP
+  const dispatch = useDispatch();
+
+  const { user, isError, isSuccess, isLoading, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      setAccess(true);
+      window.setTimeout(timerid, 1000);
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, dispatch]);
+
   //HANDLER FONCTIONS
   //ON CHANGE
   const handleChange = (event) => {
@@ -105,7 +124,6 @@ const Signup = () => {
     });
     setErrors({});
     router.push(`/`);
-    logIn();
   };
 
   // TOGGLE SHOW PASSWORD
@@ -120,25 +138,14 @@ const Signup = () => {
   // HANDLE SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitting(true);
     if (handleValidation()) {
-      postData(formData).then((value) => {
-        // Promesse tenue
-        if (value === true) {
-          window.setTimeout(timerid, 1500);
-        } else {
-          setSubmitting(false);
-        }
-      });
-    } else {
-      setSubmitting(false);
+      postData(formData);
     }
   };
 
   // POST REQUEST
   const postData = async (data) => {
     let err = {};
-    let serverAccess = false;
     const payload = {
       firstname: data.firstname.trim(),
       lastname: data.lastname.trim(),
@@ -147,18 +154,8 @@ const Signup = () => {
       passwordConfirm: data.passwordConfirm,
     };
     try {
-      const res = await axios.post(
-        'http://localhost:3001/api/users/signup',
-        payload,
-        { withCredentials: true }
-      );
-
-      if (res) {
-        setAccess(true);
-        serverAccess = true;
-      }
+      dispatch(signup(payload));
     } catch (error) {
-      setAccess(false);
       console.log(error);
       if (error.response) {
         err['server'] = `${error.response.data.message}`;
@@ -168,8 +165,9 @@ const Signup = () => {
         ] = `There was a problem validating the provided data. Please try again.`;
       }
     }
+
     setErrors(err);
-    return serverAccess;
+    toast.error(errors[Object.keys('server').pop()]);
   };
 
   // JSX FORM
@@ -182,14 +180,11 @@ const Signup = () => {
       ) : (
         <form onSubmit={handleSubmit} className="form">
           <h2 className="text-center">Create your account</h2>
-          <div className="error d-flex justify-content-center mb-3">
-            <p className="text-center">{errors['server']}</p>
-          </div>
 
           <div className="flex">
             <div
               className="form__group"
-              disabled={submitting}
+              disabled={isLoading}
               style={{ marginRight: '2rem' }}
             >
               <label htmlFor="firstname" className="form__label">
@@ -210,7 +205,7 @@ const Signup = () => {
                 <p>{errors['firstname']}</p>
               </div>
             </div>
-            <div className="form__group" disabled={submitting}>
+            <div className="form__group" disabled={isLoading}>
               <label htmlFor="lastname" className="form__label">
                 Last name
               </label>
@@ -230,7 +225,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="form__group" disabled={submitting}>
+          <div className="form__group" disabled={isLoading}>
             <label htmlFor="email" className="form__label">
               Email
             </label>
@@ -249,7 +244,7 @@ const Signup = () => {
               <p>{errors['email']}</p>
             </div>
           </div>
-          <div className="form__group" disabled={submitting}>
+          <div className="form__group" disabled={isLoading}>
             <label htmlFor="password" className="form__label">
               Password
             </label>
@@ -275,7 +270,7 @@ const Signup = () => {
               <p>{errors['password']}</p>
             </div>
           </div>
-          <div className="form__group" disabled={submitting}>
+          <div className="form__group" disabled={isLoading}>
             <label htmlFor="passwordConfirm" className="form__label">
               Password Confirm
             </label>
@@ -306,7 +301,7 @@ const Signup = () => {
             <button
               className="btn btn--blue"
               type="submit"
-              disabled={submitting}
+              disabled={isLoading}
             >
               Signup
             </button>

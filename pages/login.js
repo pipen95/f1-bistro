@@ -1,17 +1,16 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, reset } from './../auth/authSlice';
+import { toast } from 'react-toastify';
 axios.defaults.withCredentials = true;
-import { useContext } from 'react';
-import Context from '../components/Context';
 
 const Login = () => {
-  const { logIn } = useContext(Context);
   const router = useRouter();
   const email = useRef();
   const password = useRef();
 
-  const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
   const [showPass, setShowPass] = useState('text');
@@ -19,6 +18,25 @@ const Login = () => {
     email: '',
     password: '',
   });
+
+  // REDUX SETUP
+  const dispatch = useDispatch();
+
+  const { user, isError, isSuccess, isLoading, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      setAccess(true);
+      window.setTimeout(timerid, 1000);
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, dispatch]);
 
   //HANDLER FONCTIONS
   //ON CHANGE
@@ -66,7 +84,6 @@ const Login = () => {
     });
     setErrors({});
     router.push(`/`);
-    logIn();
   };
 
   // TOGGLE SHOW PASSWORD
@@ -81,43 +98,22 @@ const Login = () => {
   // HANDLE SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitting(true);
     if (handleValidation()) {
-      postData(formData).then((value) => {
-        // Promesse tenue
-        if (value === true) {
-          window.setTimeout(timerid, 1500);
-        } else {
-          setSubmitting(false);
-        }
-      });
-    } else {
-      setSubmitting(false);
+      postData(formData);
     }
   };
 
   // POST REQUEST
   const postData = async (data) => {
     let err = {};
-    let serverAccess = false;
     const payload = {
       email: data.email,
       password: data.password,
     };
 
     try {
-      const res = await axios.post(
-        'http://localhost:3001/api/users/login',
-        payload,
-        { withCredentials: true }
-      );
-
-      if (res) {
-        setAccess(true);
-        serverAccess = true;
-      }
+      dispatch(login(payload));
     } catch (error) {
-      setAccess(false);
       console.log(error);
       if (error.response) {
         err['server'] = `${error.response.data.message}`;
@@ -128,7 +124,8 @@ const Login = () => {
       }
     }
     setErrors(err);
-    return serverAccess;
+    toast.error(errors[Object.keys('server').pop()]);
+    return;
   };
 
   // JSX FORM
@@ -141,11 +138,8 @@ const Login = () => {
       ) : (
         <form onSubmit={handleSubmit} className="form">
           <h2 className="text-center">LOG INTO YOUR ACCOUNT</h2>
-          <div className="error d-flex justify-content-center mb-3">
-            <p className="text-center">{errors['server']}</p>
-          </div>
 
-          <div className="form__group" disabled={submitting}>
+          <div className="form__group" disabled={isLoading}>
             <label htmlFor="email" className="form__label">
               Email
             </label>
@@ -164,7 +158,7 @@ const Login = () => {
               <p>{errors['email']}</p>
             </div>
           </div>
-          <div className="form__group" disabled={submitting}>
+          <div className="form__group" disabled={isLoading}>
             <label htmlFor="password" className="form__label">
               Password
             </label>
@@ -195,7 +189,7 @@ const Login = () => {
             <button
               className="btn btn--blue"
               type="submit"
-              disabled={submitting}
+              disabled={isLoading}
             >
               Login
             </button>
