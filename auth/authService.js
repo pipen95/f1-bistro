@@ -13,6 +13,17 @@ const login = async (userData) => {
   }
 };
 
+// Reset Email
+const emailreset = async (userData) => {
+  const res = await axios.post(`${API_URL}/forgotPassword/`, userData, {
+    withCredentials: true,
+  });
+
+  if (res.data) {
+    return true;
+  }
+};
+
 // Reset Password
 const passwordreset = async (userData, token) => {
   const res = await axios.patch(`${API_URL}/resetPassword/${token}`, userData, {
@@ -44,6 +55,7 @@ const logout = async () => {
 
 const authService = {
   passwordreset,
+  emailreset,
   login,
   signup,
   logout,

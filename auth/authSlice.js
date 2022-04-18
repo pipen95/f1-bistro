@@ -6,16 +6,24 @@ axios.defaults.withCredentials = true;
 // Get user from cookie (Server Side)
 //Check user
 const API_URL = 'http://localhost:3001/api/users';
+let user;
 const check = async () => {
-  const res = await axios.get(`${API_URL}/check`, {
-    withCredentials: true,
-  });
-  if (res.data) {
-    return true;
+  try {
+    const res = await axios.get(`${API_URL}/check`, {
+      withCredentials: true,
+    });
+    if (res.data) {
+      return (user = true);
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      return (user = false);
+    }
   }
 };
+check();
 
-const user = check();
+console.log(user);
 
 //State
 const initialState = {
@@ -63,6 +71,24 @@ export const passwordreset = createAsyncThunk(
   async (user, ThunkAPI) => {
     try {
       return await authService.passwordreset(user);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Login user
+export const emailreset = createAsyncThunk(
+  'auth/emailreset',
+  async (user, ThunkAPI) => {
+    try {
+      return await authService.emailreset(user);
     } catch (error) {
       const message =
         (error.response &&
@@ -143,7 +169,19 @@ export const authSlice = createSlice({
         state.message = action.payload;
         state.user = false;
       })
-
+      .addCase(emailreset.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(emailreset.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(emailreset.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = false;
+      })
       .addCase(logout.fulfilled, (state) => {
         state.user = false;
       });
