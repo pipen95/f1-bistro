@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import './../sass/main.scss';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,7 +15,14 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </Layout>
       <Footer />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        draggable
+      />
     </Provider>
   );
 }
