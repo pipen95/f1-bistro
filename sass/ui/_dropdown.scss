@@ -12,6 +12,12 @@
   background-color: white;
   overflow: hidden;
 
+  &a {
+    text-decoration: none;
+    font-size: $default-font-size;
+    color: currentColor;
+  }
+
   &__item {
     cursor: pointer;
     height: 50px;

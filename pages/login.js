@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from './../auth/authSlice';
@@ -183,6 +184,11 @@ const Login = () => {
             <div className="error">
               <p>{errors['password']}</p>
             </div>
+            <p>
+              <Link href="/passwordreset">
+                <a className="font-small color-dark">Forgot password?</a>
+              </Link>
+            </p>
           </div>
 
           <div className="center">

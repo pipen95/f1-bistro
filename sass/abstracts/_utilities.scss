@@ -27,6 +27,14 @@
 .nowrap {
   white-space: nowrap;
 }
+
+.font-small {
+  font-size: $small-font-size;
+}
+.color-dark {
+  color: $color-primary-dark;
+}
+
 .u-margin-bottom-small {
   margin-bottom: 2rem !important;
 }

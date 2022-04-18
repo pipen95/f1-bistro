@@ -23,6 +23,18 @@ const login = async (userData) => {
   }
 };
 
+// Reset Password
+
+const passwordreset = async (userData, token) => {
+  const res = await axios.patch(`${API_URL}/resetPassword/${token}`, userData, {
+    withCredentials: true,
+  });
+
+  if (res.data) {
+    return true;
+  }
+};
+
 // Signup user
 const signup = async (userData) => {
   const res = await axios.post(`${API_URL}/signup`, userData, {
@@ -43,6 +55,7 @@ const logout = async () => {
 
 const authService = {
   check,
+  passwordreset,
   login,
   signup,
   logout,

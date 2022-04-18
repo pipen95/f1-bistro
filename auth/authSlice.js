@@ -55,6 +55,24 @@ export const login = createAsyncThunk('auth/login', async (user, ThunkAPI) => {
   }
 });
 
+// Login user
+export const passwordreset = createAsyncThunk(
+  'auth/passwordreset',
+  async (user, ThunkAPI) => {
+    try {
+      return await authService.passwordreset(user);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Logout user
 export const logout = createAsyncThunk('auth/logout', async (ThunkAPI) => {
   try {
@@ -109,6 +127,21 @@ export const authSlice = createSlice({
         state.message = action.payload;
         state.user = false;
       })
+      .addCase(passwordreset.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(passwordreset.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(passwordreset.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = false;
+      })
+
       .addCase(logout.fulfilled, (state) => {
         state.user = false;
       });
