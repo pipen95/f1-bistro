@@ -1,28 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import authService from './authService';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
-let user;
-// Get user from cookie
+// Get user from cookie (Server Side)
+//Check user
+const API_URL = 'http://localhost:3001/api/users';
+const check = async () => {
+  const res = await axios.get(`${API_URL}/check`, {
+    withCredentials: true,
+  });
+  if (res.data) {
+    return true;
+  }
+};
+
+const user = check();
+
+//State
 const initialState = {
-  user: false,
+  user: user ? user : false,
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: '',
 };
-
-// Check user
-export const check = createAsyncThunk('auth/check', async (ThunkAPI) => {
-  try {
-    return await authService.check();
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return ThunkAPI.rejectWithValue(message);
-  }
-});
 
 // Signup user
 export const signup = createAsyncThunk(

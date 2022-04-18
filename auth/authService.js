@@ -2,16 +2,6 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const API_URL = 'http://localhost:3001/api/users';
 
-//Check user
-const check = async () => {
-  const res = await axios.get(`${API_URL}/check`, {
-    withCredentials: true,
-  });
-  if (res.data) {
-    return true;
-  }
-};
-
 // Login user
 const login = async (userData) => {
   const res = await axios.post(`${API_URL}/login`, userData, {
@@ -24,7 +14,6 @@ const login = async (userData) => {
 };
 
 // Reset Password
-
 const passwordreset = async (userData, token) => {
   const res = await axios.patch(`${API_URL}/resetPassword/${token}`, userData, {
     withCredentials: true,
@@ -54,7 +43,6 @@ const logout = async () => {
 };
 
 const authService = {
-  check,
   passwordreset,
   login,
   signup,
