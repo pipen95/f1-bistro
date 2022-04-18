@@ -17,7 +17,7 @@ const DropdownMenu = () => {
   const DropdownProfile = ({ children }) => {
     return (
       <Link href="/profile">
-        <a>
+        <a href>
           <div className="dropdown__item">
             <img className="dropdown__img" src="/img/pierre-penel.jpg" />
             {children}
