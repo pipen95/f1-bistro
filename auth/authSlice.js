@@ -1,38 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import authService from './authService';
-import axios from 'axios';
-axios.defaults.withCredentials = true;
-
-// Get user from cookie (Server Side)
-//Check user
-const API_URL = 'http://localhost:3001/api/users';
-let user;
-const check = async () => {
-  try {
-    const res = await axios.get(`${API_URL}/check`, {
-      withCredentials: true,
-    });
-    if (res.data) {
-      return (user = true);
-    }
-  } catch (error) {
-    if (error.response.status === 401) {
-      return (user = false);
-    }
-  }
-};
-check();
-
-console.log(user);
 
 //State
 const initialState = {
-  user: user ? user : false,
+  user: false,
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: '',
 };
+
+// Signup user
+export const check = createAsyncThunk('auth/check', async (ThunkAPI) => {
+  try {
+    return await authService.check();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return ThunkAPI.rejectWithValue(message);
+  }
+});
 
 // Signup user
 export const signup = createAsyncThunk(
@@ -136,6 +125,20 @@ export const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(signup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = false;
+      })
+      .addCase(check.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(check.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(check.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

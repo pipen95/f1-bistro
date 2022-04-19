@@ -2,6 +2,17 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const API_URL = 'http://localhost:3001/api/users';
 
+//Check user
+
+const check = async () => {
+  const res = await axios.get(`${API_URL}/check`, {
+    withCredentials: true,
+  });
+  if (res) {
+    return true;
+  }
+};
+
 // Login user
 const login = async (userData) => {
   const res = await axios.post(`${API_URL}/login`, userData, {
@@ -57,6 +68,7 @@ const authService = {
   passwordreset,
   emailreset,
   login,
+  check,
   signup,
   logout,
 };

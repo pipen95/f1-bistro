@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { useState } from 'react';
 import DropdownMenu from './DropdownMenu';
 import { useSelector } from 'react-redux';
-
 const Menu = () => {
+  const [open, setOpen] = useState(false);
+
+  // REDUX SETUP
   const { user } = useSelector((state) => state.auth);
 
-  const [open, setOpen] = useState(false);
+  // SHOW MENU
   return (
     <div className="Menu">
       <nav className="nav">
