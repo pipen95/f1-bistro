@@ -6,6 +6,14 @@
   margin: 0 !important;
 }
 
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
 .space-around {
   display: flex;
   justify-content: space-around;
@@ -33,26 +41,4 @@
 }
 .color-dark {
   color: $color-primary-dark;
-}
-
-.u-margin-bottom-small {
-  margin-bottom: 2rem !important;
-}
-.u-margin-bottom-medium {
-  margin-bottom: 4rem !important;
-}
-
-.u-margin-bottom-big {
-  margin-bottom: 8rem !important;
-}
-
-.u-margin-top-small {
-  margin-top: 2rem !important;
-}
-
-.u-margin-top-big {
-  margin-top: 8rem !important;
-}
-.u-margin-top-hudge {
-  margin-top: 10rem !important;
 }

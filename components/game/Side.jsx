@@ -2,12 +2,8 @@ const Side = () => {
   return (
     <div div className="Choices">
       <div className="Rules">
-        <h3 className="text-center">
-          Make your predection of the finishing order before the X Grand Prix
-        </h3>
-        <p>
-          <strong>Rules:</strong>
-        </p>
+        <h3 className="mb-2">Make your predections for the X Grand Prix</h3>
+        <h4>Rules:</h4>
         <ol>
           <li>
             Drag and Drop the drivers from the list below into the Grid slots
@@ -17,36 +13,105 @@ const Side = () => {
             fastest lap, most overtakes, best qualification etc.
           </li>
           <li>You can change your vote up 15min to before the&nbsp;GP</li>
+          <li>
+            Points click <a href="#">here</a>
+          </li>
         </ol>
-        <hr className="hr" />
       </div>
 
       <div className="Bonus">
-        <div className="item--1">item 1</div>
-        <div className="item--2">item 2</div>
-        <div className="item--3">item 3</div>
+        <h4>Bonus</h4>
+        <div className="Bonus__box">
+          <div className="Bonus__item">
+            <img
+              src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/c_scale,f_auto,w_45/v1616743177/Headshots/Russell.png"
+              alt="Name pic"
+              className="Bonus__img"
+            />
+          </div>
+          <div className="Bonus__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Bonus__img"
+            />
+          </div>
+          <div className="Bonus__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Bonus__img"
+            />
+          </div>
+        </div>
       </div>
       <div className="Drivers">
-        <div className="item--1">item 1</div>
-        <div className="item--2">item 2</div>
-        <div className="item--3">item 3</div>
-        <div className="item--4">item 4</div>
-        <div className="item--5">item 5</div>
-        <div className="item--6">item 6</div>
-        <div className="item--7">item 7</div>
-        <div className="item--8">item 8</div>
-        <div className="item--9">item 9</div>
-        <div className="item--10">item 10</div>
-        <div className="item--11">item 11</div>
-        <div className="item--12">item 12</div>
-        <div className="item--13">item 13</div>
-        <div className="item--14">item 14</div>
-        <div className="item--15">item 15</div>
-        <div className="item--16">item 16</div>
-        <div className="item--17">item 17</div>
-        <div className="item--18">item 18</div>
-        <div className="item--19">item 19</div>
-        <div className="item--20">item 20</div>
+        <h4>Drivers</h4>
+        <div className="Drivers__box">
+          <div className="Drivers__item">
+            <img
+              src="https://www.f1fantasytracker.com/Images/Drivers/Verstappen.png"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+          <div className="Drivers__item">
+            <img
+              src="/img/pierre-penel.jpg"
+              alt="Name pic"
+              className="Drivers__img"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

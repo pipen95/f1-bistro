@@ -6,25 +6,90 @@
     'Rules'
     'Bonus'
     'Drivers';
+  grid-template-rows: 3 fit-content;
 }
 
 .Rules {
   grid-area: Rules;
-  height: fit-content;
   ol {
     padding-left: 3rem;
     margin-bottom: 2rem;
   }
 
-  .hr {
-    background: gray;
-    border-radius: 3px;
+  li {
+    margin-bottom: 0.5rem;
   }
 }
 .Bonus {
   grid-area: Bonus;
-  display: flex;
+  &__box {
+    display: flex;
+  }
+  &__img {
+    cursor: pointer;
+    width: 4rem;
+    height: auto;
+    border-radius: 50%;
+    object-fit: contain;
+    transition: all 0.2s ease;
+    filter: opacity(0.9);
+    transform: scale(0.95);
+    image-rendering: -webkit-optimize-contrast;
+    &:hover {
+      filter: opacity(1);
+      backface-visibility: hidden;
+      transform: scale(1);
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: scale(1);
+      box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.481);
+    }
+  }
 }
 .Drivers {
   grid-area: Drivers;
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__img {
+    cursor: pointer;
+    width: 7rem;
+    height: auto;
+    border-radius: 50%;
+    object-fit: contain;
+    transition: all 0.2s ease;
+    filter: opacity(0.9);
+    transform: scale(0.95);
+    image-rendering: -webkit-optimize-contrast;
+    &:hover {
+      filter: opacity(1);
+      backface-visibility: hidden;
+      transform: scale(1);
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: scale(1);
+      box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.481);
+    }
+  }
+}
+
+.Rules,
+.Bonus {
+  border-bottom: 1px solid gray;
+}
+
+.Rules,
+.Bonus,
+.Drivers {
+  padding: 1rem 0;
+  h4 {
+    margin-bottom: 1rem;
+  }
+}
+
+.Drivers,
+.Bonus {
+  &__item:not(:last-child) {
+    margin-right: 0.5rem;
+  }
 }
