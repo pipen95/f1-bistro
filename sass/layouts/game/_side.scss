@@ -1,0 +1,30 @@
+.Choices {
+  @include section_side_outline;
+  grid-area: Choices;
+  display: grid;
+  grid-template-areas:
+    'Rules'
+    'Bonus'
+    'Drivers';
+}
+
+.Rules {
+  grid-area: Rules;
+  height: fit-content;
+  ol {
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .hr {
+    background: gray;
+    border-radius: 3px;
+  }
+}
+.Bonus {
+  grid-area: Bonus;
+  display: flex;
+}
+.Drivers {
+  grid-area: Drivers;
+}

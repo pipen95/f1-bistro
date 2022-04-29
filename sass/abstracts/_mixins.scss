@@ -1,10 +1,4 @@
 //Center
-@mixin center_h {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 @mixin center_flex_h {
   display: flex;
@@ -16,6 +10,11 @@
 @mixin center {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+@mixin center_h {
+  display: flex;
   justify-content: center;
 }
 

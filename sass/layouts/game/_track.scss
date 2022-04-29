@@ -1,0 +1,83 @@
+.Track {
+  border-radius: $border-radius;
+  display: grid;
+  grid-area: Track;
+  grid-template-areas:
+    'Title'
+    'Finish'
+    'Slots';
+  background: url('./../../../public/img/asphalt-250.png') repeat;
+  grid-template-rows: 25rem 10vh auto;
+  background-size: 200px 200px;
+}
+
+.Title {
+  grid-area: Title;
+  @include center;
+
+  .box {
+    border-radius: 1rem;
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 10rem;
+    }
+  }
+}
+
+.Finish {
+  @include center_h;
+  grid-area: Finish;
+  width: 100%;
+  border-top: 1rem solid white;
+  border-bottom: 1rem solid white;
+  background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 5% 10% /
+    20%;
+}
+
+.Slots {
+  grid-area: Slots;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5rem 0 5rem 0;
+  width: 60%;
+  margin: 0 auto;
+  height: 40rem;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .item {
+    display: flex;
+    justify-self: center;
+    color: white;
+    height: 20rem;
+    width: 15rem;
+
+    background-image: linear-gradient(white, white),
+      linear-gradient(white, white), linear-gradient(white, white),
+      linear-gradient(white, white), linear-gradient(white, white);
+    background-repeat: no-repeat;
+    background-size: 6px 20%, 2px 80%, 100% 6px, 6px 20%, 2px 80%;
+    background-position: left top, left bottom, left top, right top,
+      right bottom;
+
+    padding: 1rem;
+    &:nth-child(2n) {
+      margin-top: 5rem;
+    }
+  }
+}

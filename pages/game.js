@@ -1,8 +1,12 @@
+import Track from './../components/game/Track';
+import Side from './../components/game/Side';
+
 const Game = () => {
   return (
-    <>
-      <h2>Game</h2>
-    </>
+    <div className="Game">
+      <Track />
+      <Side />
+    </div>
   );
 };
 export default Game;

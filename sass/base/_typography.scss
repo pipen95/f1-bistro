@@ -33,12 +33,22 @@ h2 {
   color: transparent;
   letter-spacing: 0.2rem;
   margin-bottom: 3rem;
+  text-align: center;
+
+  &.white {
+    background-image: none;
+    color: white;
+  }
 }
 
 h3 {
-  font-size: $default-font-size;
+  color: $color-primary;
+  font-size: 2rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  &.white {
+    color: white;
+  }
 }
 
 p {

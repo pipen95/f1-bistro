@@ -34,20 +34,20 @@ const Menu = () => {
             {user ? (
               <ul className="nav__list" style={{ marginLeft: '1vw' }}>
                 <li className="nav__item">
-                  <Link href="/standings">
-                    <a className="nav__link">Standings</a>
-                  </Link>
-                </li>
-                <li className="nav__item">
                   <Link href="/game">
                     <a className="nav__link">Game</a>
                   </Link>
                 </li>
-                <li className="nav__item">
+                {/* <li className="nav__item">
                   <Link href="/chat">
                     <a className="nav__link">Chat</a>
                   </Link>
-                </li>
+                </li> */}
+                {/* <li className="nav__item">
+                  <Link href="/stats">
+                    <a className="nav__link">Stats</a>
+                  </Link>
+                </li> */}
               </ul>
             ) : null}
           </div>

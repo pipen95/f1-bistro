@@ -1,7 +1,7 @@
 const Standings = () => {
   return (
     <>
-      <h2>Standings</h2>
+      <h2>Statistics</h2>
     </>
   );
 };
