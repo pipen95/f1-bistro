@@ -5,9 +5,10 @@
   grid-template-areas:
     'Title'
     'Finish'
-    'Slots';
+    'Slots'
+    'Submit';
   background: url('./../../../public/img/asphalt-250.png') repeat;
-  grid-template-rows: 25rem 10vh auto;
+  grid-template-rows: 25rem 10vh auto auto;
   background-size: 200px 200px;
 }
 
@@ -33,6 +34,10 @@
       width: 10rem;
     }
   }
+}
+
+.Submit {
+  grid-area: Submit;
 }
 
 .Finish {

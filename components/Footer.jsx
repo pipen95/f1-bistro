@@ -1,7 +1,37 @@
 const Menu = () => {
   return (
     <footer className="footer">
-      <div className="footer__logo-box">
+      <div className="Links footer__navigation">
+        <ul className="footer__list">
+          <li className="footer__item">
+            <a href="#" className="footer__link">
+              Acceuil
+            </a>
+          </li>
+          <li className="footer__item">
+            <a href="#" className="footer__link">
+              A propos
+            </a>
+          </li>
+          <li className="footer__item">
+            <a href="#" className="footer__link">
+              FAQ
+            </a>
+          </li>
+          <li className="footer__item">
+            <a href="#" className="footer__link">
+              Contact
+            </a>
+          </li>
+          <li className="footer__item">
+            <a href="#" className="footer__link">
+              Blog
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="Logo">
         <img
           src="/img/check-chair-blue-volant-bis.png"
           alt="logo"
@@ -9,51 +39,13 @@ const Menu = () => {
         />
       </div>
 
-      <div className="row">
-        <div className="col-1-of-2">
-          <div className="footer__navigation">
-            <ul className="footer__list">
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  Acceuil
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  A propos
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  FAQ
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  Contact
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="col-1-of-2">
-          <p className="footer__copyright">
-            &copy;2018 Aidactiv. Tous droits réservés. Site web réalisé par
-            <a
-              href="https://github.com/pipen95"
-              target="blank"
-              className="footer__link"
-            >
-              Pipen95
-            </a>
-            .
-          </p>
-        </div>
+      <div className="Legal">
+        <p className="footer__copyright">
+          This website is unofficial and is not associated in any way with the
+          Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE WORLD
+          CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of Formula
+          One Licensing&nbsp;B.V.
+        </p>
       </div>
     </footer>
   );
