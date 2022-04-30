@@ -175,7 +175,7 @@ const Signup = () => {
     <div className="login-form center">
       {access ? (
         <>
-          <h2 className="m-0 text-center">Bienvenue to F1 Bistrot!</h2>
+          <h2 className="m-0 center">Bienvenue to F1 Bistrot!</h2>
         </>
       ) : (
         <form onSubmit={handleSubmit} className="form">

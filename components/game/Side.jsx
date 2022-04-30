@@ -6,15 +6,20 @@ const Side = () => {
         <h4>Rules:</h4>
         <ol>
           <li>
-            Drag and Drop the drivers from the list below into the Grid slots
+            Drag and Drop the <strong>Drivers</strong> from the list below into
+            the Grid slots on the left.
           </li>
           <li>
-            You can also makes predections for special accomplishemnts. Ex:
-            fastest lap, most overtakes, best qualification etc.
+            You can make <strong>Bonus</strong> points for special
+            accomplishemnts. Ex: fastest lap, driver of the day, best
+            qualification etc.
           </li>
           <li>You can change your vote up 15min to before the&nbsp;GP</li>
           <li>
-            Points click <a href="#">here</a>
+            See how points are awarded
+            <a href="#" className="btn-text nowrap">
+              Click here.
+            </a>
           </li>
         </ol>
       </div>
