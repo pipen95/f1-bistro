@@ -33,8 +33,8 @@ const Track = () => {
         <div className="item">#20</div>
       </div>
       <div className="Submit center">
-        <a href="#" className="btn btn--blue" style={{ marginTop: '1rem' }}>
-          Submit <span>✈</span>
+        <a href="#" className="btn btn--blue">
+          Submit
         </a>
       </div>
     </div>

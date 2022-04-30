@@ -5,6 +5,7 @@
   background-color: white;
   width: 100%;
 }
+
 @mixin section_side {
   border-radius: $border-radius;
   box-shadow: $box-shadow;
@@ -14,9 +15,11 @@
 }
 
 @mixin section_side_outline {
-  border-radius: $border-radius;
-  padding: 2.5vh 1vw 2.5vh 1vw;
-  background-color: white;
-  width: 100%;
+  @include section_side;
   outline: gray solid 1px;
+}
+
+@mixin section_form {
+  @include section;
+  height: fit-content;
 }
