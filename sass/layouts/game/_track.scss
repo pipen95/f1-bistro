@@ -71,12 +71,12 @@
     display: none;
   }
 
-  .item {
+  &__item {
     display: flex;
     justify-self: center;
     color: white;
     height: 20rem;
-    width: 15rem;
+    width: 16rem;
 
     background-image: linear-gradient(white, white),
       linear-gradient(white, white), linear-gradient(white, white),
@@ -89,6 +89,37 @@
     padding: 1rem;
     &:nth-child(2n) {
       margin-top: 5rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__drivers {
+    height: 60%;
+    @include center;
+    &__circle {
+      // @include center;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.696);
+      border-radius: 100%;
+      border: 2px solid white;
+      width: calc(8rem + 2px);
+      height: calc(8rem + 2px);
+    }
+  }
+  &__bonus {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &__circle {
+      // @include center;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.696);
+      border-radius: 100%;
+      border: 2px solid white;
+      width: calc(4rem + 1px);
+      height: calc(4rem + 1px);
     }
   }
 }

@@ -26,63 +26,63 @@ const Side = () => {
       <div className="Drivers">
         <h4>Drivers</h4>
         <div className="Drivers__box">
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="https://www.f1fantasytracker.com/Images/Drivers/Verstappen.png"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"
               className="Drivers__img"
             />
           </div>
-          <div className="Drivers__item">
+          <div className="Drivers__item fill">
             <img
               src="/img/pierre-penel.jpg"
               alt="Name pic"

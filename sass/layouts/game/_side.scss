@@ -30,19 +30,6 @@
     width: 4rem;
     height: auto;
     border-radius: 50%;
-    object-fit: contain;
-    transition: all 0.2s ease;
-    filter: opacity(0.9);
-    transform: scale(0.95);
-    image-rendering: -webkit-optimize-contrast;
-    &:hover {
-      filter: opacity(1);
-      backface-visibility: hidden;
-      transform: scale(1);
-      -webkit-backface-visibility: hidden;
-      -webkit-transform: scale(1);
-      box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.481);
-    }
   }
 }
 .Drivers {
@@ -54,22 +41,9 @@
 
   &__img {
     cursor: pointer;
-    width: 7rem;
+    width: 8rem;
     height: auto;
     border-radius: 50%;
-    object-fit: contain;
-    transition: all 0.2s ease;
-    filter: opacity(0.9);
-    transform: scale(0.95);
-    image-rendering: -webkit-optimize-contrast;
-    &:hover {
-      filter: opacity(1);
-      backface-visibility: hidden;
-      transform: scale(1);
-      -webkit-backface-visibility: hidden;
-      -webkit-transform: scale(1);
-      box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.481);
-    }
   }
 }
 
@@ -92,4 +66,17 @@
   &__item:not(:last-child) {
     margin-right: 0.5rem;
   }
+}
+
+.hold {
+  border: 2px solid gray;
+}
+
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
+
+.invisible {
+  display: none;
 }
