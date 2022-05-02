@@ -1,4 +1,29 @@
+import { useEffect, useState } from 'react';
+import Driver from './Driver';
+
 const Side = () => {
+  const [document, setDocument] = useState(null);
+
+  useEffect(() => {
+    setDocument(document);
+  }, []);
+
+  const drop = (e) => {
+    e.preventDefault();
+
+    const driver_id = e.dataTransfer.getData('driver_id');
+
+    const driver = document.getElementById(driver_id);
+
+    driver.style.display = 'block';
+
+    e.target.appendChild(driver);
+  };
+
+  const dragOver = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div div className="Choices">
       <div className="Rules">
@@ -25,75 +50,18 @@ const Side = () => {
       </div>
       <div className="Drivers">
         <h4>Drivers</h4>
-        <div className="Drivers__box">
-          <div className="Drivers__item fill">
-            <img
-              src="https://www.f1fantasytracker.com/Images/Drivers/Verstappen.png"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
-          <div className="Drivers__item fill">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Drivers__img"
-            />
-          </div>
+        <div
+          id="side-driver"
+          onDrop={drop}
+          onDragOver={dragOver}
+          className="Drivers__box"
+        >
+          <Driver id="driver-1" />
         </div>
       </div>
       <div className="Bonus">
         <h4>Bonus</h4>
-        <div className="Bonus__box">
+        {/* <div className="Bonus__box">
           <div className="Bonus__item">
             <img
               src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/c_scale,f_auto,w_45/v1616743177/Headshots/Russell.png"
@@ -101,21 +69,7 @@ const Side = () => {
               className="Bonus__img"
             />
           </div>
-          <div className="Bonus__item">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Bonus__img"
-            />
-          </div>
-          <div className="Bonus__item">
-            <img
-              src="/img/pierre-penel.jpg"
-              alt="Name pic"
-              className="Bonus__img"
-            />
-          </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
