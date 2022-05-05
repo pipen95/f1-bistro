@@ -1,29 +1,6 @@
-import { useEffect, useState } from 'react';
 import Driver from './Driver';
 
 const Side = () => {
-  const [document, setDocument] = useState(null);
-
-  useEffect(() => {
-    setDocument(document);
-  }, []);
-
-  const drop = (e) => {
-    e.preventDefault();
-
-    const driver_id = e.dataTransfer.getData('driver_id');
-
-    const driver = document.getElementById(driver_id);
-
-    driver.style.display = 'block';
-
-    e.target.appendChild(driver);
-  };
-
-  const dragOver = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div div className="Choices">
       <div className="Rules">
@@ -50,13 +27,8 @@ const Side = () => {
       </div>
       <div className="Drivers">
         <h4>Drivers</h4>
-        <div
-          id="side-driver"
-          onDrop={drop}
-          onDragOver={dragOver}
-          className="Drivers__box"
-        >
-          <Driver id="driver-1" />
+        <div className="Drivers__box">
+          <Driver />
         </div>
       </div>
       <div className="Bonus">

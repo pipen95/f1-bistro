@@ -1,22 +1,21 @@
-const Driver = (props) => {
-  const dragStart = (e) => {
-    const target = e.target;
-    e.dataTransfer.setData('driver_id', target.id);
-    setTimeout(() => {
-      target.style.display = 'none';
-    }, 0);
-  };
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../../utils/items';
 
-  const dragOver = (e) => {
-    e.stopPropagation();
-  };
+const Driver = () => {
+  const [{ isDragging }, drag] = useDrag({
+    item: {
+      type: ItemTypes.DRIVER,
+    },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
   return (
     <div
-      id={props.id}
-      onDragStart={dragStart}
-      onDragOver={dragOver}
       className="Drivers__item"
-      draggable="true"
+      ref={drag}
+      opacity={isDragging ? '0,5' : '1'}
     >
       <img
         src="https://www.f1fantasytracker.com/Images/Drivers/Verstappen.png"

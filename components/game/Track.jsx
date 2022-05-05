@@ -1,30 +1,4 @@
-import { useEffect, useState } from 'react';
-
 const Track = () => {
-  const [document, setDocument] = useState(null);
-
-  useEffect(() => {
-    setDocument(document);
-  }, []);
-
-  const drop = (e) => {
-    e.preventDefault();
-    const driver_id = e.dataTransfer.getData('driver_id');
-    console.log(driver_id);
-
-    // const driver = document.getElementById(driver_id);
-
-    // console.log(driver);
-
-    // driver.style.display = 'block';
-
-    // e.target.appendChild(driver);
-  };
-
-  const dragOver = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="Track">
       <div className="Title">
@@ -38,12 +12,7 @@ const Track = () => {
         <div className="Slots__item">
           <p className="text-center">#1</p>
           <div className="Slots__drivers">
-            <div
-              className="Slots__drivers__circle"
-              id="track-driver"
-              onDrop={drop}
-              onDragOver={dragOver}
-            ></div>
+            <div className="Slots__drivers__circle" id="track-driver"></div>
           </div>
           <div className="Slots__bonus">
             <div className="Slots__bonus__circle">
