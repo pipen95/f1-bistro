@@ -1,3 +1,5 @@
-export const itemTypes = {
+const itemTypes = {
   DRIVER: ' driver',
 };
+
+export default itemTypes;

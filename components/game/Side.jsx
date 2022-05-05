@@ -28,7 +28,7 @@ const Side = () => {
       <div className="Drivers">
         <h4>Drivers</h4>
         <div className="Drivers__box">
-          <Driver />
+          <Driver id="1" />
         </div>
       </div>
       <div className="Bonus">

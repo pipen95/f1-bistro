@@ -1,3 +1,5 @@
+import DriverDrop from './DriverDrop';
+
 const Track = () => {
   return (
     <div className="Track">
@@ -11,9 +13,7 @@ const Track = () => {
       <div className="Slots">
         <div className="Slots__item">
           <p className="text-center">#1</p>
-          <div className="Slots__drivers">
-            <div className="Slots__drivers__circle" id="track-driver"></div>
-          </div>
+          <DriverDrop />
           <div className="Slots__bonus">
             <div className="Slots__bonus__circle">
               <div className="Bonus__item">

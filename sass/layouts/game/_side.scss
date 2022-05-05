@@ -29,9 +29,10 @@
     cursor: pointer;
     width: 4rem;
     height: auto;
-    border-radius: 50%;
+    border-radius: 100%;
   }
 }
+
 .Drivers {
   grid-area: Drivers;
   &__box {
@@ -43,7 +44,7 @@
     cursor: pointer;
     width: 8rem;
     height: auto;
-    border-radius: 50%;
+    border-radius: 100%;
   }
 }
 

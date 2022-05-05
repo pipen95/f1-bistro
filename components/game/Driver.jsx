@@ -1,11 +1,10 @@
 import { useDrag } from 'react-dnd';
-import { ItemTypes } from '../../utils/items';
+import itemTypes from './../../utils/items';
 
-const Driver = () => {
-  const [{ isDragging }, drag] = useDrag({
-    item: {
-      type: ItemTypes.DRIVER,
-    },
+const Driver = ({ id }) => {
+  const [{ isDragging }, dragRef] = useDrag({
+    type: itemTypes.DRIVER,
+    item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -14,7 +13,7 @@ const Driver = () => {
   return (
     <div
       className="Drivers__item"
-      ref={drag}
+      ref={dragRef}
       opacity={isDragging ? '0,5' : '1'}
     >
       <img

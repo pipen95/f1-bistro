@@ -106,6 +106,10 @@
       border: 2px solid white;
       width: calc(8rem + 2px);
       height: calc(8rem + 2px);
+
+      &--green {
+        background-color: green !important;
+      }
     }
   }
   &__bonus {
