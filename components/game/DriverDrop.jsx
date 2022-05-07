@@ -1,16 +1,19 @@
 import { useDrop } from 'react-dnd';
-import itemTypes from '../../utils/items';
+import itemTypes from '../../gameTypes/items';
 
 const DriverDrop = () => {
   const [{ isOver }, dropRef] = useDrop({
     accept: itemTypes.DRIVER,
-    drop: (item) => {
-      item.id;
-    },
+    drop: (item) => addDriverToDrop(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
+
+  const addDriverToDrop = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="Slots__drivers">
       <div
