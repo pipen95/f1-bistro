@@ -2,15 +2,19 @@ import Track from './../components/game/Track';
 import Side from './../components/game/Side';
 import Context from '../components/Context';
 import { useReducer } from 'react';
-// import actionsTypes from '../../gameTypes/actions.js';
+import actionsTypes from './../gameTypes/actions';
 
 const gameReducer = (state, action) => {
   switch (action.type) {
-    // case actionsTypes.DRIVER:
-    //   return {
-    //     ...state,
-    //     drivers: action,
-    //   };
+    case actionsTypes.DRIVER_SET:
+      return {
+        state,
+        // state: [
+        //   ...state.slice(0, action.payload.idx),
+        //   { location: `${action.payload.location}` },
+        //   ...state.slice(action.payload.idx + 1),
+        // ],
+      };
 
     default:
       return state;
@@ -28,6 +32,8 @@ const Game = ({ drivers }) => {
   }
 
   const [state, dispatch] = useReducer(gameReducer, initialState);
+
+  console.log(state);
 
   return (
     <div className="Game">
