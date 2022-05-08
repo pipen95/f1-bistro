@@ -6,7 +6,7 @@
     'Rules'
     'Drivers'
     'Bonus';
-  grid-template-rows: 3 fit-content;
+  grid-template-rows: min-content auto auto;
 }
 
 .Rules {
@@ -38,13 +38,16 @@
   &__box {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__img {
     cursor: pointer;
-    width: 8rem;
+    width: 7.5rem;
     height: auto;
     border-radius: 100%;
+    outline: 2px solid gray;
+    background-color: rgb(237, 235, 235);
   }
 }
 
@@ -65,7 +68,7 @@
 .Drivers,
 .Bonus {
   &__item:not(:last-child) {
-    margin-right: 0.5rem;
+    margin-right: 0.7rem;
   }
 }
 

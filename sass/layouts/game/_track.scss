@@ -9,7 +9,7 @@
     'Submit';
   background: url('./../../../public/img/asphalt-250.png') repeat;
   grid-template-rows: 25rem 10vh auto 15vh;
-  background-size: 200px 200px;
+  background-size: 200 200;
 }
 
 .Title {
@@ -63,7 +63,7 @@
   padding: 5rem 0 5rem 0;
   width: 60%;
   margin: 0 auto;
-  height: 40rem;
+  height: 80vh;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -103,7 +103,7 @@
       overflow: hidden;
       background-color: rgba(255, 255, 255, 0.696);
       border-radius: 100%;
-      border: 2px solid white;
+      outline: 2px solid white;
       width: calc(8rem + 2px);
       height: calc(8rem + 2px);
 

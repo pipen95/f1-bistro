@@ -1,6 +1,16 @@
+import { useContext } from 'react';
+import Context from '../Context';
 import Driver from './Driver';
 
 const Side = () => {
+  const { state } = useContext(Context);
+
+  const filteredDrivers = state.filter((el) => el.location === 'side');
+
+  const driversItems = filteredDrivers.map((el, i) => {
+    return <Driver key={i} id={el.id} location={el.location} />;
+  });
+
   return (
     <div div className="Choices">
       <div className="Rules">
@@ -27,9 +37,7 @@ const Side = () => {
       </div>
       <div className="Drivers">
         <h4>Drivers</h4>
-        <div className="Drivers__box">
-          <Driver id="1" />
-        </div>
+        <div className="Drivers__box">{driversItems}</div>
       </div>
       <div className="Bonus">
         <h4>Bonus</h4>
