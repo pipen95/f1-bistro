@@ -5,9 +5,7 @@ import Driver from './Driver';
 const Side = () => {
   const { state } = useContext(Context);
 
-  const filteredDrivers = Array.from(state).filter(
-    (el) => el.location === 'side'
-  );
+  const filteredDrivers = state.drivers.filter((el) => el.location === 'side');
 
   const driversItems = filteredDrivers.map((el, i) => {
     return <Driver key={i} id={el.id} idx={i} location={el.location} />;

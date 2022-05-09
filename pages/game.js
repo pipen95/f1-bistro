@@ -7,13 +7,19 @@ import actionsTypes from './../gameTypes/actions';
 const gameReducer = (state, action) => {
   switch (action.type) {
     case actionsTypes.DRIVER_SET:
+      const i = action.payload.idx;
+      const obj = state.drivers;
+
       return {
-        state,
-        // state: [
-        //   ...state.slice(0, action.payload.idx),
-        //   { location: `${action.payload.location}` },
-        //   ...state.slice(action.payload.idx + 1),
-        // ],
+        ...state,
+        drivers: [
+          ...obj.slice(0, i), // before the one we are updating
+          {
+            id: action.payload.id,
+            location: action.payload.location,
+          },
+          ...obj.slice(i + 1), // after the one we are updating
+        ],
       };
 
     default:
@@ -21,11 +27,13 @@ const gameReducer = (state, action) => {
   }
 };
 
-const Game = ({ drivers }) => {
-  let initialState = [];
+const Game = ({ driversList }) => {
+  let initialState = {
+    drivers: [],
+  };
 
-  for (let x of drivers) {
-    initialState.push({
+  for (let x of driversList) {
+    initialState.drivers.push({
       id: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
       location: 'side',
     });
@@ -50,12 +58,12 @@ export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
   const driversJSON = await res.json();
-  const drivers = driversJSON.MRData.DriverTable.Drivers.filter(
+  const driversList = driversJSON.MRData.DriverTable.Drivers.filter(
     (el) => el.familyName !== 'Hülkenberg'
   );
 
   // Pass data to the page via props
-  return { props: { drivers } };
+  return { props: { driversList } };
 }
 
 export default Game;
