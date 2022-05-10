@@ -15,7 +15,7 @@ const DriverDrop = ({ location }) => {
     }),
   });
 
-  const addDriverToDrop = (id, idx) => {
+  const addDriverToDrop = (id) => {
     dispatch({
       type: actionsTypes.DRIVER_SET,
       payload: { location, id },

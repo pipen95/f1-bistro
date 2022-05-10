@@ -5,13 +5,10 @@ import { useReducer } from 'react';
 import actionsTypes from './../gameTypes/actions';
 
 const gameReducer = (state, action) => {
+  const { drivers } = state;
+  const driverIdx = drivers.findIndex((el) => el.id === `${action.payload.id}`);
   switch (action.type) {
     case actionsTypes.DRIVER_SET:
-      const { drivers } = state;
-      const driverIdx = drivers.findIndex(
-        (el) => el.id === `${action.payload.id}`
-      );
-
       return {
         ...state,
         drivers: [
@@ -23,7 +20,6 @@ const gameReducer = (state, action) => {
           ...drivers.slice(driverIdx + 1), // after the one we are updating
         ],
       };
-
     default:
       return state;
   }
