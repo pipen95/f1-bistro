@@ -7,18 +7,20 @@ import actionsTypes from './../gameTypes/actions';
 const gameReducer = (state, action) => {
   switch (action.type) {
     case actionsTypes.DRIVER_SET:
-      const i = action.payload.idx;
-      const obj = state.drivers;
+      const { drivers } = state;
+      const driverIdx = drivers.findIndex(
+        (el) => el.id === `${action.payload.id}`
+      );
 
       return {
         ...state,
         drivers: [
-          ...obj.slice(0, i), // before the one we are updating
+          ...drivers.slice(0, driverIdx), // before the one we are updating
           {
             id: action.payload.id,
             location: action.payload.location,
           },
-          ...obj.slice(i + 1), // after the one we are updating
+          ...drivers.slice(driverIdx + 1), // after the one we are updating
         ],
       };
 

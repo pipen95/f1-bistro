@@ -1,9 +1,9 @@
 import { useDrag } from 'react-dnd';
 import itemTypes from '../../gameTypes/items';
-const Driver = ({ id, idx }) => {
+const Driver = ({ id }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: itemTypes.DRIVER,
-    item: { idx, id },
+    item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

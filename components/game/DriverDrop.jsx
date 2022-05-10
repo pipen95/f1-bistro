@@ -9,7 +9,7 @@ const DriverDrop = ({ location }) => {
   const { state, dispatch } = useContext(Context);
   const [{ isOver }, dropRef] = useDrop({
     accept: itemTypes.DRIVER,
-    drop: (item) => addDriverToDrop(item.id, item.idx),
+    drop: (item) => addDriverToDrop(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -18,7 +18,7 @@ const DriverDrop = ({ location }) => {
   const addDriverToDrop = (id, idx) => {
     dispatch({
       type: actionsTypes.DRIVER_SET,
-      payload: { location, idx, id },
+      payload: { location, id },
     });
   };
 
@@ -27,7 +27,7 @@ const DriverDrop = ({ location }) => {
   );
 
   const driverItem = filteredDriver.map((el, i) => {
-    return <Driver key={i} id={el.id} idx={i} location={el.location} />;
+    return <Driver key={i} id={el.id} location={el.location} />;
   });
 
   return (
