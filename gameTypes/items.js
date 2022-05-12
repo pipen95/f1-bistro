@@ -1,5 +1,6 @@
 const itemTypes = {
-  DRIVER: ' driver',
+  DRIVER: 'driver',
+  BONUS: 'bonus',
 };
 
 export default itemTypes;

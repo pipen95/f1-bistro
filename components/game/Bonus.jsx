@@ -4,10 +4,10 @@ import { useDrag } from 'react-dnd';
 import itemTypes from '../../gameTypes/items';
 import actionsTypes from '../../gameTypes/actions';
 
-const Driver = ({ id }) => {
+const Bonus = ({ id, text }) => {
   const { dispatch } = useContext(Context);
   const [{ isDragging }, dragRef] = useDrag({
-    type: itemTypes.DRIVER,
+    type: itemTypes.BONUS,
     item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -16,26 +16,26 @@ const Driver = ({ id }) => {
       const didDrop = monitor.didDrop();
       if (!didDrop) {
         const location = 'side';
-        const addDriverToDrop = (location, id) => {
+        const addBonusToDrop = (location, id) => {
           dispatch({
-            type: actionsTypes.DRIVER_SET,
+            type: actionsTypes.BONUS_SET,
             payload: { location, id },
           });
         };
-        addDriverToDrop(location, item.id);
+        addBonusToDrop(location, item.id);
       }
     },
   });
 
   return (
-    <div className="Drivers__item" opacity={isDragging ? 0.5 : 1} ref={dragRef}>
+    <div className="Bonus__item" opacity={isDragging ? 0.5 : 1} ref={dragRef}>
       <img
-        src={`https://www.f1fantasytracker.com/Images/Drivers/${id}.png`}
+        src={`https://via.placeholder.com/40x40.png?text=${text}`}
         alt="Name pic"
-        className="Drivers__img"
+        className="Bonus__img"
       />
     </div>
   );
 };
 
-export default Driver;
+export default Bonus;

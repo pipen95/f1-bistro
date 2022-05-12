@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Context from '../Context';
 import Driver from './Driver';
+import Bonus from './Bonus';
 
 const Side = () => {
   const { state } = useContext(Context);
@@ -9,6 +10,12 @@ const Side = () => {
 
   const driversItems = filteredDrivers.map((el, i) => {
     return <Driver key={i} id={el.id} location={el.location} />;
+  });
+
+  const filteredBonus = state.bonus.filter((el) => el.location === 'side');
+
+  const bonusItems = filteredBonus.map((el, i) => {
+    return <Bonus key={i} id={el.id} location={el.location} text={el.text} />;
   });
 
   return (
@@ -41,15 +48,7 @@ const Side = () => {
       </div>
       <div className="Bonus">
         <h4>Bonus</h4>
-        {/* <div className="Bonus__box">
-          <div className="Bonus__item">
-            <img
-              src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/c_scale,f_auto,w_45/v1616743177/Headshots/Russell.png"
-              alt="Name pic"
-              className="Bonus__img"
-            />
-          </div>
-        </div> */}
+        <div className="Bonus__box">{bonusItems}</div>
       </div>
     </div>
   );

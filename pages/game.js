@@ -3,10 +3,12 @@ import Side from './../components/game/Side';
 import Context from '../components/Context';
 import { useReducer } from 'react';
 import actionsTypes from './../gameTypes/actions';
+import bonusList from '../data/bonus.json';
 
 const gameReducer = (state, action) => {
-  const { drivers } = state;
+  const { drivers, bonus } = state;
   const driverIdx = drivers.findIndex((el) => el.id === `${action.payload.id}`);
+  const bonusIdx = bonus.findIndex((el) => el.id === `${action.payload.id}`);
   switch (action.type) {
     case actionsTypes.DRIVER_SET:
       return {
@@ -20,6 +22,19 @@ const gameReducer = (state, action) => {
           ...drivers.slice(driverIdx + 1), // after the one we are updating
         ],
       };
+    case actionsTypes.BONUS_SET:
+      return {
+        ...state,
+        bonus: [
+          ...bonus.slice(0, bonusIdx), // before the one we are updating
+          {
+            id: action.payload.id,
+            location: action.payload.location,
+          },
+          ...bonus.slice(bonusIdx + 1), // after the one we are updating
+        ],
+      };
+
     default:
       return state;
   }
@@ -28,12 +43,21 @@ const gameReducer = (state, action) => {
 const Game = ({ driversList }) => {
   let initialState = {
     drivers: [],
+    bonus: [],
   };
 
   for (let x of driversList) {
     initialState.drivers.push({
       id: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
       location: 'side',
+    });
+  }
+
+  for (let x of bonusList) {
+    initialState.bonus.push({
+      id: x.id,
+      location: 'side',
+      text: x.text,
     });
   }
 

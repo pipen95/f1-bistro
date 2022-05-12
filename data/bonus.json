@@ -1,0 +1,14 @@
+[
+  {
+    "id": "fastest_lap",
+    "text": "FL"
+  },
+  {
+    "id": "overtake_king",
+    "text": "OK"
+  },
+  {
+    "id": "driver_day",
+    "text": "DOD"
+  }
+]
