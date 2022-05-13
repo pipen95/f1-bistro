@@ -16,13 +16,13 @@ const Bonus = ({ id, text }) => {
       const didDrop = monitor.didDrop();
       if (!didDrop) {
         const location = 'side';
-        const addBonusToDrop = (location, id) => {
+        const addBonusToDrop = (location, id, text) => {
           dispatch({
             type: actionsTypes.BONUS_SET,
-            payload: { location, id },
+            payload: { location, id, text },
           });
         };
-        addBonusToDrop(location, item.id);
+        addBonusToDrop(location, item.id, item.text);
       }
     },
   });
