@@ -30,6 +30,7 @@ const gameReducer = (state, action) => {
           {
             id: action.payload.id,
             location: action.payload.location,
+            text: action.payload.text,
           },
           ...bonus.slice(bonusIdx + 1), // after the one we are updating
         ],

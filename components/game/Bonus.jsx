@@ -8,7 +8,7 @@ const Bonus = ({ id, text }) => {
   const { dispatch } = useContext(Context);
   const [{ isDragging }, dragRef] = useDrag({
     type: itemTypes.BONUS,
-    item: { id },
+    item: { id, text },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

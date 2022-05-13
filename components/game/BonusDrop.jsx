@@ -9,16 +9,16 @@ const BonusDrop = ({ location }) => {
   const { state, dispatch } = useContext(Context);
   const [{ isOver }, dropRef] = useDrop({
     accept: itemTypes.BONUS,
-    drop: (item) => addBonusToDrop(item.id),
+    drop: (item) => addBonusToDrop(item.id, item.text),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
 
-  const addBonusToDrop = (id) => {
+  const addBonusToDrop = (id, text) => {
     dispatch({
       type: actionsTypes.BONUS_SET,
-      payload: { location, id },
+      payload: { location, id, text },
     });
   };
 
@@ -27,7 +27,7 @@ const BonusDrop = ({ location }) => {
   );
 
   const bonusItem = filteredBonus.map((el, i) => {
-    return <Bonus key={i} id={el.id} location={el.location} />;
+    return <Bonus key={i} id={el.id} location={el.location} text={el.text} />;
   });
 
   return (
