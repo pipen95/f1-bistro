@@ -1,12 +1,12 @@
 import DriverDrop from './DriverDrop';
-import BonusDrop from './BonusDrop';
+import BonusZone from './BonusZone';
 
 const SlotItem = ({ pos }) => {
   return (
     <div className="Slots__item" key={pos}>
       <p className="text-center">{`#${pos}`}</p>
       <DriverDrop location={`driver${pos}`} />
-      <BonusDrop />
+      <BonusZone pos={pos} />
     </div>
   );
 };
