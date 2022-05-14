@@ -1,15 +1,25 @@
 import SlotItem from './SlotItem';
+import Context from '../Context';
+import { useContext } from 'react';
+import actionsTypes from '../../gameTypes/actions';
 
 const Track = () => {
+  const { dispatch } = useContext(Context);
   const n = 20; // Or something else
 
   const items = [...Array(n)].map((e, i) => <SlotItem pos={i + 1} />);
+
+  const reset = () => {
+    dispatch({
+      type: actionsTypes.RESET,
+    });
+  };
 
   return (
     <div className="Track">
       <div className="Title">
         <div>
-          <a href="#" className="btn btn--white">
+          <a onClick={reset} className="btn btn--white">
             Reset
           </a>
         </div>

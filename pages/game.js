@@ -7,10 +7,12 @@ import bonusList from '../data/bonus.json';
 
 const gameReducer = (state, action) => {
   const { drivers, bonus } = state;
-  const driverIdx = drivers.findIndex((el) => el.id === `${action.payload.id}`);
-  const bonusIdx = bonus.findIndex((el) => el.id === `${action.payload.id}`);
+
   switch (action.type) {
     case actionsTypes.DRIVER_SET:
+      const driverIdx = drivers.findIndex(
+        (el) => el.id === `${action.payload.id}`
+      );
       return {
         ...state,
         drivers: [
@@ -23,6 +25,9 @@ const gameReducer = (state, action) => {
         ],
       };
     case actionsTypes.BONUS_SET:
+      const bonusIdx = bonus.findIndex(
+        (el) => el.id === `${action.payload.id}`
+      );
       return {
         ...state,
         bonus: [
@@ -33,6 +38,23 @@ const gameReducer = (state, action) => {
             text: action.payload.text,
           },
           ...bonus.slice(bonusIdx + 1), // after the one we are updating
+        ],
+      };
+
+    case actionsTypes.RESET:
+      return {
+        ...state,
+        drivers: [
+          ...drivers.map(({ location, ...el }) => ({
+            ...el,
+            location: 'side',
+          })),
+        ],
+        bonus: [
+          ...bonus.map(({ location, ...el }) => ({
+            ...el,
+            location: 'side',
+          })),
         ],
       };
 
