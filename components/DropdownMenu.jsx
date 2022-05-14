@@ -8,7 +8,6 @@ const DropdownMenu = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const logOut = () => {
-    console.log('ok');
     dispatch(logout());
     dispatch(reset());
     router.push(`/`);

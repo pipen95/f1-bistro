@@ -2,12 +2,26 @@ import Link from 'next/link';
 import { useState } from 'react';
 import DropdownMenu from './DropdownMenu';
 import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+
 const Menu = () => {
   const [open, setOpen] = useState(false);
+  console.log(open);
 
   // REDUX SETUP
   const { user } = useSelector((state) => state.auth);
-
+  const ref = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpen && setOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [setOpen]);
   // SHOW MENU
   return (
     <div className="Menu">
@@ -38,28 +52,20 @@ const Menu = () => {
                     <a className="nav__link">Game</a>
                   </Link>
                 </li>
-                {/* <li className="nav__item">
-                  <Link href="/chat">
-                    <a className="nav__link">Chat</a>
-                  </Link>
-                </li> */}
-                {/* <li className="nav__item">
-                  <Link href="/stats">
-                    <a className="nav__link">Stats</a>
-                  </Link>
-                </li> */}
               </ul>
             ) : null}
           </div>
 
           {user ? (
-            <div className="nav__profile" onClick={() => setOpen(!open)}>
+            <div className="nav__profile" ref={ref}>
               <img
                 src="/img/pierre-penel.jpg"
                 alt="Profile pic"
                 className="nav__profile--img"
+                onClick={() => setOpen(!open)}
               />
-              {open && <DropdownMenu />}
+
+              {open && <DropdownMenu open={open} />}
             </div>
           ) : (
             <div className="nav__login">
