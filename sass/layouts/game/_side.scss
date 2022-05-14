@@ -38,7 +38,6 @@
   &__box {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
   &__img {
@@ -67,8 +66,11 @@
 
 .Drivers,
 .Bonus {
-  &__item:not(:last-child) {
-    margin-right: 0.7rem;
+  &__item {
+    &:not(:last-child) {
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+    }
   }
 }
 
