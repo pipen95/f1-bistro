@@ -57,15 +57,17 @@ const Menu = () => {
           </div>
 
           {user ? (
-            <div className="nav__profile" ref={ref}>
+            <div
+              className="nav__profile"
+              ref={ref}
+              onClick={() => setOpen(!open)}
+            >
               <img
                 src="/img/pierre-penel.jpg"
                 alt="Profile pic"
                 className="nav__profile--img"
-                onClick={() => setOpen(!open)}
               />
-
-              {open && <DropdownMenu open={open} />}
+              {open && <DropdownMenu />}
             </div>
           ) : (
             <div className="nav__login">
