@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import dataCircuits from '../../../data/data_circuits.json';
+import Link from 'next/link';
 const Message = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -73,9 +74,11 @@ const Message = () => {
           <p className="petit">{data.MRData.RaceTable.Races[0].date}</p>
         </span>
       </div>
-      <a href="#" className="btn btn--blue" style={{ marginTop: '1rem' }}>
-        Play <span>♤</span>
-      </a>
+      <Link href="/game">
+        <a className="btn btn--blue" style={{ marginTop: '1rem' }}>
+          Play <span>♤</span>
+        </a>
+      </Link>
     </div>
   );
 };
