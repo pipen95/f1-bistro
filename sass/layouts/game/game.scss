@@ -1,9 +1,10 @@
 @import 'track';
 @import 'side';
+@import 'top';
 
 .Game {
   display: grid;
   grid-template-columns: 5fr 3fr;
-  grid-template-areas: 'Track Choices';
+  grid-template-areas: 'Track Side';
   gap: 0 1vw;
 }

@@ -2,9 +2,15 @@ import { useContext } from 'react';
 import Context from '../Context';
 import Driver from './Driver';
 import Bonus from './Bonus';
+import actionsTypes from '../../gameTypes/actions';
 
 const Side = () => {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
+  const reset = () => {
+    dispatch({
+      type: actionsTypes.RESET,
+    });
+  };
 
   const filteredDrivers = state.drivers.filter((el) => el.location === 'side');
 
@@ -19,7 +25,7 @@ const Side = () => {
   });
 
   return (
-    <div div className="Choices">
+    <div className="Side">
       <div className="Rules">
         <h3 className="mb-2">Make your predections for the X Grand Prix</h3>
         <h4>Rules:</h4>
@@ -42,13 +48,30 @@ const Side = () => {
           </li>
         </ol>
       </div>
-      <div className="Drivers">
-        <h4>Drivers</h4>
-        <div className="Drivers__box">{driversItems}</div>
-      </div>
-      <div className="Bonus">
-        <h4>Bonus</h4>
-        <div className="Bonus__box">{bonusItems}</div>
+      <div div className="Choices">
+        <div className="Drivers">
+          <h4>Drivers</h4>
+          <div className="Drivers__box">{driversItems}</div>
+        </div>
+        <div className="Bonus">
+          <h4>Bonus</h4>
+          <div className="Bonus__box">{bonusItems}</div>
+        </div>
+        <div className="Actions">
+          <h4>Actions</h4>
+          <div className="Actions__box">
+            <div className="Actions__item">
+              <a onClick={reset} className="btn btn--blue">
+                Reset
+              </a>
+            </div>
+            <div className="Actions__item">
+              <a href="#" className="btn btn--blue">
+                Save
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
