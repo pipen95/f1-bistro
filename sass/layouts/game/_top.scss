@@ -1,9 +1,6 @@
 .Top {
   height: fit-content;
   grid-area: Top;
-  position: sticky;
-  align-self: start;
-  top: 0;
   background: url('./../../../public/img/asphalt-250.png') repeat;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;

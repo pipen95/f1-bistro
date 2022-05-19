@@ -25,7 +25,7 @@ const Side = () => {
   });
 
   return (
-    <div className="Side">
+    <div className="Selection">
       <div className="Rules">
         <h3 className="mb-2">Make your predections for the X Grand Prix</h3>
         <h4>Rules:</h4>
