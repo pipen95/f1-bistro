@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
-  console.log(open);
 
   // REDUX SETUP
   const { user } = useSelector((state) => state.auth);

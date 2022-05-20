@@ -27,7 +27,7 @@ const DriverDrop = ({ location }) => {
   );
 
   const driverItem = filteredDriver.map((el, i) => {
-    return <Driver key={i} id={el.id} location={el.location} />;
+    return <Driver key={i} id={el.id} name={el.name} location={el.location} />;
   });
 
   return (

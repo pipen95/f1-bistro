@@ -4,7 +4,7 @@ import { useDrag } from 'react-dnd';
 import itemTypes from '../../gameTypes/items';
 import actionsTypes from '../../gameTypes/actions';
 
-const Driver = ({ id }) => {
+const Driver = ({ id, name }) => {
   const { dispatch } = useContext(Context);
   const [{ isDragging }, dragRef] = useDrag({
     type: itemTypes.DRIVER,
@@ -30,7 +30,7 @@ const Driver = ({ id }) => {
   return (
     <div className="Drivers__item" opacity={isDragging ? 0.5 : 1} ref={dragRef}>
       <img
-        src={`https://www.f1fantasytracker.com/Images/Drivers/${id}.png`}
+        src={`https://www.f1fantasytracker.com/Images/Drivers/${name}.png`}
         alt="Name pic"
         className="Drivers__img"
       />

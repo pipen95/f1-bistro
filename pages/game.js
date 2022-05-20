@@ -5,6 +5,7 @@ import { useReducer } from 'react';
 import actionsTypes from './../gameTypes/actions';
 import bonusList from '../data/bonus.json';
 
+// REDUCER
 const gameReducer = (state, action) => {
   const { drivers, bonus } = state;
 
@@ -83,6 +84,24 @@ const gameReducer = (state, action) => {
   }
 };
 
+// POST REQUEST
+const saveData = async (bonus, driver) => {
+  let err = {};
+  const payload = {};
+
+  try {
+    dispatch(login(payload));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// HANDLE SUBMIT
+const handleSave = () => {
+  saveData(bonus, data);
+};
+
+// COMPONENT
 const Game = ({ driversList }) => {
   let initialState = {
     drivers: [],
@@ -91,7 +110,8 @@ const Game = ({ driversList }) => {
 
   for (let x of driversList) {
     initialState.drivers.push({
-      id: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
+      name: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
+      id: x.driverId,
       location: 'side',
     });
   }
@@ -105,7 +125,6 @@ const Game = ({ driversList }) => {
   }
 
   const [state, dispatch] = useReducer(gameReducer, initialState);
-
   console.log(state);
 
   return (
