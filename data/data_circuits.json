@@ -134,7 +134,8 @@
       "long": "7.42056",
       "locality": "Monte-Carlo",
       "country": "Monaco"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/monaco.png"
   },
   {
     "id": "monza",
