@@ -26,6 +26,8 @@ const NextRace = () => {
           width: 30,
           height: 'auto',
           marginRight: 10,
+          outline: 'gray solid 1px',
+          borderRadius: '100%',
         }}
         src={`${imagePicker(
           nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId,
