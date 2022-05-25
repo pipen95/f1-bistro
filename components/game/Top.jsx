@@ -1,15 +1,10 @@
 import NextRace from '../home/side/NextRace';
-import { useContext } from 'react';
-import Context from './../Context';
-
 const Top = () => {
-  const { nextRace } = useContext(Context);
-  console.log(nextRace);
   return (
     <div className="Top">
       <div className="Title">
         <div className="Title__box Title__box--gp">
-          <NextRace data={nextRace} />
+          <NextRace />
         </div>
         <div className="Title__box Title__box--title">
           <img src="/img/checkered-flag.png" alt="checkered flag" />

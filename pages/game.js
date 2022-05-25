@@ -1,6 +1,6 @@
 import Track from './../components/game/Track';
 import Side from './../components/game/Side';
-import Context from '../components/Context';
+import { gameContext } from '../components/Context';
 import { useReducer } from 'react';
 import actionsTypes from './../gameTypes/actions';
 import bonusList from '../data/bonus.json';
@@ -107,7 +107,7 @@ const Game = ({ driversList }) => {
     drivers: [],
     bonus: [],
   };
-
+  const [state, dispatch] = useReducer(gameReducer, initialState);
   for (let x of driversList) {
     initialState.drivers.push({
       name: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
@@ -124,15 +124,12 @@ const Game = ({ driversList }) => {
     });
   }
 
-  const [state, dispatch] = useReducer(gameReducer, initialState);
-  console.log(state);
-
   return (
     <div className="Game">
-      <Context.Provider value={{ state, dispatch }}>
+      <gameContext.Provider value={{ state, dispatch }}>
         <Track />
         <Side />
-      </Context.Provider>
+      </gameContext.Provider>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 
-const Context = createContext();
+const gameContext = createContext();
+const f1ApiContext = createContext();
 
-export default Context;
+export { gameContext, f1ApiContext };

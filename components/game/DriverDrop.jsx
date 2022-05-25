@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import Context from '../Context';
+import { gameContext } from '../Context';
 import { useDrop } from 'react-dnd';
 import itemTypes from '../../gameTypes/items';
 import actionsTypes from '../../gameTypes/actions';
 import Driver from './Driver';
 
 const DriverDrop = ({ location }) => {
-  const { state, dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(gameContext);
   const [{ isOver }, dropRef] = useDrop({
     accept: itemTypes.DRIVER,
     drop: (item) => addDriverToDrop(item.id),

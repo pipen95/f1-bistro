@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import Context from '../Context';
+import { gameContext } from '../Context';
 import Driver from './Driver';
 import Bonus from './Bonus';
 import actionsTypes from '../../gameTypes/actions';
 
 const Side = () => {
-  const { state, dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(gameContext);
   const reset = () => {
     dispatch({
       type: actionsTypes.RESET,

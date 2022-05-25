@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import Context from '../Context';
+import { gameContext } from '../Context';
 import { useDrag } from 'react-dnd';
 import itemTypes from '../../gameTypes/items';
 import actionsTypes from '../../gameTypes/actions';
 
 const Driver = ({ id, name }) => {
-  const { dispatch } = useContext(Context);
+  const { dispatch } = useContext(gameContext);
   const [{ isDragging }, dragRef] = useDrag({
     type: itemTypes.DRIVER,
     item: { id },

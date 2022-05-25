@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { check, reset } from './../auth/authSlice';
-import { useEffect, useState, createContext } from 'react';
-
-const useDataContext = createContext(null);
+import { useEffect, useState } from 'react';
+import { f1ApiContext } from './Context';
 
 const Wrapper = ({ children }) => {
   const [arr, setArr] = useState([]);
@@ -20,9 +19,10 @@ const Wrapper = ({ children }) => {
     if (isSuccess || user) {
       console.log('checked!');
     }
-
     dispatch(reset());
+  }, []);
 
+  useEffect(() => {
     const fetchAll = (urls) => {
       return Promise.all(
         urls.map((url) =>
@@ -39,9 +39,13 @@ const Wrapper = ({ children }) => {
       `http://ergast.com/api/f1/current/next.json`,
     ]);
   }, [setArr]);
+  if (arr.length < 2) return null;
+  const [raceResults, nextRace] = arr;
   return (
     <div>
-      <useDataContext.Provider value={arr}>{children}</useDataContext.Provider>
+      <f1ApiContext.Provider value={{ raceResults, nextRace }}>
+        {children}
+      </f1ApiContext.Provider>
     </div>
   );
 };
