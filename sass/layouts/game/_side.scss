@@ -6,7 +6,7 @@
 }
 
 .Rules {
-  @include section_side_outline;
+  @include section_side;
   ol {
     padding-left: 3rem;
     margin-bottom: 2rem;
@@ -18,7 +18,7 @@
 }
 
 .Choices {
-  @include section_side_outline;
+  @include section_side;
   padding-top: 0;
   position: sticky;
   position: -webkit-sticky;

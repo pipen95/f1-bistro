@@ -1,7 +1,7 @@
 import Track from './../components/game/Track';
 import Side from './../components/game/Side';
-import { gameContext } from '../components/Context';
-import { useReducer } from 'react';
+import { gameContext, f1ApiContext } from '../components/Context';
+import { useReducer, useContext } from 'react';
 import actionsTypes from './../gameTypes/actions';
 import bonusList from '../data/bonus.json';
 
@@ -84,23 +84,6 @@ const gameReducer = (state, action) => {
   }
 };
 
-// POST REQUEST
-const saveData = async (bonus, driver) => {
-  let err = {};
-  const payload = {};
-
-  try {
-    dispatch(login(payload));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// HANDLE SUBMIT
-const handleSave = () => {
-  saveData(bonus, data);
-};
-
 // COMPONENT
 const Game = ({ driversList }) => {
   let initialState = {
@@ -108,6 +91,8 @@ const Game = ({ driversList }) => {
     bonus: [],
   };
   const [state, dispatch] = useReducer(gameReducer, initialState);
+  console.log(state);
+
   for (let x of driversList) {
     initialState.drivers.push({
       name: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
@@ -124,9 +109,32 @@ const Game = ({ driversList }) => {
     });
   }
 
+  // POST REQUEST
+
+  const { nextRace } = useContext(f1ApiContext);
+  console.log(nextRace);
+
+  // HANDLE SAVE
+  const handleSave = async () => {
+    let vote = [];
+
+    const constructVoteArr = () => {};
+
+    const payload = {
+      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Cicuit.circuitId}`,
+      season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
+      vote,
+    };
+
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="Game">
-      <gameContext.Provider value={{ state, dispatch }}>
+      <gameContext.Provider value={{ state, dispatch, handleSave }}>
         <Track />
         <Side />
       </gameContext.Provider>
@@ -148,3 +156,16 @@ export async function getServerSideProps() {
 }
 
 export default Game;
+
+// OID:...,
+// circuit: miami,
+// season: 2022,
+// vote: {[
+// {
+// driverId:"max_verstappen",
+// position:1,
+// name:'Verstappen'
+// bonus:['DOD','FL',etc. ]
+// }
+// ]
+// }

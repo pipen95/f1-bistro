@@ -17,6 +17,4 @@
 .News {
   @include section_side;
   grid-area: News;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
 }
