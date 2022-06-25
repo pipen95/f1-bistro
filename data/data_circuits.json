@@ -191,7 +191,8 @@
       "long": "-1.01694",
       "locality": "Silverstone",
       "country": "UK"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/britain.png"
   },
   {
     "id": "spa",
@@ -213,7 +214,8 @@
       "long": "136.541",
       "locality": "Suzuka",
       "country": "Japan"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/japan.png"
   },
   {
     "id": "villeneuve",
@@ -247,6 +249,7 @@
       "long": "4.54092",
       "locality": "Zandvoort",
       "country": "Netherlands"
-    }
+    },
+    "img": "https://www.f1fantasytracker.com/Images/Flags/netherlands.png"
   }
 ]

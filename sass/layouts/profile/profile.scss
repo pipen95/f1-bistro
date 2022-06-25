@@ -1,0 +1,30 @@
+.Profile {
+  @include section-dash;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'Profile-Menu Info'
+    'Profile-Menu Password';
+}
+
+.Profile-Menu {
+  grid-area: Profile-Menu;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  padding: 7vh 2vw 7vh 2vw;
+  background: linear-gradient(
+    to right bottom,
+    #5283d4 0%,
+    #1154c0 40%,
+    #1154c0 100%
+  );
+}
+.Info {
+  grid-area: Info;
+  padding: 7vh 5vw;
+}
+.Password {
+  grid-area: Password;
+  padding: 7vh 5vw;
+}

@@ -5,9 +5,7 @@ const API_URL = 'http://localhost:3001/api/users';
 //Check user
 
 const check = async () => {
-  const res = await axios.get(`${API_URL}/check`, {
-    withCredentials: true,
-  });
+  const res = await axios.get(`${API_URL}/check`);
   if (res) {
     return true;
   }
@@ -15,9 +13,7 @@ const check = async () => {
 
 // Login user
 const login = async (userData) => {
-  const res = await axios.post(`${API_URL}/login`, userData, {
-    withCredentials: true,
-  });
+  const res = await axios.post(`${API_URL}/login`, userData);
 
   if (res.data) {
     return true;
@@ -26,9 +22,7 @@ const login = async (userData) => {
 
 // Reset Email
 const emailreset = async (userData) => {
-  const res = await axios.post(`${API_URL}/forgotPassword/`, userData, {
-    withCredentials: true,
-  });
+  const res = await axios.post(`${API_URL}/forgotPassword/`, userData);
 
   if (res.data) {
     return true;
@@ -37,9 +31,7 @@ const emailreset = async (userData) => {
 
 // Reset Password
 const passwordreset = async (userData, token) => {
-  const res = await axios.patch(`${API_URL}/resetPassword/${token}`, userData, {
-    withCredentials: true,
-  });
+  const res = await axios.patch(`${API_URL}/resetPassword/${token}`, userData);
 
   if (res.data) {
     return true;
@@ -48,9 +40,7 @@ const passwordreset = async (userData, token) => {
 
 // Signup user
 const signup = async (userData) => {
-  const res = await axios.post(`${API_URL}/signup`, userData, {
-    withCredentials: true,
-  });
+  const res = await axios.post(`${API_URL}/signup`, userData);
 
   if (res.data) {
     return true;
@@ -59,9 +49,7 @@ const signup = async (userData) => {
 
 // Logout user
 const logout = async () => {
-  const res = await axios.post(`${API_URL}/logout`, {
-    withCredentials: true,
-  });
+  const res = await axios.post(`${API_URL}/logout`);
 };
 
 const authService = {

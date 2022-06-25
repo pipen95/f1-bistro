@@ -42,7 +42,14 @@ h2 {
 }
 
 h3 {
-  color: $color-primary;
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text;
+  color: transparent;
   font-size: 2rem;
   text-transform: uppercase;
   margin-bottom: 1rem;

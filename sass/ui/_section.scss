@@ -12,3 +12,10 @@
   @include section;
   padding: 2.5vh 1vw 2.5vh 1vw;
 }
+
+@mixin section-dash {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  outline: #c3c3c3 solid 2px;
+  max-width: 70vw;
+}

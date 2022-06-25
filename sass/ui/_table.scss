@@ -2,6 +2,8 @@
 .table-container {
   height: 50vh;
   overflow: auto;
+  outline: 2px solid #c3c3c3;
+  border-radius: $border-radius;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
@@ -10,8 +12,6 @@
 }
 
 table {
-  border: 0.1em solid #d6d6d6;
-  border-radius: $border-radius;
   border-spacing: 0;
   background-color: $color-primary-dark;
   width: 100%;

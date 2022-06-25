@@ -156,16 +156,3 @@ export async function getServerSideProps() {
 }
 
 export default Game;
-
-// OID:...,
-// circuit: miami,
-// season: 2022,
-// vote: {[
-// {
-// driverId:"max_verstappen",
-// position:1,
-// name:'Verstappen'
-// bonus:['DOD','FL',etc. ]
-// }
-// ]
-// }

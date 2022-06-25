@@ -23,9 +23,9 @@ const Table = ({ data }) => {
             <tr>
               <th>Pos</th>
               <th></th>
-              <th className="text-left">Name</th>
-              <th className="text-left">Team</th>
-              <th className="text-left">Pts</th>
+              <th className="left">Name</th>
+              <th className="left">Team</th>
+              <th className="left">Pts</th>
             </tr>
           </thead>
           <tbody>{driversItems}</tbody>
