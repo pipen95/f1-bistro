@@ -100,7 +100,7 @@ function Podium({ data }) {
         </div>
         <div className="Cta center u-margin-top-small u-margin-bottom-small">
           <a href="/standings" className="btn-text nowrap">
-            View all drivers stats 📈
+            View all drivers stats
           </a>
         </div>
       </div>

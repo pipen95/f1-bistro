@@ -4,10 +4,10 @@ import Podium from './Podium';
 
 const Table = ({ data }) => {
   const results = data.MRData.RaceTable.Races[0].Results;
+  if (!results) return null;
   const filteredDrivers = results.filter(
     (el) => !retiredDrivers.includes(el.Driver.driverId)
   );
-
   const driversItems = filteredDrivers
     .slice(3)
     .map((driver, idx) => <TableRow driver={driver} key={idx} />);

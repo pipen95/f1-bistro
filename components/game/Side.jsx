@@ -39,7 +39,7 @@ const Side = () => {
             accomplishemnts. Ex: fastest lap, driver of the day, best
             qualification etc.
           </li>
-          <li>You can change your vote up 15min to before the&nbsp;GP</li>
+          <li>You can change your vote up 15min to before the&nbsp;GP.</li>
           <li>
             See how points are awarded
             <a href="#" className="btn-text nowrap">
