@@ -1,12 +1,12 @@
-import './../sass/main.scss';
+import 'sass/main.scss';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Layout from './../components/Layout';
-import Wrapper from './../components/Wrapper';
-import Menu from './../components/Menu';
-import Footer from './../components/Footer';
+import Layout from 'components/Layout';
+import Wrapper from 'components/Wrapper';
+import Menu from 'components/Menu';
+import Footer from 'components/Footer';
 import { Provider } from 'react-redux';
-import { store } from '../store/store';
+import { store } from 'store/store';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 

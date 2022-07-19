@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { emailreset, reset } from './../auth/authSlice';
+import { emailreset, reset } from 'features/auth/authSlice';
 import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {

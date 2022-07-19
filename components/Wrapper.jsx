@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { check, reset } from './../auth/authSlice';
+import { check, reset } from 'features/auth/authSlice';
 import { useEffect, useState } from 'react';
-import { f1ApiContext } from './Context';
+import { f1ApiContext } from 'context/Context';
 
 const Wrapper = ({ children }) => {
   const [arr, setArr] = useState([]);

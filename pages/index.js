@@ -1,15 +1,9 @@
-import Main from './../components/home/main/Main';
-import Side from './../components/home/side/Side';
-import Topics from './../components/home/Topics';
-
-const Home = () => {
+const Index = () => {
   return (
-    <div className="home">
-      <Main />
-      <Side />
-      <Topics />
+    <div>
+      <p>Landing</p>
     </div>
   );
 };
 
-export default Home;
+export default Index;

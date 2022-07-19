@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, reset } from './../auth/authSlice';
+import { login, reset } from 'features/auth/authSlice';
 import { toast } from 'react-toastify';
 
 const Login = () => {

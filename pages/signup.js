@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { signup, reset } from '../auth/authSlice';
+import { signup, reset } from 'features/auth/authSlice';
 axios.defaults.withCredentials = true;
 
 const Signup = () => {

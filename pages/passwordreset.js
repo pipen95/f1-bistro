@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { passwordreset, reset } from './../auth/authSlice';
+import { passwordreset, reset } from 'features/auth/authSlice';
 import { toast } from 'react-toastify';
 axios.defaults.withCredentials = true;
 
