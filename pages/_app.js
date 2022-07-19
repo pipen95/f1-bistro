@@ -1,10 +1,10 @@
-import 'sass/main.scss';
+import '../sass/main.scss';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Layout from 'components/Layout';
+import Layout from 'components/layout/Layout';
 import Wrapper from 'components/Wrapper';
-import Menu from 'components/Menu';
-import Footer from 'components/Footer';
+import Menu from 'components/layout/Menu';
+import Footer from 'components/layout/Footer';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 import { DndProvider } from 'react-dnd';

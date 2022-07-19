@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { gameContext } from 'context/Context';
+import { gameContext } from 'gameContext/Context';
 import { useDrag } from 'react-dnd';
 import itemTypes from 'gameTypes/items';
 import actionsTypes from 'gameTypes/actions';

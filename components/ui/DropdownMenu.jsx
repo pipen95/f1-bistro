@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logout from 'Icons';
+import Logout from './Icons';
 import { useDispatch } from 'react-redux';
 import { logout, reset } from 'features/auth/authSlice';
 import { useRouter } from 'next/router';

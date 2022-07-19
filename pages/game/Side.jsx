@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { gameContext } from 'Context';
-import Driver from 'Driver';
-import Bonus from 'Bonus';
+import { gameContext } from 'context/Context';
+import Driver from './Driver';
+import Bonus from './Bonus';
 import actionsTypes from 'gameTypes/actions';
 
 const Side = () => {

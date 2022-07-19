@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import DropdownMenu from 'ui/DropdownMenu';
+import DropdownMenu from 'components/ui/DropdownMenu';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 

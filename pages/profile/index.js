@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Info from 'components/profile/Info';
-import Password from 'components/profile/Password';
-import Menu from 'components/profile/Menu';
+import Info from './Info';
+import Password from './Password';
+import Menu from './Menu';
 
 axios.defaults.withCredentials = true;
 const API_URL = 'http://localhost:3001/api/users';

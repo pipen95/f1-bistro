@@ -1,5 +1,5 @@
-import Track from 'components/game/Track';
-import Side from 'components/game/Side';
+import Track from './Track';
+import Side from './Side';
 import { f1ApiContext } from 'context/Context';
 import { gameContext } from 'gameContext/Context';
 import { useReducer, useContext } from 'react';
