@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { emailreset, reset } from 'features/auth/authSlice';
+import { getUserData } from 'features/user/userSlice';
 import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
@@ -26,6 +27,7 @@ const ForgotPassword = () => {
       toast.error(message);
     }
     if (isSuccess) {
+      dispatch(getUserData());
       setAccess(true);
       window.setTimeout(timerid, 1000);
     }

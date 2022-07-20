@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { passwordreset, reset } from 'features/auth/authSlice';
+import { getUserData } from 'features/user/userSlice';
 import { toast } from 'react-toastify';
 axios.defaults.withCredentials = true;
 
@@ -31,6 +32,7 @@ const PasswordReset = () => {
       toast.error(message);
     }
     if (isSuccess || user) {
+      dispatch(getUserData());
       setAccess(true);
       window.setTimeout(timerid, 1000);
     }

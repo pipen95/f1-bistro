@@ -11,26 +11,21 @@ const initialState = {
 };
 
 // Signup user
-export const check = createAsyncThunk(
-  'features/auth/check',
-  async (ThunkAPI) => {
-    try {
-      return await authService.check();
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return ThunkAPI.rejectWithValue(message);
-    }
+export const check = createAsyncThunk('auth/check', async (ThunkAPI) => {
+  try {
+    return await authService.check();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return ThunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Signup user
 export const signup = createAsyncThunk(
-  'features/auth/signup',
+  'auth/signup',
   async (user, ThunkAPI) => {
     try {
       return await authService.signup(user);
@@ -47,26 +42,21 @@ export const signup = createAsyncThunk(
 );
 
 // Login user
-export const login = createAsyncThunk(
-  'features/auth/login',
-  async (user, ThunkAPI) => {
-    try {
-      return await authService.login(user);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return ThunkAPI.rejectWithValue(message);
-    }
+export const login = createAsyncThunk('auth/login', async (user, ThunkAPI) => {
+  try {
+    return await authService.login(user);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return ThunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Login user
 export const passwordreset = createAsyncThunk(
-  'features/auth/passwordreset',
+  'auth/passwordreset',
   async (user, ThunkAPI) => {
     try {
       return await authService.passwordreset(user);
@@ -84,7 +74,7 @@ export const passwordreset = createAsyncThunk(
 
 // Login user
 export const emailreset = createAsyncThunk(
-  'features/auth/emailreset',
+  'auth/emailreset',
   async (user, ThunkAPI) => {
     try {
       return await authService.emailreset(user);
@@ -101,22 +91,17 @@ export const emailreset = createAsyncThunk(
 );
 
 // Logout user
-export const logout = createAsyncThunk(
-  'features/auth/logout',
-  async (ThunkAPI) => {
-    try {
-      return await authService.logout();
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return ThunkAPI.rejectWithValue(message);
-    }
+export const logout = createAsyncThunk('auth/logout', async (ThunkAPI) => {
+  try {
+    return await authService.logout();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return ThunkAPI.rejectWithValue(message);
   }
-);
+});
 
 export const authSlice = createSlice({
   name: 'auth',

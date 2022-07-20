@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { signup, reset } from 'features/auth/authSlice';
+import { getUserData } from 'features/user/userSlice';
 axios.defaults.withCredentials = true;
 
 const Signup = () => {
@@ -37,6 +38,7 @@ const Signup = () => {
       toast.error(message);
     }
     if (isSuccess || user) {
+      dispatch(getUserData());
       setAccess(true);
       window.setTimeout(timerid, 1000);
     }

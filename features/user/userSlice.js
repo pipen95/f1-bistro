@@ -3,16 +3,16 @@ import userService from './userService';
 
 //State
 const initialState = {
-  userData: null,
+  userData: [],
   message: '',
 };
 
 // Signup user
-export const getUser = createAsyncThunk(
-  'features/user/getuser',
+export const getUserData = createAsyncThunk(
+  'user/getUserData',
   async (ThunkAPI) => {
     try {
-      return await userService.getUserData(userData);
+      return await userService.getUserData();
     } catch (error) {
       const message =
         (error.response &&
@@ -29,9 +29,16 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      state.userData = null;
+      state.userData = [];
       state.message = '';
     },
+  },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(getUserData.fulfilled, (state, action) => {
+      // Add user to the state array
+      console.log(action.payload);
+    });
   },
 });
 
