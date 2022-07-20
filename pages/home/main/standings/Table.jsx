@@ -1,6 +1,6 @@
-import retiredDrivers from '..data/data_retired';
-import TableRow from 'TableRow';
-import Podium from 'Podium';
+import retiredDrivers from 'data/data_retired';
+import TableRow from './TableRow';
+import Podium from './Podium';
 
 const Table = ({ data }) => {
   const results = data.MRData.RaceTable.Races[0].Results;

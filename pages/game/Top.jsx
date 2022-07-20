@@ -1,4 +1,4 @@
-import NextRace from 'home/side/NextRace';
+import NextRace from './../home/side/NextRace';
 const Top = () => {
   return (
     <div className="Top">

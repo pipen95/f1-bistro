@@ -1,5 +1,5 @@
-import News from 'News';
-import Message from 'Message';
+import News from './News';
+import Message from './Message';
 function Side() {
   return (
     <div className="Side">

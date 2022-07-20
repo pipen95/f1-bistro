@@ -1,5 +1,5 @@
-import DriverDrop from 'DriverDrop';
-import BonusZone from 'BonusZone';
+import DriverDrop from './DriverDrop';
+import BonusZone from './BonusZone';
 
 const SlotItem = ({ pos }) => {
   return (

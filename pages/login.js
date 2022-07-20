@@ -82,7 +82,7 @@ const Login = () => {
       password: '',
     });
     setErrors({});
-    router.push(`/`);
+    router.push(`/home`);
   };
 
   // TOGGLE SHOW PASSWORD

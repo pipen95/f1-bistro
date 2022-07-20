@@ -1,5 +1,5 @@
 import React from 'react';
-import TopicsItems from 'TopicsItems';
+import TopicsItems from './TopicsItems';
 function Topics() {
   return (
     <div className="Topics">

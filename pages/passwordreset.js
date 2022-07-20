@@ -83,7 +83,7 @@ const PasswordReset = () => {
       password: '',
     });
     setErrors({});
-    router.push(`/`);
+    router.push(`/home`);
   };
 
   // TOGGLE SHOW PASSWORD

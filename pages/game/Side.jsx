@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { gameContext } from 'context/Context';
+import { gameContext } from './context/Context';
 import Driver from './Driver';
 import Bonus from './Bonus';
-import actionsTypes from 'gameTypes/actions';
+import actionsTypes from '././types/actions';
 
 const Side = () => {
   const { state, dispatch } = useContext(gameContext);

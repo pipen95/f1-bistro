@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { gameContext } from 'Context';
+import { gameContext } from './context/Context';
 import { useDrag } from 'react-dnd';
-import itemTypes from 'gameTypes/items';
-import actionsTypes from 'gameTypes/actions';
+import itemTypes from '././types/items';
+import actionsTypes from '././types/actions';
 
 const Driver = ({ id, name }) => {
   const { dispatch } = useContext(gameContext);

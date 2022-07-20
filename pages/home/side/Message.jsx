@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { f1ApiContext } from 'Context';
+import { f1ApiContext } from 'context/Context';
 import Link from 'next/link';
-import NextRace from 'NextRace';
+import NextRace from './NextRace';
 
 const Message = () => {
   const { nextRace } = useContext(f1ApiContext);

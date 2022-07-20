@@ -1,9 +1,9 @@
 import Track from './Track';
 import Side from './Side';
 import { f1ApiContext } from 'context/Context';
-import { gameContext } from 'gameContext/Context';
+import { gameContext } from './context/Context';
 import { useReducer, useContext } from 'react';
-import actionsTypes from 'gameTypes/actions';
+import actionsTypes from './types/actions';
 import bonusList from 'data/bonus.json';
 
 // REDUCER

@@ -1,5 +1,5 @@
-import SlotItem from 'SlotItem';
-import Top from 'Top';
+import SlotItem from './SlotItem';
+import Top from './Top';
 
 const Track = () => {
   const n = 20; // Or something else

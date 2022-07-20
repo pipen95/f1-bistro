@@ -1,4 +1,4 @@
-import BonusDrop from 'BonusDrop';
+import BonusDrop from './BonusDrop';
 
 const BonusZone = ({ pos }) => {
   const n = 3; // Or something else

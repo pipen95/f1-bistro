@@ -70,7 +70,7 @@ const ForgotPassword = () => {
       email: '',
     });
     setErrors({});
-    router.push(`/`);
+    router.push(`/home`);
   };
 
   // HANDLE SUBMIT

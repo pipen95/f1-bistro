@@ -1,6 +1,6 @@
-import Main from 'components/home/main/Main';
-import Side from 'components/home/side/Side';
-import Topics from 'components/home/Topics';
+import Main from './main/Main';
+import Side from './side/Side';
+import Topics from './Topics';
 
 const Home = () => {
   return (

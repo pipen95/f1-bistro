@@ -1,4 +1,4 @@
-import Standings from 'standings/Standings';
+import Standings from './standings/Standings';
 import { useContext } from 'react';
 import { f1ApiContext } from 'context/Context';
 

@@ -1,4 +1,4 @@
-import dataTeams from '..data/data_teams.json';
+import dataTeams from 'data/data_teams.json';
 
 const TableRow = ({ driver }) => {
   const imagePicker = (id, defaultVal) => {

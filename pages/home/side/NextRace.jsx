@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { f1ApiContext } from 'context/Context';
-import dataCircuits from '.data/data_circuits.json';
+import dataCircuits from 'data/data_circuits.json';
 const NextRace = () => {
   const { nextRace } = useContext(f1ApiContext);
   const imagePicker = (id, defaultVal) => {
