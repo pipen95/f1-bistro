@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from 'features/auth/authSlice';
+import { getUser } from 'features/user/userSlice';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -24,6 +25,7 @@ const Login = () => {
   const { user, isError, isSuccess, isLoading, message } = useSelector(
     (state) => state.auth
   );
+  const { userData } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isError) {
