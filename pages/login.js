@@ -25,6 +25,7 @@ const Login = () => {
   const { user, isError, isSuccess, isLoading, message } = useSelector(
     (state) => state.auth
   );
+  const { userData } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isError) {
@@ -33,12 +34,15 @@ const Login = () => {
 
     if (isSuccess || user) {
       dispatch(getUserData());
-      setAccess(true);
-      window.setTimeout(timerid, 1000);
+
+      if (userData) {
+        setAccess(true);
+        timerid();
+      }
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, dispatch]);
+  }, [user, userData, isError, isSuccess, message, dispatch]);
 
   //HANDLER FONCTIONS
   //ON CHANGE

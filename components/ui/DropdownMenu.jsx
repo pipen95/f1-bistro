@@ -4,8 +4,12 @@ import { useDispatch } from 'react-redux';
 import { logout, reset } from 'features/auth/authSlice';
 import { resetUser } from 'features/user/userSlice';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const DropdownMenu = () => {
+  // REDUX SETUP
+  const { userData } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const logOut = () => {
@@ -20,7 +24,14 @@ const DropdownMenu = () => {
       <Link href="/profile">
         <a href>
           <div className="dropdown__item">
-            <img className="dropdown__img" src="/img/pierre-penel.jpg" />
+            <img
+              className="dropdown__img"
+              src={
+                userData
+                  ? userData.photo
+                  : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+              }
+            />
             {children}
           </div>
         </a>

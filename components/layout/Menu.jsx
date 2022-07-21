@@ -9,6 +9,8 @@ const Menu = () => {
 
   // REDUX SETUP
   const { user } = useSelector((state) => state.auth);
+  const { userData } = useSelector((state) => state.user);
+
   const ref = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -65,7 +67,11 @@ const Menu = () => {
                 onClick={() => setOpen(!open)}
               >
                 <img
-                  src="/img/pierre-penel.jpg"
+                  src={
+                    userData
+                      ? userData.photo
+                      : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+                  }
                   alt="Profile pic"
                   className="nav__profile--img"
                 />
