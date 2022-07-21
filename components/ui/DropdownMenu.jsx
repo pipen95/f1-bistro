@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Logout from './Icons';
 import { useDispatch } from 'react-redux';
 import { logout, reset } from 'features/auth/authSlice';
+import { resetUser } from 'features/user/userSlice';
 import { useRouter } from 'next/router';
 
 const DropdownMenu = () => {
@@ -10,6 +11,7 @@ const DropdownMenu = () => {
   const logOut = () => {
     dispatch(logout());
     dispatch(reset());
+    dispatch(resetUser());
     router.push(`/`);
   };
 

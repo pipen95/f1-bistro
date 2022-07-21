@@ -38,7 +38,6 @@ const Signup = () => {
       toast.error(message);
     }
     if (isSuccess || user) {
-      dispatch(getUserData());
       setAccess(true);
       window.setTimeout(timerid, 1000);
     }

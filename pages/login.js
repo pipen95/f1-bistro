@@ -30,6 +30,7 @@ const Login = () => {
     if (isError) {
       toast.error(message);
     }
+
     if (isSuccess || user) {
       dispatch(getUserData());
       setAccess(true);

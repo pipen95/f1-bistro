@@ -3,7 +3,6 @@ axios.defaults.withCredentials = true;
 const API_URL = 'http://localhost:3001/api/users';
 
 //Check user
-
 const check = async () => {
   const res = await axios.get(`${API_URL}/check`);
   if (res) {

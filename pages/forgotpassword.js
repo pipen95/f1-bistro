@@ -27,7 +27,6 @@ const ForgotPassword = () => {
       toast.error(message);
     }
     if (isSuccess) {
-      dispatch(getUserData());
       setAccess(true);
       window.setTimeout(timerid, 1000);
     }

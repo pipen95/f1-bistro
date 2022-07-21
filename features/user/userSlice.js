@@ -3,7 +3,7 @@ import userService from './userService';
 
 //State
 const initialState = {
-  userData: [],
+  userData: null,
   message: '',
 };
 
@@ -28,8 +28,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    reset: (state) => {
-      state.userData = [];
+    resetUser: (state) => {
+      state.userData = null;
       state.message = '';
     },
   },
@@ -37,10 +37,10 @@ export const userSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(getUserData.fulfilled, (state, action) => {
       // Add user to the state array
-      console.log(action.payload);
+      state.userData = action.payload.data.doc;
     });
   },
 });
 
-export const { reset } = userSlice.actions;
+export const { resetUser } = userSlice.actions;
 export default userSlice.reducer;
