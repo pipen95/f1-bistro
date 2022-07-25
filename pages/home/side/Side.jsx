@@ -1,10 +1,10 @@
-import News from './News';
+import Chat from './Chat';
 import Message from './Message';
 function Side() {
   return (
     <div className="Side">
       <Message />
-      <News />
+      <Chat />
     </div>
   );
 }

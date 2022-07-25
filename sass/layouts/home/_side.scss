@@ -5,16 +5,15 @@
   grid-template-rows: min-content auto;
   grid-template-areas:
     'Message'
-    'News';
+    'Chat';
 }
 
 .Message {
-  @include section;
+  @include section_side;
   grid-area: Message;
-  padding: 1.5vh 1.5vw 2vh 1.5vw;
 }
 
-.News {
+.Chat {
   @include section_side;
-  grid-area: News;
+  grid-area: Chat;
 }
