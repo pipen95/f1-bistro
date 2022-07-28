@@ -32,7 +32,7 @@ const Message = () => {
       </div>
       <Link href="/game">
         <a className="btn btn--blue" style={{ marginTop: '1rem' }}>
-          Play <span>♤</span>
+          Play <span>🎲</span>
         </a>
       </Link>
     </div>

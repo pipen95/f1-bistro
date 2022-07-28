@@ -1,7 +1,33 @@
+import { useSelector } from 'react-redux';
+
 const Info = ({ data }) => {
+  const { userData } = useSelector((state) => state.user);
+
   return (
     <form className="Info form">
       <h3>Your acount settings</h3>
+      <div className="form__group form__photo-upload">
+        <img
+          className="form__user-photo"
+          src={
+            userData
+              ? `http://localhost:3001/public/img/users/${userData.photo}`
+              : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+          }
+          alt="User photo"
+        />
+        <input
+          id="photo"
+          className="form__upload"
+          type="file"
+          accept="image/*"
+          placeholder="Choose photo"
+          name="photo"
+        />
+        <label htmlFor="photo" className="form__label">
+          Choose new photo
+        </label>
+      </div>
       <div className="flex">
         <div className="form__group" style={{ marginRight: '2rem' }}>
           <label htmlFor="firstname" className="form__label">
