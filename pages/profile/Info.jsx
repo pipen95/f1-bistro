@@ -1,7 +1,31 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useRef, useEffect } from 'react';
+import { updateUserData } from 'features/user/userSlice';
+import { toast } from 'react-toastify';
 
-const Info = ({ data }) => {
+const Info = () => {
   const { userData } = useSelector((state) => state.user);
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  //ON CHANGE
+  const handleChange = (event) => {
+    return setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  // HANDLE SUBMIT
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (handleValidation()) {
+      postData(formData);
+    }
+  };
 
   return (
     <form className="Info form">
@@ -21,6 +45,7 @@ const Info = ({ data }) => {
           className="form__upload"
           type="file"
           accept="image/*"
+          files={formData.photo}
           placeholder="Choose photo"
           name="photo"
         />
@@ -38,7 +63,9 @@ const Info = ({ data }) => {
             id="firstname"
             className="form__input"
             name="firstname"
-            placeholder={data ? data.firstname : null}
+            onChange={handleChange}
+            value={formData.firstname}
+            placeholder={userData ? userData.firstname : null}
           />
         </div>
         <div className="form__group">
@@ -50,7 +77,9 @@ const Info = ({ data }) => {
             id="lastname"
             className="form__input"
             name="lastname"
-            placeholder={data ? data.lastname : null}
+            onChange={handleChange}
+            value={formData.lastname}
+            placeholder={userData ? userData.lastname : null}
           />
         </div>
       </div>
@@ -63,7 +92,9 @@ const Info = ({ data }) => {
           id="email"
           className="form__input"
           name="email"
-          placeholder={data ? data.email : null}
+          onChange={handleChange}
+          value={formData.email}
+          placeholder={userData ? userData.email : null}
         />
       </div>
       <div className="right">

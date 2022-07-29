@@ -1,4 +1,4 @@
-const Password = ({ data }) => {
+const Password = () => {
   return (
     <form className="Password form">
       <h3>Password change</h3>

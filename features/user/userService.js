@@ -10,9 +10,19 @@ const getUserData = async () => {
     return res.data;
   }
 };
+const updateUserData = async (userData, type) => {
+  const url = type === 'password' ? 'updateMyPassword' : 'updateMe';
+
+  const res = await axios.patch(`${API_URL}/${url}`, userData);
+
+  if (res) {
+    return res.data;
+  }
+};
 
 const userService = {
   getUserData,
+  updateUserData,
 };
 
 export default userService;

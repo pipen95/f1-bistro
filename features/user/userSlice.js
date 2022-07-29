@@ -24,6 +24,26 @@ export const getUserData = createAsyncThunk(
     }
   }
 );
+
+// Update Settings
+export const updateUserData = createAsyncThunk(
+  'user/updateUserData',
+  async (ThunkAPI) => {
+    try {
+      return await userService.updateUserData();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+    s;
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -35,10 +55,15 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(getUserData.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.userData = action.payload.data.doc;
-    });
+    builder
+      .addCase(getUserData.fulfilled, (state, action) => {
+        // Add user to the state array
+        state.userData = action.payload.data.doc;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        // Add user to the state array
+        state.userData = action.payload.data.doc;
+      });
   },
 });
 
