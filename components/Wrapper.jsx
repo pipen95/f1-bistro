@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { check, reset } from 'features/auth/authSlice';
+import { getUserData } from 'features/user/userSlice';
 import { useEffect, useState } from 'react';
 import { f1ApiContext } from 'context/Context';
 
 const Wrapper = ({ children }) => {
   const [arr, setArr] = useState([]);
-
   const dispatch = useDispatch();
   const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -18,9 +18,10 @@ const Wrapper = ({ children }) => {
     }
     if (isSuccess || user) {
       console.log('checked!');
+      dispatch(getUserData());
     }
     dispatch(reset());
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const fetchAll = (urls) => {
