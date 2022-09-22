@@ -4,9 +4,7 @@ function Topics() {
   return (
     <div className="Topics">
       <div className="Title-Topics text-center">
-        <span className="flame">🔥</span>
-        <h2>New Merch</h2>
-        <span className="flame">🔥</span>
+        <h2>F1 Calendar</h2>
       </div>
       <TopicsItems />
     </div>

@@ -56,6 +56,11 @@ const Menu = () => {
                       <a className="nav__link">Game</a>
                     </Link>
                   </li>
+                  <li className="nav__item">
+                    <Link href="/standings">
+                      <a className="nav__link">Standings</a>
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </div>
