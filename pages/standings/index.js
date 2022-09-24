@@ -1,8 +1,8 @@
 const Standings = () => {
   return (
-    <div>
-      <p>Standings</p>
-    </div>
+    <>
+      <h2>Standings</h2>
+    </>
   );
 };
 

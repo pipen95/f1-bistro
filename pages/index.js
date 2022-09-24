@@ -1,8 +1,8 @@
 const Index = () => {
   return (
-    <div>
-      <p>Landing</p>
-    </div>
+    <>
+      <h2>Landing</h2>
+    </>
   );
 };
 
