@@ -5,7 +5,7 @@ import Bonus from './Bonus';
 import actionsTypes from '././types/actions';
 
 const Side = () => {
-  const { state, dispatch } = useContext(gameContext);
+  const { state, dispatch, handleSave } = useContext(gameContext);
   const reset = () => {
     dispatch({
       type: actionsTypes.RESET,
@@ -66,7 +66,7 @@ const Side = () => {
               </a>
             </div>
             <div className="Actions__item">
-              <a href="#" className="btn btn--blue">
+              <a onClick={handleSave} className="btn btn--blue">
                 Save
               </a>
             </div>

@@ -80,6 +80,23 @@ const gameReducer = (state, action) => {
         ],
       };
 
+    case actionsTypes.RESET:
+      return {
+        ...state,
+        drivers: [
+          ...drivers.map(({ location, ...el }) => ({
+            ...el,
+            location: 'side',
+          })),
+        ],
+        bonus: [
+          ...bonus.map(({ location, ...el }) => ({
+            ...el,
+            location: 'side',
+          })),
+        ],
+      };
+
     default:
       return state;
   }
@@ -92,7 +109,6 @@ const Game = ({ driversList }) => {
     bonus: [],
   };
   const [state, dispatch] = useReducer(gameReducer, initialState);
-  console.log(state);
 
   for (let x of driversList) {
     initialState.drivers.push({
@@ -113,19 +129,17 @@ const Game = ({ driversList }) => {
   // POST REQUEST
 
   const { nextRace } = useContext(f1ApiContext);
-  console.log(nextRace);
-
   // HANDLE SAVE
   const handleSave = async () => {
-    let vote = [];
-
-    const constructVoteArr = () => {};
+    let vote = state;
 
     const payload = {
-      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Cicuit.circuitId}`,
+      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
       season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
       vote,
     };
+
+    console.log(payload);
 
     try {
     } catch (error) {
@@ -149,7 +163,7 @@ export async function getServerSideProps() {
   const res = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
   const driversJSON = await res.json();
   const driversList = driversJSON.MRData.DriverTable.Drivers.filter(
-    (el) => el.familyName !== 'Hülkenberg'
+    (el) => el.familyName !== 'de Vries'
   );
 
   // Pass data to the page via props
