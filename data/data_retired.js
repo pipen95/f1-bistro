@@ -4,6 +4,7 @@ const retiredDrivers = [
   'giovinazzi',
   'mazepin',
   'hulkenberg',
+  'de_vries',
 ];
 
 export default retiredDrivers;
