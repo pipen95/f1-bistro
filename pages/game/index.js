@@ -105,7 +105,6 @@ const gameReducer = (state, action) => {
 
 // COMPONENT
 const Game = ({ driversList }) => {
-  console.log(driversList);
   let initialState = {
     drivers: [],
     bonus: [],
@@ -133,14 +132,19 @@ const Game = ({ driversList }) => {
   // HANDLE SAVE
   const handleSave = async () => {
     let vote = state;
+    // vote: [{
+    //         "id": "albon",
+    //         "position": 10,
+    //         "bonus":[dod,ok,fl]
 
+    //     }]
     const payload = {
       circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
       season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
       vote,
     };
 
-    // (payload);
+    console.log(payload);
 
     try {
     } catch (error) {
