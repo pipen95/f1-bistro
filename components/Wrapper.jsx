@@ -6,7 +6,6 @@ import { f1ApiContext } from 'context/Context';
 
 const Wrapper = ({ children }) => {
   const [arr, setArr] = useState([]);
-  console.log(arr);
   const dispatch = useDispatch();
   const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -42,7 +41,6 @@ const Wrapper = ({ children }) => {
     const fetchNext = async () => {
       const res2 = await fetch(`http://ergast.com/api/f1/current/next.json`);
       const data = await res2.json();
-      console.log(next);
       setArr((oldArray) => [...oldArray, { data }]);
     };
   }, [setArr]);

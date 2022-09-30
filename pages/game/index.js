@@ -6,6 +6,7 @@ import { useReducer, useContext } from 'react';
 import actionsTypes from './types/actions';
 import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
+import voteRestructure from 'utils/voteRestructure';
 
 // REDUCER
 const gameReducer = (state, action) => {
@@ -128,23 +129,51 @@ const Game = ({ driversList }) => {
   }
 
   // POST REQUEST
-  const { nextRace } = useContext(f1ApiContext);
+  // const { nextRace } = useContext(f1ApiContext);
   // HANDLE SAVE
   const handleSave = async () => {
-    let vote = state;
+    // Intput
+    //   drivers:[
+    //     {
+    //         "name": "Albon",
+    //         "id": "albon",
+    //         "location": "side"
+    //     },
+    // ]
+    //   bonus: [
+    //     {
+    //         "id": "fastest_lap",
+    //         "location": "side",
+    //         "text": "FL"
+    //     },
+    //     {
+    //         "id": "overtake_king",
+    //         "location": "side",
+    //         "text": "OK"
+    //     },
+    //     {
+    //         "id": "driver_day",
+    //         "location": "side",
+    //         "text": "DOD"
+    //     }
+    // ]
+
+    const vote = voteRestructure(state);
+    console.log(vote);
+
+    // Output
     // vote: [{
     //         "id": "albon",
     //         "position": 10,
     //         "bonus":[dod,ok,fl]
 
     //     }]
-    const payload = {
-      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-      season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
-      vote,
-    };
 
-    console.log(payload);
+    // const payload = {
+    //   circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
+    //   season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
+    //   vote,
+    // };
 
     try {
     } catch (error) {
