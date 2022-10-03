@@ -1,16 +1,33 @@
 const voteRestructure = ({ bonus, drivers }) => {
-  let vote = [];
-
-  const newDivers = drivers.map(({ id, location }) => {
+  const driversList = drivers.map(({ id, location }) => {
     if (location !== 'side') {
-      return { id, position: location.slice(6), bonus: [] };
+      var driverLoc = location.slice(6);
+
+      let bonusFiltered = [];
+      bonus.filter(({ text, location }) => {
+        let bonusLoc = location.slice(5, 6);
+        if (location !== 'side' && bonusLoc === driverLoc) {
+          bonusFiltered.push(text);
+        }
+      });
+
+      return { id, position: driverLoc, bonus: bonusFiltered };
+    } else {
+      return { id, position: 0, bonus: [] };
     }
   });
-
-  console.log(newDivers);
+  return driversList;
 };
 
 export default voteRestructure;
+
+// Output
+// vote: [{
+//         "id": "albon",
+//         "position": 10,
+//         "bonus":[dod,ok,fl]
+
+//     }]
 
 //   drivers:[
 //     {
