@@ -5,6 +5,8 @@ import { gameContext } from './context/Context';
 import { useReducer, useContext } from 'react';
 import actionsTypes from './types/actions';
 import bonusList from 'data/bonus.json';
+import retiredDrivers from 'data/data_retired';
+import voteRestructure from 'utils/voteRestructure';
 
 // REDUCER
 const gameReducer = (state, action) => {
@@ -127,23 +129,22 @@ const Game = ({ driversList }) => {
   }
 
   // POST REQUEST
-
-  const { nextRace } = useContext(f1ApiContext);
+  // const { nextRace } = useContext(f1ApiContext);
   // HANDLE SAVE
   const handleSave = async () => {
-    let vote = state;
+    let vote = voteRestructure(state);
 
-    const payload = {
-      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-      season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
-      vote,
-    };
+    console.log(vote);
 
-    console.log(payload);
+    // const payload = {
+    //   circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
+    //   season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
+    //   vote,
+    // };
 
     try {
     } catch (error) {
-      console.log(error);
+      error;
     }
   };
 
@@ -163,7 +164,7 @@ export async function getServerSideProps() {
   const res = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
   const driversJSON = await res.json();
   const driversList = driversJSON.MRData.DriverTable.Drivers.filter(
-    (el) => el.familyName !== 'de Vries'
+    (el) => !retiredDrivers.includes(el.driverId)
   );
 
   // Pass data to the page via props
