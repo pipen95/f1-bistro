@@ -3,12 +3,15 @@ import Side from './Side';
 import { f1ApiContext } from 'context/Context';
 import { gameContext } from './context/Context';
 import { useReducer, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import actionsTypes from './types/actions';
 import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
 import voteRestructure from 'utils/voteRestructure';
+import { toast } from 'react-toastify';
+import { postVoteData } from './../../features/vote/voteSlice';
 
-// REDUCER
+// GAME REDUCER
 const gameReducer = (state, action) => {
   const { drivers, bonus } = state;
 
@@ -82,23 +85,6 @@ const gameReducer = (state, action) => {
         ],
       };
 
-    case actionsTypes.RESET:
-      return {
-        ...state,
-        drivers: [
-          ...drivers.map(({ location, ...el }) => ({
-            ...el,
-            location: 'side',
-          })),
-        ],
-        bonus: [
-          ...bonus.map(({ location, ...el }) => ({
-            ...el,
-            location: 'side',
-          })),
-        ],
-      };
-
     default:
       return state;
   }
@@ -110,7 +96,13 @@ const Game = ({ driversList }) => {
     drivers: [],
     bonus: [],
   };
+
+  // CONTEXT
+  const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
+
+  // REDUX SETUP
+  const dispatchVote = useDispatch();
 
   for (let x of driversList) {
     initialState.drivers.push({
@@ -129,22 +121,20 @@ const Game = ({ driversList }) => {
   }
 
   // POST REQUEST
-  // const { nextRace } = useContext(f1ApiContext);
-  // HANDLE SAVE
   const handleSave = async () => {
     let vote = voteRestructure(state);
 
-    console.log(vote);
-
-    // const payload = {
-    //   circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-    //   season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
-    //   vote,
-    // };
+    const payload = {
+      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
+      season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
+      vote,
+    };
 
     try {
+      dispatchVote(postVoteData(payload));
+      toast.success(`Thank you for voting !`);
     } catch (error) {
-      error;
+      toast.error(`Sorry something went wrong :(. Please try again.`);
     }
   };
 
