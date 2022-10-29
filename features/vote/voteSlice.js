@@ -10,9 +10,9 @@ const initialState = {
 // Signup user
 export const postVoteData = createAsyncThunk(
   'vote/postVoteData',
-  async (ThunkAPI) => {
+  async (vote, ThunkAPI) => {
     try {
-      return await voteService.postVoteData();
+      return await voteService.postVoteData(vote);
     } catch (error) {
       const message =
         (error.response &&

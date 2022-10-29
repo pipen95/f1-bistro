@@ -20,36 +20,3 @@ const voteRestructure = ({ bonus, drivers }) => {
 };
 
 export default voteRestructure;
-
-// Output
-// vote: [{
-//         "id": "albon",
-//         "position": 10,
-//         "bonus":[dod,ok,fl]
-
-//     }]
-
-//   drivers:[
-//     {
-//         "name": "Albon",
-//         "id": "albon",
-//         "location": "side"
-//     },
-// ]
-//   bonus: [
-//     {
-//         "id": "fastest_lap",
-//         "location": "side",
-//         "text": "FL"
-//     },
-//     {
-//         "id": "overtake_king",
-//         "location": "side",
-//         "text": "OK"
-//     },
-//     {
-//         "id": "driver_day",
-//         "location": "side",
-//         "text": "DOD"
-//     }
-// ]

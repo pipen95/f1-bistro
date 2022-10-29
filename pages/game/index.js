@@ -97,12 +97,12 @@ const Game = ({ driversList }) => {
     bonus: [],
   };
 
+  // REDUX SETUP
+  const dispatchVote = useDispatch();
+
   // CONTEXT
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
-
-  // REDUX SETUP
-  const dispatchVote = useDispatch();
 
   for (let x of driversList) {
     initialState.drivers.push({
@@ -122,11 +122,11 @@ const Game = ({ driversList }) => {
 
   // POST REQUEST
   const handleSave = async () => {
-    let vote = voteRestructure(state);
+    const vote = voteRestructure(state);
 
     const payload = {
       circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-      season: `${nextRace.data.MRData.RaceTable.Races[0].season}`,
+      season: Number(nextRace.data.MRData.RaceTable.Races[0].season),
       vote,
     };
 
@@ -136,6 +136,7 @@ const Game = ({ driversList }) => {
     } catch (error) {
       toast.error(`Sorry something went wrong :(. Please try again.`);
     }
+    return;
   };
 
   return (

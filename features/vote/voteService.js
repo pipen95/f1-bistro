@@ -4,10 +4,10 @@ const API_URL = 'http://localhost:3001/api/votes';
 
 //Check user
 
-const postVoteData = async (voteData) => {
-  const res = await axios.post(`${API_URL}`, voteData);
+const postVoteData = async (vote) => {
+  const res = await axios.post(`${API_URL}`, vote);
   if (res) {
-    return voteData;
+    return res.data.data.newVote;
   }
 };
 

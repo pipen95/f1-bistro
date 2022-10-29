@@ -40,7 +40,6 @@ export const updateUserData = createAsyncThunk(
         error.toString();
       return ThunkAPI.rejectWithValue(message);
     }
-    s;
   }
 );
 
