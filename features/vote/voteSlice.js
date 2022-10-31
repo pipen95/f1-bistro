@@ -24,6 +24,23 @@ export const postVoteData = createAsyncThunk(
     }
   }
 );
+export const updateVoteData = createAsyncThunk(
+  'vote/updateVoteData',
+  async (voteData, ThunkAPI) => {
+    const { vote, voteId } = voteData;
+    try {
+      await voteService.updateVoteData(vote, voteId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const voteSlice = createSlice({
   name: 'vote',
@@ -37,6 +54,10 @@ export const voteSlice = createSlice({
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(postVoteData.fulfilled, (state, action) => {
+      // Add user to the state array
+      state.voteData = action.payload;
+    });
+    builder.addCase(updateVoteData.fulfilled, (state, action) => {
       // Add user to the state array
       state.voteData = action.payload;
     });

@@ -8,7 +8,7 @@ import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
 import voteRestructure from 'utils/voteRestructure';
 import { toast } from 'react-toastify';
-import { postVoteData } from './../../features/vote/voteSlice';
+import { postVoteData, updateVoteData } from './../../features/vote/voteSlice';
 import gameReducer from './gameReducer';
 
 const Game = ({ driversList }) => {
@@ -19,6 +19,7 @@ const Game = ({ driversList }) => {
 
   // REDUX
   const { userData } = useSelector((state) => state.user);
+  const { voteData } = useSelector((state) => state.vote);
   const dispatchVote = useDispatch();
 
   // CONTEXT
@@ -54,8 +55,15 @@ const Game = ({ driversList }) => {
     };
 
     try {
-      dispatchVote(postVoteData(payload));
-      toast.success(`Thank you for voting !`);
+      if (voteData !== null) {
+        const updateData = { vote: payload, voteId: voteData._id };
+        // Redux object for multiple arguments
+        dispatchVote(updateVoteData(updateData));
+        toast.success(`Thank you for updating your vote!`);
+      } else {
+        dispatchVote(postVoteData(payload));
+        toast.success(`Thank you for voting!`);
+      }
     } catch (error) {
       toast.error(`Sorry something went wrong :(. Please try again.`);
     }

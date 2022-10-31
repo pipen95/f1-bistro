@@ -11,8 +11,17 @@ const postVoteData = async (vote) => {
   }
 };
 
+const updateVoteData = async (vote, voteId) => {
+  const res = await axios.patch(`${API_URL}/${voteId}`, vote);
+
+  if (res) {
+    return res.data.data.newVote;
+  }
+};
+
 const voteService = {
   postVoteData,
+  updateVoteData,
 };
 
 export default voteService;
