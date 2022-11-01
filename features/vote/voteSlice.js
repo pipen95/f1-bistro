@@ -29,7 +29,7 @@ export const updateVoteData = createAsyncThunk(
   async (voteData, ThunkAPI) => {
     const { vote, voteId } = voteData;
     try {
-      await voteService.updateVoteData(vote, voteId);
+      return await voteService.updateVoteData(vote, voteId);
     } catch (error) {
       const message =
         (error.response &&
