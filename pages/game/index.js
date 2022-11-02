@@ -19,7 +19,8 @@ const Game = ({ driversList }) => {
 
   // REDUX
   const { userData } = useSelector((state) => state.user);
-  const { voteData } = useSelector((state) => state.vote);
+  const { voteData, isSuccess } = useSelector((state) => state.vote);
+
   const dispatchVote = useDispatch();
 
   // CONTEXT
@@ -46,26 +47,28 @@ const Game = ({ driversList }) => {
   const handleSave = async () => {
     const vote = voteRestructure(state);
 
-    const payload = {
-      votedBy: userData._id,
-      season: Number(nextRace.data.MRData.RaceTable.Races[0].season),
-      circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-      raceName: `${nextRace.data.MRData.RaceTable.Races[0].raceName}`,
-      vote,
-    };
+    if (vote.pass) {
+      const payload = {
+        votedBy: userData._id,
+        season: Number(nextRace.data.MRData.RaceTable.Races[0].season),
+        circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
+        raceName: `${nextRace.data.MRData.RaceTable.Races[0].raceName}`,
+        vote: vote.data,
+      };
 
-    try {
       if (voteData !== null) {
         const updateData = { vote: payload, voteId: voteData._id };
         // Redux object for multiple arguments
         dispatchVote(updateVoteData(updateData));
-        toast.success(`Thank you for updating your vote!`);
+        if (isSuccess) {
+          toast.success(`Thank you for updating your vote!`);
+        }
       } else {
         dispatchVote(postVoteData(payload));
-        toast.success(`Thank you for voting!`);
+        if (isSuccess) {
+          toast.success(`Thank you for voting!`);
+        }
       }
-    } catch (error) {
-      toast.error(`Sorry something went wrong :(. Please try again.`);
     }
     return;
   };
