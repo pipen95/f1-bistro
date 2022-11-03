@@ -13,19 +13,12 @@ const voteRestructure = ({ bonus, drivers }) => {
         if (location !== 'side') {
           if (bonusLoc === driverLoc) {
             bonusFiltered.push(text);
-          } else {
-            bonusOrphan = true;
           }
         }
       });
-      console.log(bonusOrphan);
 
       return { id, position: driverLoc, bonus: bonusFiltered };
     } else {
-      const orphan = bonus.filter(({ location }) => location !== 'side');
-      if (orphan >= 1) {
-        bonusOrphan = true;
-      }
       return { id, position: 0, bonus: [] };
     }
   });
@@ -34,8 +27,19 @@ const voteRestructure = ({ bonus, drivers }) => {
   const sortedDriversList = filterDriversList.sort(
     (a, b) => a.position - b.position
   );
+  let orphan = bonus.filter(({ location }) => location !== 'side');
 
-  if (!bonusOrphan) {
+  if (orphan.length > 0) {
+    const orphanLoc = orphan.map(({ location }) => location.slice(5, 6));
+    const driverLoc = sortedDriversList.map(({ position }) => position);
+    const match = driverLoc.some((el) => orphanLoc.includes(el));
+
+    if (!match) {
+      bonusOrphan = true;
+    }
+  }
+
+  if (bonusOrphan === false) {
     return { data: sortedDriversList, pass: true };
   } else {
     toast.error(
