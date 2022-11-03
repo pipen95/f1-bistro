@@ -4,6 +4,7 @@ import voteService from './voteService';
 //State
 const initialState = {
   voteData: null,
+  isSuccess: false,
   message: '',
 };
 
@@ -48,7 +49,7 @@ export const voteSlice = createSlice({
   reducers: {
     resetVote: (state) => {
       state.voteData = null;
-      state.message = '';
+      isSuccess: false, (state.message = '');
     },
   },
   extraReducers: (builder) => {
@@ -56,10 +57,12 @@ export const voteSlice = createSlice({
     builder.addCase(postVoteData.fulfilled, (state, action) => {
       // Add user to the state array
       state.voteData = action.payload;
+      state.isSuccess = true;
     });
     builder.addCase(updateVoteData.fulfilled, (state, action) => {
       // Add user to the state array
       state.voteData = action.payload;
+      state.isSuccess = true;
     });
   },
 });
