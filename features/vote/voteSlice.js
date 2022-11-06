@@ -4,11 +4,30 @@ import voteService from './voteService';
 //State
 const initialState = {
   voteData: null,
-  isSuccess: false,
+  isVoteSuccess: false,
+  isVoteError: false,
   message: '',
 };
 
-// Signup user
+// Get user latest vote
+export const getVoteData = createAsyncThunk(
+  'vote/getVoteData',
+  async (userId, ThunkAPI) => {
+    try {
+      return await voteService.getVoteData(userId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Post user's vote
 export const postVoteData = createAsyncThunk(
   'vote/postVoteData',
   async (vote, ThunkAPI) => {
@@ -25,6 +44,8 @@ export const postVoteData = createAsyncThunk(
     }
   }
 );
+
+// Update user's vote
 export const updateVoteData = createAsyncThunk(
   'vote/updateVoteData',
   async (voteData, ThunkAPI) => {
@@ -49,20 +70,33 @@ export const voteSlice = createSlice({
   reducers: {
     resetVote: (state) => {
       state.voteData = null;
-      isSuccess: false, (state.message = '');
+      state.isVoteSuccess = false;
+      state.isVoteError = false;
+      state.message = '';
     },
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
+
+    builder
+      .addCase(getVoteData.fulfilled, (state, action) => {
+        // Add user to the state array
+        state.voteData = action.payload;
+        state.isVoteSuccess = true;
+      })
+      .addCase(getVoteData.rejected, (state, action) => {
+        state.isVoteError = true;
+        state.message = action.payload;
+      });
     builder.addCase(postVoteData.fulfilled, (state, action) => {
       // Add user to the state array
       state.voteData = action.payload;
-      state.isSuccess = true;
+      state.isVoteSuccess = true;
     });
     builder.addCase(updateVoteData.fulfilled, (state, action) => {
       // Add user to the state array
       state.voteData = action.payload;
-      state.isSuccess = true;
+      state.isVoteSuccess = true;
     });
   },
 });
