@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 
-const voteRestructure = ({ bonus, drivers }) => {
+const voteDestructure = ({ bonus, drivers }) => {
   let bonusOrphan = false;
 
-  const driversList = drivers.map(({ id, location }) => {
+  const driversList = drivers.map(({ id, name, location }) => {
     if (location !== 'side') {
       var driverLoc = location.slice(6);
       let bonusFiltered = [];
@@ -17,9 +17,9 @@ const voteRestructure = ({ bonus, drivers }) => {
         }
       });
 
-      return { id, position: driverLoc, bonus: bonusFiltered };
+      return { id, name, position: driverLoc, bonus: bonusFiltered };
     } else {
-      return { id, position: 0, bonus: [] };
+      return { id, name, position: 0, bonus: [] };
     }
   });
 
@@ -49,4 +49,46 @@ const voteRestructure = ({ bonus, drivers }) => {
   }
 };
 
-export default voteRestructure;
+const voteRestructure = ({ vote }) => {
+  let bonus = [];
+  let drivers = [];
+
+  for (let driver of vote) {
+    drivers.push({
+      name: driver.name,
+      id: driver.id,
+      location: `driver${driver.position}`,
+    });
+
+    for (const [i, el] of driver.bonus.entries()) {
+      if (el) {
+        const switchId = (el) => {
+          let id;
+          switch (el) {
+            case 'FL':
+              id = 'fastest_lap';
+              break;
+            case 'OK':
+              id = 'overtake_king';
+              break;
+            case 'DOD':
+              id = 'overtake_king';
+              break;
+            // code block
+          }
+          return id;
+        };
+
+        bonus.push({
+          id: switchId(el),
+          text: el,
+          location: `driver${driver.position}-${i}`,
+        });
+      }
+    }
+  }
+
+  console.log(bonus, drivers);
+};
+
+export { voteRestructure, voteDestructure };
