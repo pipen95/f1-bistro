@@ -6,7 +6,7 @@ import { useReducer, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
-import voteRestructure from 'utils/voteRestructure';
+import { voteDestructure, voteRestructure } from 'utils/voteHandler';
 import { toast } from 'react-toastify';
 import {
   postVoteData,
@@ -34,11 +34,17 @@ const Game = ({ driversList }) => {
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
+  console.log(state);
+
   // GET VOTE
   useEffect(() => {
     dispatchVote(resetVote());
     if (user && userData) {
       dispatchVote(getVoteData(userData._id));
+      // if (voteData) {
+      //   voteRestructure(voteData);
+      // }
+      voteRestructure(voteData);
     } else {
       dispatchVote(resetVote());
     }
@@ -67,7 +73,7 @@ const Game = ({ driversList }) => {
 
   // POST REQUEST
   const handleSave = async () => {
-    const vote = voteRestructure(state);
+    const vote = voteDestructure(state);
 
     if (vote.pass) {
       const payload = {
