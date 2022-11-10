@@ -2,7 +2,7 @@ import Track from './Track';
 import Side from './Side';
 import { f1ApiContext } from 'context/Context';
 import { gameContext } from './context/Context';
-import { useReducer, useContext, useEffect } from 'react';
+import { useReducer, useContext, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
@@ -15,6 +15,7 @@ import {
   resetVote,
 } from './../../features/vote/voteSlice';
 import gameReducer from './gameReducer';
+import actionsTypes from '././types/actions';
 
 const Game = ({ driversList }) => {
   let initialState = {
@@ -36,17 +37,39 @@ const Game = ({ driversList }) => {
 
   console.log(state);
 
+  const voteRestructureCB = useCallback(() => {
+    const data = voteRestructure(voteData);
+
+    if (data) {
+      const { drivers, bonus } = data;
+      for (const { location, id, name } of drivers) {
+        console.log(location, id, name);
+        dispatch({
+          type: actionsTypes.DRIVER_SET,
+          payload: { location, id, name },
+        });
+      }
+
+      for (const { location, id, text } of bonus) {
+        console.log(location, id, text);
+        dispatch({
+          type: actionsTypes.BONUS_SET,
+          payload: { location, id, text },
+        });
+      }
+    }
+  }, [voteData]);
+
   // GET VOTE
   useEffect(() => {
     dispatchVote(resetVote());
     if (user && userData) {
       dispatchVote(getVoteData(userData._id));
-      // if (voteData) {
-      //   voteRestructure(voteData);
-      // }
-      voteRestructure(voteData);
+      if (voteData) {
+        voteRestructureCB();
+      }
     } else {
-      dispatchVote(resetVote());
+      dispatchVote(resetVote(voteData));
     }
 
     if (isVoteError) {

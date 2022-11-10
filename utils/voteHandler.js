@@ -82,13 +82,12 @@ const voteRestructure = ({ vote }) => {
         bonus.push({
           id: switchId(el),
           text: el,
-          location: `driver${driver.position}-${i}`,
+          location: `bonus${driver.position}-${i}`,
         });
       }
     }
   }
-
-  console.log(bonus, drivers);
+  return { bonus, drivers };
 };
 
 export { voteRestructure, voteDestructure };
