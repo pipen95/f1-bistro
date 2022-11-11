@@ -37,6 +37,24 @@ const Game = ({ driversList }) => {
 
   console.log(state);
 
+  // BUILD Drivers List
+  for (let x of driversList) {
+    initialState.drivers.push({
+      name: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
+      id: x.driverId,
+      location: 'side',
+    });
+  }
+
+  for (let x of bonusList) {
+    initialState.bonus.push({
+      id: x.id,
+      location: 'side',
+      text: x.text,
+    });
+  }
+
+  // Retrieve Vote function
   const voteRestructureCB = useCallback(() => {
     const data = voteRestructure(voteData);
 
@@ -62,37 +80,21 @@ const Game = ({ driversList }) => {
 
   // GET VOTE
   useEffect(() => {
-    dispatchVote(resetVote());
     if (user && userData) {
       dispatchVote(getVoteData(userData._id));
-      if (voteData) {
+      if (isVoteSuccess) {
         voteRestructureCB();
       }
     } else {
-      dispatchVote(resetVote(voteData));
+      dispatchVote(resetVote());
     }
 
     if (isVoteError) {
       toast.error(message);
     }
-  }, [user, userData]);
+  }, [user, userData, isVoteSuccess]);
 
-  // BUILD Drivers List
-  for (let x of driversList) {
-    initialState.drivers.push({
-      name: x.familyName.normalize('NFD').replace(/\p{Diacritic}/gu, ''),
-      id: x.driverId,
-      location: 'side',
-    });
-  }
-
-  for (let x of bonusList) {
-    initialState.bonus.push({
-      id: x.id,
-      location: 'side',
-      text: x.text,
-    });
-  }
+  console.log(voteData);
 
   // POST REQUEST
   const handleSave = async () => {

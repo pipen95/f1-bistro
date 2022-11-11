@@ -72,7 +72,7 @@ const voteRestructure = ({ vote }) => {
               id = 'overtake_king';
               break;
             case 'DOD':
-              id = 'overtake_king';
+              id = 'driver_day';
               break;
             // code block
           }
