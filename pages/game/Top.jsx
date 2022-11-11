@@ -1,4 +1,6 @@
-import NextRace from './../home/side/NextRace';
+import NextRace from '../../components/ui/NextRace';
+import Timer from './../../components/ui/Timer';
+
 const Top = () => {
   return (
     <div className="Top">
@@ -11,12 +13,7 @@ const Top = () => {
           <h2>Bistro Bets</h2>
         </div>
         <div className="Title__box Title__box--timer">
-          <p>
-            <strong>
-              Betting&nbsp;ends&nbsp;in:
-              1&nbsp;days&nbsp;4&nbsp;hours&nbsp;30&nbsp;mins
-            </strong>
-          </p>
+          <Timer />
         </div>
       </div>
       <div className="Finish"></div>
