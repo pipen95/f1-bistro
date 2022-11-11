@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { f1ApiContext } from 'context/Context';
 import Link from 'next/link';
-import NextRace from './NextRace';
+import NextRace from '../../../components/ui/NextRace';
 import DateRace from './DateRace';
 
 const Message = () => {

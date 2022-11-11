@@ -143,6 +143,9 @@ export async function getServerSideProps() {
     (el) => !retiredDrivers.includes(el.driverId)
   );
 
+  const date = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
+  const dataJSON = await date.json();
+
   // Pass data to the page via props
   return { props: { driversList } };
 }
