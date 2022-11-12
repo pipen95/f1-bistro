@@ -50,6 +50,10 @@
     );
     color: $color-white;
     transition: all 0.2s ease;
+
+    &-exit {
+      padding: 1rem 1.5rem;
+    }
   }
 
   &::after {
@@ -133,4 +137,8 @@
       }
     }
   }
+}
+
+.no-upper {
+  text-transform: none !important;
 }
