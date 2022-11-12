@@ -9,6 +9,13 @@
   box-sizing: inherit;
 }
 
+ol,
+  ol::after,
+  ol::before {
+    padding-left: 30px !important;
+
+  }
+
 html,
 body {
   // This is what 1rem is
@@ -27,3 +34,8 @@ body {
   background-color: $color-primary;
   color: white;
 }
+
+
+//  ul::before, ol::before{
+//   padding-left: 10px !important;
+// }

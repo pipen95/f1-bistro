@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }) {
             draggable
           />
         </Wrapper>
+        <div id="portal" />
       </DndProvider>
     </Provider>
   );
