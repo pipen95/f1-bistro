@@ -43,7 +43,7 @@ const Side = () => {
           <li>
             See how points are awarded
             <a href="#" className="btn-text nowrap">
-              Click here.
+              Click here
             </a>
           </li>
         </ol>

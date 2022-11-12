@@ -77,10 +77,11 @@
     font-size: $default-font-size;
     color: $color-primary;
     display: inline-block;
-    padding: 5px 7px;
+    padding: 1rem 2rem;
     transition: all 0.2s ease;
     white-space: nowrap;
     text-underline-offset: 4px;
+    border-radius: 50px;
   }
 
   &:hover {
