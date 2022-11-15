@@ -1,5 +1,6 @@
 // FONCTIONNALITY
 .card {
+  cursor: pointer;
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
@@ -22,33 +23,7 @@
     box-shadow: $box-shadow-small;
 
     &--front {
-      background: linear-gradient(
-        135deg,
-        #000b8d 0%,
-        #1d19ac 70%,
-        #e3451a calc(85% + 1px),
-        #e3451a 100%
-      );
-    }
-
-    &--front-bis {
-      background: linear-gradient(
-        135deg,
-        #e31304 0%,
-        #ef4f48 70%,
-        #ffec00 calc(85% + 1px),
-        #ffec00 100%
-      );
-    }
-
-    &--front-bis-2 {
-      background: linear-gradient(
-        135deg,
-        #36466e 0%,
-        #617090 70%,
-        #45ebf6 calc(85% + 1px),
-        #45ebf6 100%
-      );
+      @include bg_team;
     }
 
     &--back {
@@ -67,35 +42,11 @@
         font-size: $default-font-size !important;
       }
 
-      &-1 {
-        background: linear-gradient(
-          to right bottom,
-          rgba(#000b8d, 0.95),
-          rgba(#1d19ac, 0.95)
-        );
-      }
-
-      &-2 {
-        background: linear-gradient(
-          to right bottom,
-          rgba($color-f1, 0.95),
-          rgba($color-f1-light, 0.95)
-        );
-      }
-      &-3 {
-        background: linear-gradient(
-          to right bottom,
-          rgba(#36466e, 0.95),
-          rgba(#617090, 0.95)
-        );
-      }
+      @include bg_team_back;
     }
   }
 
   &:hover &__side--front {
-    transform: rotateY(-180deg);
-  }
-  &:hover &__side--front-bis {
     transform: rotateY(-180deg);
   }
 
@@ -112,17 +63,7 @@
     background-blend-mode: soft-light;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-
-    &--1 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/ferrari-logo.png.transform/2col/image.png);
-      height: 12rem;
-    }
-    &--2 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/red-bull-racing-logo.png.transform/2col/image.png);
-    }
-    &--3 {
-      background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col/image.png);
-    }
+    @include bg_team_img;
   }
 
   &__heading {
@@ -140,30 +81,7 @@
 
   &__heading-span {
     padding: 1rem 1.5rem;
-
-    &--1 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba(#000b8d, 0.95),
-        rgba(#1d19ac, 0.95)
-      );
-    }
-
-    &--2 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba($color-f1, 0.95),
-        rgba($color-f1-light, 0.95)
-      );
-    }
-
-    &--3 {
-      background-image: linear-gradient(
-        to right bottom,
-        rgba(#36466e, 0.95),
-        rgba(#617090, 0.95)
-      );
-    }
+    @include bg_team_back;
   }
 }
 

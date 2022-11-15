@@ -28,15 +28,18 @@
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "axios": "^0.22.0",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "focus-trap-react": "^8.9.2",
+    "postcss": "^8.4.19",
     "react-redux": "^7.2.1",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.49.9",
+    "tailwindcss": "^3.2.4",
     "xml2json-light": "^1.0.6"
   }
 }

@@ -32,16 +32,17 @@ const Side = () => {
       <div className="Selection">
         <div className="Rules">
           <h3 className="mb-2">Make your predections for the X Grand Prix</h3>
-
-          <p>
-            Check out the rules here:
+          <div className="text-center">
+            ➡️
             <a
-              className="btn btn--blue no-upper nowrap ml-1"
+              href="#"
+              className="btn-text nowrap"
               onClick={() => setIsOpen(true)}
             >
-              View rules
+              Check out the rules
             </a>
-          </p>
+            ⬅️
+          </div>
         </div>
         <div div className="Choices">
           <div className="Drivers">
