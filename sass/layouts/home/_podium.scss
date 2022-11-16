@@ -21,3 +21,56 @@
 .Cta {
   grid-area: Cta;
 }
+
+.driverImg {
+  height: 200px;
+  width: auto;
+  position: absolute;
+  bottom: 20%;
+  left: 32%;
+  transform: translate(-32%);
+
+  img {
+    height: 200px;
+  }
+
+  &--1 {
+    left: 30%;
+    height: 250px;
+    img {
+      height: 250px;
+    }
+  }
+  &--2 {
+    left: 25%;
+  }
+  &--3 {
+    left: 25%;
+  }
+}
+
+.mainPoints {
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 34px;
+  color: white;
+  line-height: 1;
+}
+
+.topscorerbox {
+  width: 100px;
+  height: 60px;
+  @include background;
+  border-radius: 6px;
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#biggestFigure {
+  width: 120px;
+  height: 80px;
+}
