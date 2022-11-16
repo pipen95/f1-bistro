@@ -6,14 +6,14 @@
   grid-template-rows: min-content auto;
   grid-template-areas:
     'Title'
-    'Standings';
+    'Results';
 }
 
 .Title-GP {
   grid-area: Title;
 }
-.Standings {
-  grid-area: Standings;
+.Results {
+  grid-area: Results;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;

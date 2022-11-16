@@ -1,4 +1,4 @@
-import Standings from './standings/Standings';
+import Results from './standings/Results';
 import { useContext } from 'react';
 import { f1ApiContext } from 'context/Context';
 
@@ -11,7 +11,7 @@ function Main() {
         <div className="Title-GP text-center">
           <h2>{raceResults.data.MRData.RaceTable.Races[0].raceName} results</h2>
         </div>
-        <Standings data={raceResults.data} />
+        <Results data={raceResults.data} />
       </div>
     </div>
   );
