@@ -35,8 +35,6 @@ const Game = ({ driversList }) => {
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  console.log(state);
-
   // BUILD Drivers List
   for (let x of driversList) {
     initialState.drivers.push({
@@ -142,9 +140,6 @@ export async function getServerSideProps() {
   const driversList = driversJSON.MRData.DriverTable.Drivers.filter(
     (el) => !retiredDrivers.includes(el.driverId)
   );
-
-  const date = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
-  const dataJSON = await date.json();
 
   // Pass data to the page via props
   return { props: { driversList } };
