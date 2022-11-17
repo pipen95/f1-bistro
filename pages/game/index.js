@@ -59,7 +59,6 @@ const Game = ({ driversList }) => {
     if (data) {
       const { drivers, bonus } = data;
       for (const { location, id, name } of drivers) {
-        console.log(location, id, name);
         dispatch({
           type: actionsTypes.DRIVER_SET,
           payload: { location, id, name },
@@ -91,8 +90,6 @@ const Game = ({ driversList }) => {
       toast.error(message);
     }
   }, [user, userData, isVoteSuccess]);
-
-  console.log(voteData);
 
   // POST REQUEST
   const handleSave = async () => {
