@@ -1,8 +1,14 @@
 import TableBody from './TableBody';
-import TableRow from './TableBody';
 import TableHead from './TableHead';
 
-const Standings = (props) => {
+const Standings = ({ driverStandings, allResults }) => {
+  const driverStandingsArr =
+    driverStandings.MRData.StandingsTable.StandingsLists;
+  const racesResults = allResults.MRData.RaceTable.Races;
+  const racesId = allResults.MRData.RaceTable.Races.map((el) =>
+    el.Circuit.circuitId.substring(0, 3).toUpperCase()
+  );
+
   return (
     <div className="Standings flex flex-col">
       <div className="Standings Standings_header flex justify-between">
@@ -11,8 +17,8 @@ const Standings = (props) => {
       </div>
       <div className="Standings Standings_table">
         <table>
-          <TableHead {...props} />
-          <TableBody {...props} />
+          <TableHead data={racesId} />
+          <TableBody data={[driverStandingsArr, racesResults]} />
         </table>
       </div>
     </div>
@@ -23,7 +29,7 @@ const Standings = (props) => {
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(
-    `http://ergast.com/api/f1/current/driverStandings.json`
+    `https://ergast.com/api/f1/current/driverStandings.json`
   );
   const driverStandings = await res.json();
 
