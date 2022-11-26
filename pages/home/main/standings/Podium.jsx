@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Podium({ data }) {
+const Podium = ({ data }) => {
   if (!data[0]) {
     return null;
   } else {
@@ -68,7 +66,7 @@ function Podium({ data }) {
             </div>
 
             <div
-              className={`card__side  card__side--back  card__side--back--${data[1].Constructor.constructorId.toLowerCase()}`}
+              className={`card__side  card__side--back  card__side--back--${data[0].Constructor.constructorId.toLowerCase()}`}
               id="side-winner"
             >
               <p>{`${data[0].Driver.givenName}\u00a0${data[0].Driver.familyName}`}</p>
@@ -120,6 +118,6 @@ function Podium({ data }) {
       </div>
     );
   }
-}
+};
 
 export default Podium;

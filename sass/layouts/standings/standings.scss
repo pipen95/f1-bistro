@@ -1,0 +1,6 @@
+.Standings {
+  height: 100%;
+  &_table {
+    @include section_dash;
+  }
+}

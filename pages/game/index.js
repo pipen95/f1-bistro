@@ -35,8 +35,6 @@ const Game = ({ driversList }) => {
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  console.log(state);
-
   // BUILD Drivers List
   for (let x of driversList) {
     initialState.drivers.push({
@@ -61,7 +59,6 @@ const Game = ({ driversList }) => {
     if (data) {
       const { drivers, bonus } = data;
       for (const { location, id, name } of drivers) {
-        console.log(location, id, name);
         dispatch({
           type: actionsTypes.DRIVER_SET,
           payload: { location, id, name },
@@ -93,8 +90,6 @@ const Game = ({ driversList }) => {
       toast.error(message);
     }
   }, [user, userData, isVoteSuccess]);
-
-  console.log(voteData);
 
   // POST REQUEST
   const handleSave = async () => {
@@ -142,9 +137,6 @@ export async function getServerSideProps() {
   const driversList = driversJSON.MRData.DriverTable.Drivers.filter(
     (el) => !retiredDrivers.includes(el.driverId)
   );
-
-  const date = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
-  const dataJSON = await date.json();
 
   // Pass data to the page via props
   return { props: { driversList } };

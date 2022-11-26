@@ -30,7 +30,7 @@ const Wrapper = ({ children }) => {
     const fetchResults = async () => {
       // Fetch results
       const res = await fetch(
-        `http://ergast.com/api/f1/current/last/results.json`
+        `https://ergast.com/api/f1/current/last/results.json`
       );
       const data = await res.json();
       setArr((oldArray) => [...oldArray, { data }]);
@@ -39,7 +39,10 @@ const Wrapper = ({ children }) => {
     fetchResults();
     // Fetch next race
     const fetchNext = async () => {
-      const res2 = await fetch(`http://ergast.com/api/f1/current/next.json`);
+      // const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
+      const res2 = await fetch(
+        `https://ergast.com/api/f1/current/last/results.json`
+      );
       const data = await res2.json();
       setArr((oldArray) => [...oldArray, { data }]);
     };

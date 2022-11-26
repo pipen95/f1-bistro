@@ -17,11 +17,10 @@
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   outline: #c3c3c3 solid 2px;
-  max-width: 70vw;
 }
 
 @mixin bg_team {
-  &--redbull {
+  &--red_bull {
     background: linear-gradient(
       135deg,
       #000b8d 0%,
@@ -53,7 +52,7 @@
 }
 
 @mixin bg_team_back {
-  &--redbull {
+  &--red_bull {
     background: linear-gradient(
       to right bottom,
       rgba(#000b8d, 0.95),
@@ -79,7 +78,7 @@
 }
 
 @mixin bg_team_img {
-  &--redbull {
+  &--red_bull {
     background-image: url(https://www.formula1.com/content/dam/fom-website/teams/2022/red-bull-racing-logo.png.transform/2col/image.png);
   }
 

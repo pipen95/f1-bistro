@@ -4,8 +4,10 @@ import Driver from './Driver';
 import Bonus from './Bonus';
 import actionsTypes from '././types/actions';
 import Modal from 'components/ui/Modal';
+import { f1ApiContext } from 'context/Context';
 
 const Side = () => {
+  const { nextRace } = useContext(f1ApiContext);
   const { state, dispatch, handleSave } = useContext(gameContext);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,9 +32,13 @@ const Side = () => {
   return (
     <>
       <div className="Selection">
-        <div className="Rules">
-          <h3 className="mb-2">Make your predections for the X Grand Prix</h3>
-          <div className="text-center">
+        <div className="Rules text-center">
+          <h3>
+            Make your bets before the
+            <br />
+            {nextRace.data.MRData.RaceTable.Races[0].raceName}
+          </h3>
+          <div>
             ➡️
             <a
               href="#"
@@ -89,21 +95,25 @@ const Side = () => {
 
         <h4>Points:</h4>
         <table style={{ textAlign: 'left' }}>
-          <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Contact</th>
+              <th>Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+              <td>Germany</td>
+            </tr>
+            <tr>
+              <td>Centro comercial Moctezuma</td>
+              <td>Francisco Chang</td>
+              <td>Mexico</td>
+            </tr>
+          </tbody>
         </table>
       </Modal>
     </>
