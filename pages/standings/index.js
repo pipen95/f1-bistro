@@ -5,6 +5,22 @@ const Standings = ({ driverStandings, allResults }) => {
   const driverStandingsArr =
     driverStandings.MRData.StandingsTable.StandingsLists;
   const racesResults = allResults.MRData.RaceTable.Races;
+
+  const arrRaces = racesResults.map(({ Results }) => Results);
+  let arrDriverPoints = driverStandingsArr[0].DriverStandings.reduce(
+    (acc, cur) => ({ ...acc, [cur.Driver.driverId]: [] }),
+    {}
+  );
+
+  let arrRacesCounter = arrRaces.length;
+
+  for (let [i, race] of arrRaces.entries()) {
+    for (let el of race) {
+      let id = el.Driver.driverId;
+      arrDriverPoints[id].push({ round: i, points: el.points });
+    }
+  }
+
   const racesId = allResults.MRData.RaceTable.Races.map((el) =>
     el.Circuit.circuitId.substring(0, 3).toUpperCase()
   );
@@ -18,7 +34,9 @@ const Standings = ({ driverStandings, allResults }) => {
       <div className="Standings Standings_table">
         <table>
           <TableHead data={racesId} />
-          <TableBody data={[driverStandingsArr, racesResults]} />
+          <TableBody
+            data={[driverStandingsArr, arrDriverPoints, arrRacesCounter]}
+          />
         </table>
       </div>
     </div>
