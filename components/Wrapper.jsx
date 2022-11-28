@@ -29,9 +29,10 @@ const Wrapper = ({ children }) => {
   useEffect(() => {
     const fetchResults = async () => {
       // Fetch results
-      const res = await fetch(
-        `https://ergast.com/api/f1/current/last/results.json`
-      );
+      // const res = await fetch(
+      //   `https://ergast.com/api/f1/current/last/results.json`
+      // );
+      const res = await fetch(`https://ergast.com/api/f1/2022/results.json`);
       const data = await res.json();
       setArr((oldArray) => [...oldArray, { data }]);
       fetchNext();
@@ -39,10 +40,10 @@ const Wrapper = ({ children }) => {
     fetchResults();
     // Fetch next race
     const fetchNext = async () => {
-      // const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
-      const res2 = await fetch(
-        `https://ergast.com/api/f1/current/last/results.json`
-      );
+      const res2 = await fetch(`https://ergast.com/api/f1/current/next.json`);
+      // const res2 = await fetch(
+      //   `https://ergast.com/api/f1/current/last/results.json`
+      // );
       const data = await res2.json();
       setArr((oldArray) => [...oldArray, { data }]);
     };
