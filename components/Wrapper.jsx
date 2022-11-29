@@ -32,6 +32,7 @@ const Wrapper = ({ children }) => {
       const res = await fetch(
         `https://ergast.com/api/f1/current/last/results.json`
       );
+      // const res = await fetch(`https://ergast.com/api/f1/2022/results.json`);
       const data = await res.json();
       setArr((oldArray) => [...oldArray, { data }]);
       fetchNext();

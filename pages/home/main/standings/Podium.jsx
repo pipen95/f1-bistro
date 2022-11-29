@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Podium = ({ data }) => {
   if (!data[0]) {
     return null;
@@ -111,9 +113,9 @@ const Podium = ({ data }) => {
           </div>
         </div>
         <div className="Cta center u-margin-top-small u-margin-bottom-small">
-          <a href="/standings" className="btn-text nowrap">
-            View players standings
-          </a>
+          <Link href="/standings">
+            <a className="btn-text nowrap">View players standings </a>
+          </Link>
         </div>
       </div>
     );
