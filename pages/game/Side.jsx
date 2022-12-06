@@ -5,11 +5,24 @@ import Bonus from './Bonus';
 import actionsTypes from '././types/actions';
 import Modal from 'components/ui/Modal';
 import { f1ApiContext } from 'context/Context';
+import { useSelector } from 'react-redux';
+import Select from 'react-select';
 
 const Side = () => {
+  // REDUX
+  const { userData } = useSelector((state) => state.user);
+
   const { nextRace } = useContext(f1ApiContext);
   const { state, dispatch, handleSave } = useContext(gameContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [isResult, setResult] = useState(false);
+
+  const yearOptions = [{ value: '2022', label: '2022' }];
+
+  const raceOptions = [
+    { value: 'yas_marina', label: 'Abu Dhabi GP' },
+    { value: 'interlagos', label: 'Bazil GP' },
+  ];
 
   const reset = () => {
     dispatch({
@@ -50,30 +63,71 @@ const Side = () => {
             ⬅️
           </div>
         </div>
-        <div div className="Choices">
-          <div className="Drivers">
-            <h4>Drivers</h4>
-            <div className="Drivers__box">{driversItems}</div>
-          </div>
-          <div className="Bonus">
-            <h4>Bonus</h4>
-            <div className="Bonus__box">{bonusItems}</div>
-          </div>
-          <div className="Actions">
-            <h4>Actions</h4>
-            <div className="Actions__box">
-              <div className="Actions__item">
-                <a onClick={reset} className="btn btn--blue">
-                  Reset
-                </a>
-              </div>
-              <div className="Actions__item">
-                <a onClick={handleSave} className="btn btn--blue">
-                  Save
-                </a>
+        <div className="Choices-wrapper">
+          <div div className="Choices">
+            <div className="Drivers">
+              <div>
+                <h4>Drivers</h4>
+                <div className="Drivers__box">{driversItems}</div>
               </div>
             </div>
+            <div className="Bonus">
+              <div>
+                <h4>Bonus</h4>
+                <div className="Bonus__box">{bonusItems}</div>
+              </div>
+            </div>
+            <div className="Actions">
+              <div>
+                <h4>Actions</h4>
+                <div className="Actions__box">
+                  <div className="Actions__item">
+                    <a onClick={reset} className="btn btn--blue">
+                      Reset
+                    </a>
+                  </div>
+                  <div className="Actions__item">
+                    <a onClick={handleSave} className="btn btn--blue">
+                      Save
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {userData && userData.role === 'admin' && (
+                <div className="admin-results">
+                  <h4>Admin Only</h4>
+                  <div className="Actions__box">
+                    <div className="Actions__item">
+                      <input
+                        type="checkbox"
+                        id="results"
+                        name="results"
+                        value={isResult}
+                        onChange={() => setResult((current) => !current)}
+                      />
+                      &nbsp;Enter results
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
+          {isResult && (
+            <div className="Admin">
+              <div className="Admin__choices">
+                <Select
+                  options={yearOptions}
+                  className="select select--left"
+                  placeholder="Year"
+                />
+                <Select
+                  options={raceOptions}
+                  className="select select--right"
+                  placeholder="Race"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

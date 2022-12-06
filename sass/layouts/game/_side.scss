@@ -2,7 +2,7 @@
   grid-area: Selection;
   display: grid;
   gap: 2rem 0;
-  grid-template-rows: min-content auto;
+  grid-template-rows: min-content min-content auto;
 }
 
 .Rules {
@@ -17,19 +17,42 @@
   }
 }
 
-.Choices {
-  @include section_side;
-  padding-top: 0;
+.Choices-wrapper {
   position: sticky;
   position: -webkit-sticky;
   top: 1rem;
   align-self: start;
 }
+.Choices {
+  @include section_side;
+  padding-top: 0;
+  top: 1rem;
+}
+
+.Admin {
+  @include section_side;
+  margin-top: 1rem;
+  &__choices {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .select {
+    flex: 1;
+
+    &--left {
+      margin-right: 2rem;
+    }
+  }
+}
 
 .Bonus,
 .Actions {
+  display: flex;
   &__box {
     display: flex;
+    align-items: center;
   }
   &__img {
     cursor: pointer;
@@ -86,4 +109,8 @@
 
 .invisible {
   display: none;
+}
+
+.admin-results {
+  margin-left: 2rem;
 }
