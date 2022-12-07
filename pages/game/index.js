@@ -2,7 +2,13 @@ import Track from './Track';
 import Side from './Side';
 import { f1ApiContext } from 'context/Context';
 import { gameContext } from './context/Context';
-import { useReducer, useContext, useEffect, useCallback } from 'react';
+import {
+  useReducer,
+  useContext,
+  useEffect,
+  useCallback,
+  useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import bonusList from 'data/bonus.json';
 import retiredDrivers from 'data/data_retired';
@@ -34,6 +40,9 @@ const Game = ({ driversList }) => {
   // CONTEXT
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
+
+  //STATE
+  const [isAdminOpen, setAdminOpen] = useState(false);
 
   // BUILD Drivers List
   for (let x of driversList) {
@@ -86,9 +95,9 @@ const Game = ({ driversList }) => {
       dispatchVote(resetVote());
     }
 
-    if (isVoteError) {
-      toast.error(message);
-    }
+    // if (isVoteError) {
+    //   toast.error(message);
+    // }
   }, [user, userData, isVoteSuccess]);
 
   // POST REQUEST
@@ -108,22 +117,19 @@ const Game = ({ driversList }) => {
         const updateData = { vote: payload, voteId: voteData._id };
         // Redux object for multiple arguments
         dispatchVote(updateVoteData(updateData));
-        if (isVoteSuccess) {
-          toast.success(`Thank you for updating your vote!`);
-        }
+        toast.success(`Thank you for updating your vote!`);
       } else {
         dispatchVote(postVoteData(payload));
         toast.success(`Thank you for voting!`);
       }
     }
-    return;
   };
 
   return (
     <div className="Game">
       <gameContext.Provider value={{ state, dispatch, handleSave }}>
         <Track />
-        <Side />
+        <Side isAdminOpen={isAdminOpen} setAdminOpen={setAdminOpen} />
       </gameContext.Provider>
     </div>
   );

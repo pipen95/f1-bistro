@@ -8,14 +8,13 @@ import { f1ApiContext } from 'context/Context';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 
-const Side = () => {
+const Side = ({ isAdminOpen, setAdminOpen }) => {
   // REDUX
   const { userData } = useSelector((state) => state.user);
 
   const { nextRace } = useContext(f1ApiContext);
   const { state, dispatch, handleSave } = useContext(gameContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [isResult, setResult] = useState(false);
 
   const yearOptions = [{ value: '2022', label: '2022' }];
 
@@ -102,8 +101,8 @@ const Side = () => {
                         type="checkbox"
                         id="results"
                         name="results"
-                        value={isResult}
-                        onChange={() => setResult((current) => !current)}
+                        value={isAdminOpen}
+                        onChange={() => setAdminOpen((current) => !current)}
                       />
                       &nbsp;Enter results
                     </div>
@@ -112,7 +111,7 @@ const Side = () => {
               )}
             </div>
           </div>
-          {isResult && (
+          {isAdminOpen && (
             <div className="Admin">
               <div className="Admin__choices">
                 <Select
