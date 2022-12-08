@@ -123,7 +123,7 @@ const Game = ({ driversList }) => {
           toast.success(`Thank you for voting!`);
         }
       } else {
-        if (isAdminData) {
+        if (isAdminData.year && isAdminData.race) {
           const payload = {
             season: isAdminData.year,
             circuitId: isAdminData.race,
