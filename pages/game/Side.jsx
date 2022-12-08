@@ -8,20 +8,27 @@ import { f1ApiContext } from 'context/Context';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 
-const Side = ({ isAdminOpen, setAdminOpen }) => {
+const Side = ({ isAdminOpen, setAdminOpen, setAdminData }) => {
   // REDUX
   const { userData } = useSelector((state) => state.user);
-
   const { nextRace } = useContext(f1ApiContext);
   const { state, dispatch, handleSave } = useContext(gameContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  const yearOptions = [{ value: '2022', label: '2022' }];
+  const yearOptions = [{ value: '2022', label: '2022', name: 'year' }];
 
   const raceOptions = [
-    { value: 'yas_marina', label: 'Abu Dhabi GP' },
-    { value: 'interlagos', label: 'Bazil GP' },
+    { value: 'yas_marina', label: 'Abu Dhabi GP', name: 'race' },
+    { value: 'interlagos', label: 'Bazil GP', name: 'race' },
   ];
+
+  const handleChange = (e) => {
+    const { name, value } = e;
+    setAdminData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   const reset = () => {
     dispatch({
@@ -115,14 +122,18 @@ const Side = ({ isAdminOpen, setAdminOpen }) => {
             <div className="Admin">
               <div className="Admin__choices">
                 <Select
+                  name="year"
                   options={yearOptions}
                   className="select select--left"
                   placeholder="Year"
+                  onChange={(e) => handleChange(e)}
                 />
                 <Select
+                  name="race"
                   options={raceOptions}
                   className="select select--right"
                   placeholder="Race"
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
             </div>

@@ -20,6 +20,10 @@ import {
   getVoteData,
   resetVote,
 } from './../../features/vote/voteSlice';
+import {
+  postResultData,
+  updateResultData,
+} from './../../features/result/resultSlice';
 import gameReducer from './gameReducer';
 import actionsTypes from '././types/actions';
 
@@ -31,9 +35,7 @@ const Game = ({ driversList }) => {
 
   // REDUX
   const { userData } = useSelector((state) => state.user);
-  const { voteData, isVoteSuccess, isVoteError, message } = useSelector(
-    (state) => state.vote
-  );
+  const { voteData, isVoteSuccess } = useSelector((state) => state.vote);
   const { user } = useSelector((state) => state.auth);
   const dispatchVote = useDispatch();
 
@@ -41,8 +43,9 @@ const Game = ({ driversList }) => {
   const { nextRace } = useContext(f1ApiContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  //STATE
+  // STATE
   const [isAdminOpen, setAdminOpen] = useState(false);
+  const [isAdminData, setAdminData] = useState({ year: null, race: null });
 
   // BUILD Drivers List
   for (let x of driversList) {
@@ -94,10 +97,6 @@ const Game = ({ driversList }) => {
     } else {
       dispatchVote(resetVote());
     }
-
-    // if (isVoteError) {
-    //   toast.error(message);
-    // }
   }, [user, userData, isVoteSuccess]);
 
   // POST REQUEST
@@ -105,22 +104,42 @@ const Game = ({ driversList }) => {
     const vote = voteDestructure(state);
 
     if (vote.pass) {
-      const payload = {
-        votedBy: userData._id,
-        season: Number(nextRace.data.MRData.RaceTable.Races[0].season),
-        circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
-        raceName: `${nextRace.data.MRData.RaceTable.Races[0].raceName}`,
-        vote: vote.data,
-      };
+      if (!isAdminOpen) {
+        const payload = {
+          votedBy: userData._id,
+          season: Number(nextRace.data.MRData.RaceTable.Races[0].season),
+          circuitId: `${nextRace.data.MRData.RaceTable.Races[0].Circuit.circuitId}`,
+          raceName: `${nextRace.data.MRData.RaceTable.Races[0].raceName}`,
+          vote: vote.data,
+        };
 
-      if (voteData !== null) {
-        const updateData = { vote: payload, voteId: voteData._id };
-        // Redux object for multiple arguments
-        dispatchVote(updateVoteData(updateData));
-        toast.success(`Thank you for updating your vote!`);
+        if (voteData !== null) {
+          const updateData = { vote: payload, voteId: voteData._id };
+          // Redux object for multiple arguments
+          dispatchVote(updateVoteData(updateData));
+          toast.success(`Thank you for updating your vote!`);
+        } else {
+          dispatchVote(postVoteData(payload));
+          toast.success(`Thank you for voting!`);
+        }
       } else {
-        dispatchVote(postVoteData(payload));
-        toast.success(`Thank you for voting!`);
+        if (isAdminData) {
+          const payload = {
+            season: isAdminData.year,
+            circuitId: isAdminData.race,
+            result: vote.data,
+          };
+
+          // const updateData = {
+          //   vote: payload,
+          //   year: isAdminData.year,
+          //   race: isAdminData.race,
+          // };
+          // Redux object for multiple arguments
+          dispatchVote(postResultData(payload));
+          toast.success(`Results submitted`);
+          setAdminData({ year: null, race: null });
+        }
       }
     }
   };
@@ -129,7 +148,12 @@ const Game = ({ driversList }) => {
     <div className="Game">
       <gameContext.Provider value={{ state, dispatch, handleSave }}>
         <Track />
-        <Side isAdminOpen={isAdminOpen} setAdminOpen={setAdminOpen} />
+        <Side
+          setAdminData={setAdminData}
+          isAdminData={isAdminData}
+          isAdminOpen={isAdminOpen}
+          setAdminOpen={setAdminOpen}
+        />
       </gameContext.Provider>
     </div>
   );

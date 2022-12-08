@@ -6,6 +6,7 @@ const API_URL = 'http://localhost:3001/api/results';
 const postResultData = async (result) => {
   const res = await axios.post(`${API_URL}`, result);
   if (res) {
+    console.log(res.data.data.newResult);
     return res.data.data.newResult;
   }
 };
