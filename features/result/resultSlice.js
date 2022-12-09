@@ -9,6 +9,25 @@ const initialState = {
   message: '',
 };
 
+// Check result exists
+export const checkResultData = createAsyncThunk(
+  'result/checkResultData',
+  async (resultData, ThunkAPI) => {
+    const { year, race } = resultData;
+    try {
+      return await resultService.checkResultData(year, race);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return ThunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Post user's result
 export const postResultData = createAsyncThunk(
   'result/postResultData',
@@ -60,16 +79,18 @@ export const resultSlice = createSlice({
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
 
-    builder;
-    builder.addCase(postResultData.fulfilled, (state, action) => {
+    builder.addCase(checkResultData.fulfilled, (state, action) => {
       // Add user to the state array
       state.resultData = action.payload;
       state.isResultSuccess = true;
     });
-    builder.addCase(updateResultData.fulfilled, (state, action) => {
+    builder.addCase(postResultData.fulfilled, (state) => {
       // Add user to the state array
-      state.resultData = action.payload;
-      state.isResultSuccess = true;
+      // state.isResultSuccess = true;
+    });
+    builder.addCase(updateResultData.fulfilled, (state) => {
+      // Add user to the state array
+      // state.isResultSuccess = true;
     });
   },
 });

@@ -23,10 +23,10 @@ import {
 import {
   postResultData,
   updateResultData,
+  checkResultData,
 } from './../../features/result/resultSlice';
 import gameReducer from './gameReducer';
 import actionsTypes from '././types/actions';
-
 const Game = ({ driversList }) => {
   let initialState = {
     drivers: [],
@@ -35,6 +35,7 @@ const Game = ({ driversList }) => {
 
   // REDUX
   const { userData } = useSelector((state) => state.user);
+  const { resultData, isresultSucess } = useSelector((state) => state.result);
   const { voteData, isVoteSuccess } = useSelector((state) => state.vote);
   const { user } = useSelector((state) => state.auth);
   const dispatchVote = useDispatch();
@@ -124,21 +125,36 @@ const Game = ({ driversList }) => {
         }
       } else {
         if (isAdminData.year && isAdminData.race) {
-          const payload = {
-            season: isAdminData.year,
-            circuitId: isAdminData.race,
-            result: vote.data,
+          const check = {
+            year: isAdminData.year,
+            race: isAdminData.race,
           };
 
-          // const updateData = {
-          //   vote: payload,
-          //   year: isAdminData.year,
-          //   race: isAdminData.race,
-          // };
-          // Redux object for multiple arguments
-          dispatchVote(postResultData(payload));
-          toast.success(`Results submitted`);
-          setAdminData({ year: null, race: null });
+          dispatchVote(checkResultData(check));
+
+          if (isresultSucess) {
+            const payload = {
+              season: isAdminData.year,
+              circuitId: isAdminData.race,
+              result: vote.data,
+            };
+
+            if (!resultData) {
+              dispatchVote(postResultData(payload));
+              toast.success(`Result submitted`);
+              setAdminData({ year: null, race: null });
+            } else {
+              const updateData = {
+                vote: payload,
+                year: isAdminData.year,
+                race: isAdminData.race,
+              };
+              // Redux object for multiple arguments
+              dispatchVote(updateResultData(updateData));
+              toast.success(`Result updated`);
+              setAdminData({ year: null, race: null });
+            }
+          }
         }
       }
     }
