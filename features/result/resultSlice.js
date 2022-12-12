@@ -4,7 +4,9 @@ import resultService from './resultService';
 //State
 const initialState = {
   resultData: null,
-  isResultSuccess: false,
+  isCheckSuccess: false,
+  isPostSuccess: false,
+  isPatchSuccess: false,
   isResultError: false,
   message: '',
 };
@@ -71,7 +73,9 @@ export const resultSlice = createSlice({
   reducers: {
     resetResult: (state) => {
       state.resultData = null;
-      state.isResultSuccess = false;
+      state.isCheckSuccess = false;
+      state.isCheckSuccess = false;
+      state.isCheckSuccess = false;
       state.isResultError = false;
       state.message = '';
     },
@@ -82,15 +86,15 @@ export const resultSlice = createSlice({
     builder.addCase(checkResultData.fulfilled, (state, action) => {
       // Add user to the state array
       state.resultData = action.payload;
-      state.isResultSuccess = true;
+      state.isCheckSuccess = true;
     });
     builder.addCase(postResultData.fulfilled, (state) => {
       // Add user to the state array
-      // state.isResultSuccess = true;
+      state.isPostSuccess = true;
     });
     builder.addCase(updateResultData.fulfilled, (state) => {
       // Add user to the state array
-      // state.isResultSuccess = true;
+      state.isPatchSuccess = true;
     });
   },
 });

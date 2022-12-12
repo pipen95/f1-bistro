@@ -24,6 +24,7 @@ import {
   postResultData,
   updateResultData,
   checkResultData,
+  resetResult,
 } from './../../features/result/resultSlice';
 import gameReducer from './gameReducer';
 import actionsTypes from '././types/actions';
@@ -35,7 +36,8 @@ const Game = ({ driversList }) => {
 
   // REDUX
   const { userData } = useSelector((state) => state.user);
-  const { resultData, isresultSucess } = useSelector((state) => state.result);
+  const { resultData, isCheckSuccess, isPostSuccess, isPatchSuccess } =
+    useSelector((state) => state.result);
   const { voteData, isVoteSuccess } = useSelector((state) => state.vote);
   const { user } = useSelector((state) => state.auth);
   const dispatchVote = useDispatch();
@@ -88,7 +90,7 @@ const Game = ({ driversList }) => {
     }
   }, [voteData]);
 
-  // GET VOTE
+  // WATCH GET VOTE
   useEffect(() => {
     if (user && userData) {
       dispatchVote(getVoteData(userData._id));
@@ -99,6 +101,37 @@ const Game = ({ driversList }) => {
       dispatchVote(resetVote());
     }
   }, [user, userData, isVoteSuccess]);
+
+  // WATCH RESULT VOTE
+  useEffect(() => {
+    const vote = voteDestructure(state);
+    const payload = {
+      season: isAdminData.year,
+      circuitId: isAdminData.race,
+      result: vote.data,
+    };
+    if (isCheckSuccess) {
+      if (resultData === true) {
+        const updateData = {
+          vote: payload,
+          year: isAdminData.year,
+          race: isAdminData.race,
+        };
+        // Redux object for multiple arguments
+        dispatchVote(updateResultData(updateData));
+        if (isPatchSuccess) {
+          toast.success(`Result updated`);
+          dispatchVote(resetResult());
+        }
+      } else if (resultData === false) {
+        dispatchVote(postResultData(payload));
+        if (isPostSuccess) {
+          toast.success(`Result submitted`);
+          dispatchVote(resetResult());
+        }
+      }
+    }
+  }, [resultData, isCheckSuccess, isPostSuccess, isPatchSuccess]);
 
   // POST REQUEST
   const handleSave = async () => {
@@ -129,32 +162,7 @@ const Game = ({ driversList }) => {
             year: isAdminData.year,
             race: isAdminData.race,
           };
-
           dispatchVote(checkResultData(check));
-
-          if (isresultSucess) {
-            const payload = {
-              season: isAdminData.year,
-              circuitId: isAdminData.race,
-              result: vote.data,
-            };
-
-            if (!resultData) {
-              dispatchVote(postResultData(payload));
-              toast.success(`Result submitted`);
-              setAdminData({ year: null, race: null });
-            } else {
-              const updateData = {
-                vote: payload,
-                year: isAdminData.year,
-                race: isAdminData.race,
-              };
-              // Redux object for multiple arguments
-              dispatchVote(updateResultData(updateData));
-              toast.success(`Result updated`);
-              setAdminData({ year: null, race: null });
-            }
-          }
         }
       }
     }
