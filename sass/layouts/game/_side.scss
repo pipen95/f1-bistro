@@ -113,4 +113,10 @@
 
 .admin-results {
   margin-left: 2rem;
+
+  .Actions {
+    &__box {
+      margin-top: 2rem;
+    }
+  }
 }

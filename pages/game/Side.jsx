@@ -111,7 +111,7 @@ const Side = ({ isAdminOpen, setAdminOpen, setAdminData }) => {
                         value={isAdminOpen}
                         onChange={() => setAdminOpen((current) => !current)}
                       />
-                      &nbsp;Enter results
+                      &nbsp;Submit results
                     </div>
                   </div>
                 </div>
