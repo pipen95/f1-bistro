@@ -113,7 +113,7 @@ const Game = ({ driversList }) => {
     if (isCheckSuccess) {
       if (resultData === true) {
         const updateData = {
-          vote: payload,
+          result: payload,
           year: isAdminData.year,
           race: isAdminData.race,
         };
