@@ -110,25 +110,23 @@ const Game = ({ driversList }) => {
       circuitId: isAdminData.race,
       result: vote.data,
     };
-    if (isCheckSuccess) {
-      if (resultData === true) {
-        const updateData = {
-          result: payload,
-          year: isAdminData.year,
-          race: isAdminData.race,
-        };
-        // Redux object for multiple arguments
-        dispatchVote(updateResultData(updateData));
-        if (isPatchSuccess) {
-          toast.success(`Result updated`);
-          dispatchVote(resetResult());
-        }
-      } else if (resultData === false) {
-        dispatchVote(postResultData(payload));
-        if (isPostSuccess) {
-          toast.success(`Result submitted`);
-          dispatchVote(resetResult());
-        }
+    if (isCheckSuccess && resultData === true) {
+      const updateData = {
+        result: payload,
+        year: isAdminData.year,
+        race: isAdminData.race,
+      };
+      // Redux object for multiple arguments
+      dispatchVote(updateResultData(updateData));
+      if (isPatchSuccess) {
+        toast.success(`Result updated`);
+        dispatchVote(resetResult());
+      }
+    } else if (isCheckSuccess && resultData === false) {
+      dispatchVote(postResultData(payload));
+      if (isPostSuccess) {
+        toast.success(`Result submitted`);
+        dispatchVote(resetResult());
       }
     }
   }, [resultData, isCheckSuccess, isPostSuccess, isPatchSuccess]);
