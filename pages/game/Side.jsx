@@ -57,8 +57,7 @@ const Side = ({ isAdminOpen, setAdminOpen, setAdminData }) => {
             <br />
             {nextRace.data.MRData.RaceTable.Races[0].raceName}
           </h3>
-          <div>
-            ➡️
+          <div className="center mt-1 mb-2">
             <a
               href="#"
               className="btn-text nowrap"
@@ -66,7 +65,6 @@ const Side = ({ isAdminOpen, setAdminOpen, setAdminData }) => {
             >
               Check out the rules
             </a>
-            ⬅️
           </div>
         </div>
         <div className="Choices-wrapper">
