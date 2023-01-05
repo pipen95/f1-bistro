@@ -7,27 +7,29 @@ const TableHead = () => {
   return (
     <thead>
       <tr>
-        <th className="left">Drivers/Player</th>
+        <th className="left">Drivers</th>
         <th className="left">BAH</th>
-        <th className="left">SAU</th>
-        <th className="left">AUS</th>
-        <th className="left">ITA</th>
-        <th className="left">USA</th>
-        <th className="left">SPA</th>
+        <th className="left">JED</th>
+        <th className="left">ALB</th>
+        <th className="left">IMO</th>
+        <th className="left">MIA</th>
+        <th className="left">CAT</th>
         <th className="left">MON</th>
-        <th className="left">AZE</th>
-        <th className="left">CAN</th>
-        <th className="left">BRI</th>
-        <th className="left">AUS</th>
-        <th className="left">FRA</th>
-        <th className="left">BEL</th>
-        <th className="left">NET</th>
-        <th className="left">ITA</th>
-        <th className="left">SIN</th>
-        <th className="left">JAP</th>
-        <th className="left">USA </th>
-        <th className="left">BRA</th>
-        <th className="left">ABU</th>
+        <th className="left">BAK</th>
+        <th className="left">VIL</th>
+        <th className="left">SIL</th>
+        <th className="left">RED</th>
+        <th className="left">RIC</th>
+        <th className="left">HUN</th>
+        <th className="left">SPA</th>
+        <th className="left">ZAN</th>
+        <th className="left">MON</th>
+        <th className="left">MAR</th>
+        <th className="left">SUZ</th>
+        <th className="left">AME</th>
+        <th className="left">ROD</th>
+        <th className="left">INT</th>
+        <th className="left">YAS</th>
         <th className="left">Total</th>
       </tr>
     </thead>

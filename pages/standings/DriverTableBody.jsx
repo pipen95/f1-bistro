@@ -1,79 +1,82 @@
-import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 
 const DriverTableBody = () => {
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
-  function useDriver() {
-    const { data, error, isLoading } = useSWR(
-      `https://ergast.com/api/f1/current/driverStandings.json`,
-      fetcher
-    );
+  function useDriver(url) {
+    const { data, error, isLoading } = useSWR(url, fetcher);
 
     return {
-      driver: data,
+      driverData: data,
       isDriverLoading: isLoading,
       isDriverError: error,
     };
   }
-  function useResult() {
-    const { data, error, isLoading } = useSWR(
-      `https://ergast.com/api/f1/current/driverStandings.json`,
-      fetcher
-    );
+  function useResult(url) {
+    const { data, error, isLoading } = useSWR(url, fetcher);
 
     return {
-      result: data,
+      resultData: data,
       isResultLoading: isLoading,
       isResultError: error,
     };
   }
 
-  const { driver, isDriverError, isDriverLoading } = useDriver(
-    `https://ergast.com/api/f1/current/driverStandings.json`,
-    fetcher
+  const { driverData } = useDriver(
+    `https://ergast.com/api/f1/current/driverStandings.json`
   );
-  const { result } = useResult(
-    `https://ergast.com/api/f1/current/results.json?limit=500`,
-    fetcher
+  const { resultData } = useResult(
+    `https://ergast.com/api/f1/current/results.json?limit=500`
   );
 
-  console.log(driver);
-  console.log(result);
+  let driverStandingsArr = [];
+  let arrDriverPoints = [];
+  let arrRacesCounter;
 
-  // let driverStandingsArr = dataDriver.MRData.StandingsTable.StandingsLists;
-  // let arrDriverPoints = driverStandingsArr.DriverStandings.reduce(
-  //   (acc, cur) => ({ ...acc, [cur.Driver.driverId]: [] }),
-  //   {}
-  // );
-  // console.log(arrDriverPoints);
-  // const racesResults = allResults.MRData.RaceTable.Races;
-  // const arrRaces = racesResults.map(({ Results }) => Results);
-  // for (let [i, race] of arrRaces.entries()) {
-  //   for (let el of race) {
-  //     let id = el.Driver.driverId;
-  //     arrDriverPoints[id].push({ round: i, points: el.points });
-  //   }
-  // }
+  if (driverData) {
+    driverStandingsArr =
+      driverData.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    arrDriverPoints = driverStandingsArr.reduce(
+      (acc, cur) => ({ ...acc, [cur.Driver.driverId]: [] }),
+      {}
+    );
+  }
 
-  // const driverData = (driver) => {
-  //   let arrInitPoints = [];
+  if (resultData) {
+    arrDriverPoints = driverStandingsArr.reduce(
+      (acc, cur) => ({ ...acc, [cur.Driver.driverId]: [] }),
+      {}
+    );
+    const racesResults = resultData.MRData.RaceTable.Races;
+    const arrRaces = racesResults.map(({ Results }) => Results);
+    arrRacesCounter = arrRaces.length;
+    for (let [i, race] of arrRaces.entries()) {
+      for (let el of race) {
+        let id = el.Driver.driverId;
+        arrDriverPoints[id].push({ round: i, points: el.points });
+      }
+    }
+  }
 
-  //   for (let i = 0; i < data[2]; i++) {
-  //     arrInitPoints.push('-');
-  //   }
+  const driverCB = (driver) => {
+    let arrInitPoints = [];
 
-  //   const scoreDriver = arrDriverPoints[driver];
-  //   for (let el of scoreDriver) {
-  //     if (el.points >= 0) arrInitPoints.splice(el.round, 1, el.points);
-  //   }
+    for (let i = 0; i < arrRacesCounter; i++) {
+      arrInitPoints.push('-');
+    }
 
-  //   return arrInitPoints.map((el) => <td>{el}</td>);
-  // };
+    const scoreDriver = arrDriverPoints[driver];
+    for (let el of scoreDriver) {
+      if (el.points >= 0) arrInitPoints.splice(el.round, 1, el.points);
+    }
+
+    return arrInitPoints.map((el) => <td>{el}</td>);
+  };
 
   return (
     <tbody>
-      {/* {driverStandingsArr &&
+      {driverData &&
+        resultData &&
         driverStandingsArr.map((driver) => (
           <tr>
             <td className="flex items-center">
@@ -85,11 +88,11 @@ const DriverTableBody = () => {
               <span>{driver.Driver.familyName}</span>
             </td>
 
-            {driverData(driver.Driver.driverId)}
+            {driverCB(driver.Driver.driverId)}
 
             <td>{driver.points}</td>
           </tr>
-        ))} */}
+        ))}
     </tbody>
   );
 };

@@ -2,10 +2,6 @@ import DriverTableBody from './DriverTableBody';
 import TableHead from './TableHead';
 
 const Standings = () => {
-  // const racesId = allResults.MRData.RaceTable.Races.map((el) =>
-  //   el.Circuit.circuitId.substring(0, 3).toUpperCase()
-  // );
-
   return (
     <div className="Standings flex flex-col">
       <div className="Standings Standings_header flex justify-between">
@@ -14,7 +10,6 @@ const Standings = () => {
       </div>
       <div className="Standings Standings_table">
         <table>
-          {/* <TableHead data={racesId} /> */}
           <TableHead />
           <DriverTableBody />
         </table>
