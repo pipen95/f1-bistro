@@ -7,7 +7,7 @@ const TableHead = () => {
   return (
     <thead>
       <tr>
-        <th className="left">Drivers</th>
+        <th className="left">Name</th>
         <th className="left">BAH</th>
         <th className="left">JED</th>
         <th className="left">ALB</th>
