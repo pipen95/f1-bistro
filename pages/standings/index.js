@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import DriverTableBody from './DriverTableBody';
+import PlayerTableBody from './PlayerTableBody';
 import TableHead from './TableHead';
 import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Grid';
@@ -34,7 +35,8 @@ const Standings = () => {
       <div className="Standings Standings_table">
         <table>
           <TableHead />
-          <DriverTableBody />
+
+          {state.checkedA ? <DriverTableBody /> : <PlayerTableBody />}
         </table>
       </div>
     </div>

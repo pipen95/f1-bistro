@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import Loader from '../../components/ui/Loader';
 
 const DriverTableBody = () => {
   const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -22,10 +23,10 @@ const DriverTableBody = () => {
     };
   }
 
-  const { driverData } = useDriver(
+  const { driverData, isDriverLoading } = useDriver(
     `https://ergast.com/api/f1/current/driverStandings.json`
   );
-  const { resultData } = useResult(
+  const { resultData, isResultLoading } = useResult(
     `https://ergast.com/api/f1/current/results.json?limit=500`
   );
 
@@ -72,6 +73,8 @@ const DriverTableBody = () => {
 
     return arrInitPoints.map((el) => <td>{el}</td>);
   };
+
+  if (isDriverLoading && isResultLoading) return <Loader />;
 
   return (
     <tbody>
