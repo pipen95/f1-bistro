@@ -74,28 +74,35 @@ const DriverTableBody = () => {
     return arrInitPoints.map((el) => <td>{el}</td>);
   };
 
-  // if (isDriverLoading && isResultLoading) return <Loader />;
+  if (!driverData && !resultData)
+    return (
+      <tbody>
+        <tr>
+          <div className="loader-alt">
+            <Loader />
+          </div>
+        </tr>
+      </tbody>
+    );
 
   return (
     <tbody>
-      {driverData &&
-        resultData &&
-        driverStandingsArr.map((driver) => (
-          <tr>
-            <td className="flex items-center">
-              <img
-                className="loserDriverImage mr-1"
-                alt=""
-                src={`https://res.cloudinary.com/f1-fantasy-tracker/image/upload/c_scale,f_auto,w_45/v1616743177/Headshots/${driver.Driver.familyName}.png`}
-              />
-              <span>{driver.Driver.familyName}</span>
-            </td>
+      {driverStandingsArr.map((driver) => (
+        <tr>
+          <td className="flex items-center">
+            <img
+              className="loserDriverImage mr-1"
+              alt=""
+              src={`https://res.cloudinary.com/f1-fantasy-tracker/image/upload/c_scale,f_auto,w_45/v1616743177/Headshots/${driver.Driver.familyName}.png`}
+            />
+            <span>{driver.Driver.familyName}</span>
+          </td>
 
-            {driverCB(driver.Driver.driverId)}
+          {driverCB(driver.Driver.driverId)}
 
-            <td>{driver.points}</td>
-          </tr>
-        ))}
+          <td>{driver.points}</td>
+        </tr>
+      ))}
     </tbody>
   );
 };
