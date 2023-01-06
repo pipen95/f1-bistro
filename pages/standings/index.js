@@ -5,7 +5,7 @@ import TableHead from './TableHead';
 import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Grid';
 
-const Standings = () => {
+const Standings = ({ allResults }) => {
   const [state, setState] = useState({
     checkedA: true,
   });
@@ -34,13 +34,22 @@ const Standings = () => {
       </div>
       <div className="Standings Standings_table">
         <table>
-          <TableHead />
-
+          <TableHead data={allResults} />
           {state.checkedA ? <DriverTableBody /> : <PlayerTableBody />}
         </table>
       </div>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const res = await fetch(
+    `https://ergast.com/api/f1/current/results.json?limit=500`
+  );
+  const allResults = await res.json();
+
+  // Pass data to the page via props
+  return { props: { allResults }, revalidate: 15778476 };
+}
 
 export default Standings;

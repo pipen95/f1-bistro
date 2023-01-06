@@ -74,7 +74,7 @@ const DriverTableBody = () => {
     return arrInitPoints.map((el) => <td>{el}</td>);
   };
 
-  if (isDriverLoading && isResultLoading) return <Loader />;
+  // if (isDriverLoading && isResultLoading) return <Loader />;
 
   return (
     <tbody>

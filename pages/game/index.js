@@ -182,7 +182,7 @@ const Game = ({ driversList }) => {
 };
 
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Fetch data from external API
   const res = await fetch(`http://ergast.com/api/f1/current/drivers.json`);
   const driversJSON = await res.json();
@@ -191,7 +191,7 @@ export async function getServerSideProps() {
   );
 
   // Pass data to the page via props
-  return { props: { driversList } };
+  return { props: { driversList }, revalidate: 86400 };
 }
 
 export default Game;
