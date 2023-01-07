@@ -1,10 +1,10 @@
-import Chat from './Chat';
+import ShopItem from './ShopItem';
 import Message from './Message';
 function Side() {
   return (
     <div className="Side">
       <Message />
-      <Chat />
+      <ShopItem />
     </div>
   );
 }
